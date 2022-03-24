@@ -167,6 +167,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planesConfig: {fileID: 11400000, guid: 201a8437563c6354b959797ae341161c, type: 2}
+--- !u!1 &38893112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38893113}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &38893113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38893112}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.0435791, y: 2.1393433, z: 9.276855}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 797541136}
+  m_Father: {fileID: 797494456}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344891993
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +852,7 @@ Transform:
   - {fileID: 797539536}
   - {fileID: 797468686}
   - {fileID: 797550178}
-  - {fileID: 797541136}
+  - {fileID: 38893113}
   - {fileID: 797463510}
   - {fileID: 797511594}
   - {fileID: 797471050}
@@ -880,12 +911,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797725248}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0435967, y: 2.1393547, z: 9.277069}
+  m_LocalRotation: {x: 0, y: 0.16108708, z: 0, w: 0.9869402}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 797494456}
-  m_RootOrder: 6
+  m_Father: {fileID: 38893113}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &797550178
 Transform:
@@ -958,6 +989,7 @@ GameObject:
   - component: {fileID: 797541136}
   - component: {fileID: 800915408}
   - component: {fileID: 799864558}
+  - component: {fileID: 797725249}
   m_Layer: 0
   m_Name: proppeler
   m_TagString: Untagged
@@ -965,6 +997,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &797725249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797725248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206c09adff96f744eb154953b93704b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedY: 1080
+  SpeedX: 0
+  SpeedZ: 0
+  isLocal: 1
+  startPlay: 1
 --- !u!1 &797777828
 GameObject:
   m_ObjectHideFlags: 0
