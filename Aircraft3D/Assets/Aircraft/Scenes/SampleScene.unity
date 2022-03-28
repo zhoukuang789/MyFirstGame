@@ -843,7 +843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797777828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 652.7936, y: 329, z: -3344}
+  m_LocalPosition: {x: 652.7936, y: 329, z: -3342.16}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 797563640}
@@ -1025,8 +1025,8 @@ GameObject:
   - component: {fileID: 797494456}
   - component: {fileID: 790537562}
   - component: {fileID: 1561702195}
-  - component: {fileID: 1561702196}
   - component: {fileID: 1561702198}
+  - component: {fileID: 797777829}
   m_Layer: 0
   m_Name: Super_Spitfire
   m_TagString: Untagged
@@ -1034,6 +1034,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &797777829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797777828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16a69c3a71ae8040b6681d893f61ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1561702195}
 --- !u!1 &797780390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2365,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797777828}
   serializedVersion: 2
-  m_Mass: 3000
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -2360,18 +2373,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!75 &1561702196
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797777828}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 0, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!114 &1561702198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,7 +2386,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1561702195}
-  _cf: {fileID: 1561702196}
   bullet: {fileID: 2081810561}
   muzzle1: {fileID: 401170148}
   muzzle2: {fileID: 1542282504}
