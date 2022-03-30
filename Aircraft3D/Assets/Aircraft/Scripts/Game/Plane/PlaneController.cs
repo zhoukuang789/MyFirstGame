@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlaneController : MonoBehaviour {
     public Rigidbody rb;
-    private PlaneConfig _cfg;
+    private PlaneConfig _planeConfig;
 
     private float fireTimer;
 
@@ -12,18 +12,24 @@ public class PlaneController : MonoBehaviour {
     public Transform muzzle2;
 
     private void Start() {
-        _cfg = ConfigService.instance.planesConfig.PlayerPlaneConfig;
+        _planeConfig = ConfigService.instance.planesConfig.PlayerPlaneConfig;
 
         fireTimer = 0;
     }
 
     private void Update() {
-        // 按住W加速，如果速度超过最大飞行速度不能再加速
+        // 按住W增大发动机功率，直到功率<=最大功率
         if (Input.GetKey(KeyCode.W)) {
+            if (_planeConfig.movement.powerOne <= _planeConfig.movement.maxPower) {
+                _planeConfig.movement.powerOne += 2000f * Time.deltaTime;
+            }
         }
 
-        // 按住S减速，如果速度小于最小飞行速度不能再减速
+        // 按住W减小发动机功率，直到功率>=0
         if (Input.GetKey(KeyCode.S)) {
+            if (_planeConfig.movement.powerOne >= 0) {
+                _planeConfig.movement.powerOne -= 1000f * Time.deltaTime;
+            }
         }
 
         // 按下空格键或鼠标Y轴增大，飞机向上俯仰
@@ -60,7 +66,7 @@ public class PlaneController : MonoBehaviour {
 
     void Fire() {
         //射击的冷却时间
-        fireTimer += _cfg.fireInterval;
+        fireTimer += _planeConfig.fireInterval;
 
         //创建2 子弹
         var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, transform.parent);
@@ -90,34 +96,30 @@ public class PlaneController : MonoBehaviour {
     }
 
     /**
-     * 设置飞机实时速度
-     */
-    public void SetSpeedOne(float speed) {
-        rb.velocity = transform.forward.normalized * speed;
-    }
-
-    /**
      * 俯仰操作
      */
     private void Pitch(float angle) {
-        AddRotate(angle, -transform.right);
+        Rotate(angle, transform.right);
     }
 
     /**
      * 滚转操作
      */
     private void Roll(float angle) {
-        AddRotate(angle, -transform.forward);
+        Rotate(angle, transform.forward);
     }
 
     /**
      * 偏航操作
      */
     private void Yaw(float angle) {
-        AddRotate(angle, transform.up);
+        Rotate(angle, -transform.up);
     }
 
-    void AddRotate(float angle, Vector3 axis) {
+    /**
+     * 沿着axis旋转angle度
+     */
+    void Rotate(float angle, Vector3 axis) {
         Quaternion quaternion = Quaternion.AngleAxis(angle, axis);
         transform.rotation = quaternion * transform.rotation;
     }

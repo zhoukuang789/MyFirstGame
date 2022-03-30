@@ -40,6 +40,9 @@ public class PlaneMovementConfig {
     [Tooltip("飞机重量")]
     public float mass;
 
-    [Tooltip("发动机功率")]
+    [Tooltip("发动机最大功率")]
     public float maxPower;
+
+    [Tooltip("发动机当前功率")]
+    public float powerOne;
 }
