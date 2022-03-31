@@ -17,6 +17,6 @@ public class FollowPlayerX : MonoBehaviour {
  
         transform.position = nextpos;
  
-        transform.LookAt(target);
+        transform.LookAt(target, Vector3.up);
     }
 }
