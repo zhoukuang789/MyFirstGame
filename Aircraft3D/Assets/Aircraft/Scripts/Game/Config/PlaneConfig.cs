@@ -7,9 +7,6 @@ public class PlaneConfig : ScriptableObject {
 
     public string title;
     public string desc;
-
-    public float mass;
-
     [Range(0.1f, 5f)]
     public float fireInterval;
 
@@ -42,7 +39,4 @@ public class PlaneMovementConfig {
 
     [Tooltip("发动机最大功率")]
     public float maxPower;
-
-    [Tooltip("发动机当前功率")]
-    public float powerOne;
 }

@@ -15,7 +15,6 @@ MonoBehaviour:
   id: Spitfire
   title: "\u55B7\u706B\u6218\u6597\u673A"
   desc: "\u5389\u5BB3\u7684\u98DE\u673A"
-  mass: 5
   fireInterval: 0.26
   movement:
     initialSpeed: 100
@@ -323,7 +322,7 @@ MonoBehaviour:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 24.852161
+        time: 25
         value: 0.81792885
         inSlope: -0.03189885
         outSlope: -0.03189885
@@ -611,6 +610,5 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     wingArea: 22.49
-    mass: 6000
+    mass: 3004
     maxPower: 1100000
-    powerOne: 35649.07
