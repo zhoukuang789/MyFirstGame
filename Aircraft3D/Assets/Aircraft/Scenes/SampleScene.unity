@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797777828}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16a69c3a71ae8040b6681d893f61ca0, type: 3}
   m_Name: 
@@ -1340,8 +1340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7cea02fcebc4448bcb60479cc4da83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addPowerSpeed: 200000
-  reducePowerSpeed: 100000
 --- !u!114 &797777831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3081,9 +3079,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dc6ecfb1e858e4cb9237a0b3096fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 797494456}
-  distanceH: 30
-  distanceV: 9
+  player: {fileID: 797494456}
+  offset: {x: 0, y: 9.3, z: 26.5}
+  distance: 150
 --- !u!4 &1959968592
 Transform:
   m_ObjectHideFlags: 0

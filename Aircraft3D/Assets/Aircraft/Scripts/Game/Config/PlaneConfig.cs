@@ -16,7 +16,7 @@ public class PlaneConfig : ScriptableObject {
 [System.Serializable]
 public class PlaneMovementConfig {
     [Tooltip("飞机初始速度")]
-    public float initialSpeed = 62f;
+    public float initThrust;
 
     public AnimationCurve pitchRateCurve; // 飞机俯仰速率曲线
     public float pitchScaleFactor = 45f; // 飞机俯仰比例系数
@@ -31,6 +31,8 @@ public class PlaneMovementConfig {
     [Tooltip("阻力系数曲线")]
     public AnimationCurve dragCoefficientCurve;
 
+    public AnimationCurve pitchMomentCoefficientCurve;
+
     [Tooltip("翼面俯视面积")]
     public float wingArea;
 
@@ -39,4 +41,10 @@ public class PlaneMovementConfig {
 
     [Tooltip("发动机最大功率")]
     public float maxPower;
+    
+    [Tooltip("发动机最大功率")]
+    public float minPower;
+
+    public float addPowerSpeed;
+    public float reducePowerSpeed;
 }

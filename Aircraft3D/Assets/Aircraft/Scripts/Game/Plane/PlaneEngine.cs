@@ -5,25 +5,23 @@ public class PlaneEngine : MonoBehaviour
 {
     public float power { get; private set; }
 
-    public float addPowerSpeed = 2000;
-    public float reducePowerSpeed = 2000;
-
     private PlaneConfig _planeConfig;
 
     private void Start()
     {
         _planeConfig = ConfigService.instance.planesConfig.PlayerPlaneConfig;
+        power = _planeConfig.movement.minPower;
     }
 
     public void AddPower()
     {
-        power += addPowerSpeed * Time.deltaTime;
-        power = Mathf.Clamp(power, 0, _planeConfig.movement.maxPower);
+        power += _planeConfig.movement.addPowerSpeed * Time.deltaTime;
+        power = Mathf.Clamp(power, _planeConfig.movement.minPower, _planeConfig.movement.maxPower);
     }
 
     public void ReducePower()
     {
-        power -= reducePowerSpeed * Time.deltaTime;
-        power = Mathf.Clamp(power, 0, _planeConfig.movement.maxPower);
+        power -= _planeConfig.movement.reducePowerSpeed * Time.deltaTime;
+        power = Mathf.Clamp(power, _planeConfig.movement.minPower, _planeConfig.movement.maxPower);
     }
 }

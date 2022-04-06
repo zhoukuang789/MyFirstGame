@@ -8,6 +8,7 @@ public class PlaneMovement : MonoBehaviour
     private PlaneConfig _planeConfig;
     private Vector3 _combinedForce;
     private float _airDensity;
+    private float _aoa;
     private Vector3 _lift;
     private Vector3 _drag;
     private Vector3 _thrust;
@@ -20,36 +21,31 @@ public class PlaneMovement : MonoBehaviour
         // 设置刚体质量
         rb.mass = _planeConfig.movement.mass;
         // 设置刚体初始速度
-        rb.velocity = transform.forward * _planeConfig.movement.initialSpeed;
+        rb.AddForce(transform.forward * _planeConfig.movement.initThrust);
     }
 
     private void FixedUpdate()
     {
         // 1.空气密度
         _airDensity = AirMechanismAlgorithm.GetAirDensity(transform.position.y);
-        // 2.飞机速度大小
-        float currentSpeed = rb.velocity.magnitude;
-        var relativeForwardSpeed = Vector3.Project(rb.velocity, transform.forward);
+        
+        // 飞机速度在垂直截面上的分量
+        Vector3 velocityYZ = Vector3.ProjectOnPlane(rb.velocity, transform.right);
 
-        // 3.飞机迎角
-        float attackOfAngle = 90;
-        var attackOfAngleProject = Vector3.ProjectOnPlane(rb.velocity, transform.right);
-        if (attackOfAngleProject != Vector3.zero)
-        {
-            attackOfAngle = Vector3.Angle(transform.forward, attackOfAngleProject);
-        }
+        // 计算迎角
+        _aoa = AirMechanismAlgorithm.GetAoa(velocityYZ, transform.up, transform.forward);
 
         //升力
-        _lift = AirMechanismAlgorithm.GetLift(_airDensity, attackOfAngle, rb.velocity, transform.right, transform.forward, _planeConfig);
+        _lift = AirMechanismAlgorithm.GetLift(_airDensity, velocityYZ, _planeConfig, _aoa, transform.right);
 
         // 阻力
-        _drag = AirMechanismAlgorithm.GetDrag(_airDensity, rb.velocity, attackOfAngle, transform.forward, _planeConfig);
+        _drag = AirMechanismAlgorithm.GetDrag(_airDensity, velocityYZ, _planeConfig, _aoa);
 
         //推力
-        _thrust = AirMechanismAlgorithm.GetThrust(rb.velocity, transform.forward, engine.power);
+        _thrust = AirMechanismAlgorithm.GetThrust(velocityYZ, transform.forward, engine.power);
 
         _combinedForce = _lift + _thrust + _drag;
-        //1kg 1000N
-        rb.AddForce(1000 * _combinedForce * Time.fixedDeltaTime);
+        
+        rb.AddForce( _combinedForce * Time.fixedDeltaTime);
     }
 }
