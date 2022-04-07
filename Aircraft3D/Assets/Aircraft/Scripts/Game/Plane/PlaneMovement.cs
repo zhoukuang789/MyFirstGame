@@ -50,18 +50,18 @@ public class PlaneMovement : MonoBehaviour
         _thrust = AirMechanismAlgorithm.GetThrust(velocityYZ, transform.forward, engine.power);
 
         _combinedForce = _lift + _thrust + _drag;
+        var pos = transform.position;
+        lr_velo.SetPosition(0, pos);
+        lr_velo.SetPosition(1, pos + rb.velocity * lrLengthRatio * 10);
 
-        lr_velo.SetPosition(0, new Vector3(0, 0, 0));
-        lr_velo.SetPosition(1, rb.velocity * lrLengthRatio*10);
+        lr_drag.SetPosition(0, pos);
+        lr_drag.SetPosition(1, pos + _drag * lrLengthRatio);
 
-        lr_drag.SetPosition(0, new Vector3(0, 0, 0));
-        lr_drag.SetPosition(1, _drag * lrLengthRatio);
+        lr_lift.SetPosition(0, pos);
+        lr_lift.SetPosition(1, pos + _lift * lrLengthRatio);
 
-        lr_lift.SetPosition(0, new Vector3(0, 0, 0));
-        lr_lift.SetPosition(1, _lift * lrLengthRatio);
-
-        lr_thrust.SetPosition(0, new Vector3(0, 0, 0));
-        lr_thrust.SetPosition(1, _thrust * lrLengthRatio);
+        lr_thrust.SetPosition(0, pos);
+        lr_thrust.SetPosition(1, pos + _thrust * lrLengthRatio);
 
         rb.AddForce(_combinedForce * Time.fixedDeltaTime);
     }
