@@ -13,6 +13,11 @@ public class PlaneMovement : MonoBehaviour
     private Vector3 _drag;
     private Vector3 _thrust;
 
+    public LineRenderer lr_velo;
+    public LineRenderer lr_drag;
+    public LineRenderer lr_lift;
+    public LineRenderer lr_thrust;
+    public float lrLengthRatio = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +33,7 @@ public class PlaneMovement : MonoBehaviour
     {
         // 1.空气密度
         _airDensity = AirMechanismAlgorithm.GetAirDensity(transform.position.y);
-        
+
         // 飞机速度在垂直截面上的分量
         Vector3 velocityYZ = Vector3.ProjectOnPlane(rb.velocity, transform.right);
 
@@ -45,7 +50,19 @@ public class PlaneMovement : MonoBehaviour
         _thrust = AirMechanismAlgorithm.GetThrust(velocityYZ, transform.forward, engine.power);
 
         _combinedForce = _lift + _thrust + _drag;
-        
-        rb.AddForce( _combinedForce * Time.fixedDeltaTime);
+
+        lr_velo.SetPosition(0, new Vector3(0, 0, 0));
+        lr_velo.SetPosition(1, rb.velocity * lrLengthRatio*10);
+
+        lr_drag.SetPosition(0, new Vector3(0, 0, 0));
+        lr_drag.SetPosition(1, _drag * lrLengthRatio);
+
+        lr_lift.SetPosition(0, new Vector3(0, 0, 0));
+        lr_lift.SetPosition(1, _lift * lrLengthRatio);
+
+        lr_thrust.SetPosition(0, new Vector3(0, 0, 0));
+        lr_thrust.SetPosition(1, _thrust * lrLengthRatio);
+
+        rb.AddForce(_combinedForce * Time.fixedDeltaTime);
     }
 }
