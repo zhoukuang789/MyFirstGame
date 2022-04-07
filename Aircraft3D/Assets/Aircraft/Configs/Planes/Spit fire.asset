@@ -15,7 +15,7 @@ MonoBehaviour:
   id: Spitfire
   title: "\u55B7\u706B\u6218\u6597\u673A"
   desc: "\u5389\u5BB3\u7684\u98DE\u673A"
-  fireInterval: 0.26
+  fireInterval: 0.25
   movement:
     initThrust: 100000
     pitchRateCurve:

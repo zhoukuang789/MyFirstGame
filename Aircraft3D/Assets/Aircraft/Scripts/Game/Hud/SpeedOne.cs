@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SpeedOne : MonoBehaviour {
 
-    public PlaneController player;
+    public PlayerPlaneController player;
     public Text text;
 
     // Update is called once per frame
