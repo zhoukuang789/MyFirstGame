@@ -60,12 +60,14 @@ public class PlayerPlaneController : BasePlaneController
         if (Input.GetKey(KeyCode.D))
         {
             DoYaw(-planeConfig.movement.yawScaleFactor * Time.deltaTime);
+            // rb.AddForce(transform.right * 500f);
         }
 
         // 按下A键，飞机左偏航
         if (Input.GetKey(KeyCode.A))
         {
             DoYaw(planeConfig.movement.yawScaleFactor * Time.deltaTime);
+            // rb.AddForce(transform.right * -500f);
         }
     }
 }

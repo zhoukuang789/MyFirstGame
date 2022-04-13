@@ -24,21 +24,21 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    pitchScaleFactor: 90
+    pitchScaleFactor: 45
     rollRateCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    rollScaleFactor: 120
+    rollScaleFactor: 90
     yawRateCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    yawScaleFactor: 30
+    yawScaleFactor: 20
     liftCoefficientCurve:
       serializedVersion: 2
       m_Curve:
@@ -635,7 +635,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     wingArea: 16
     mass: 10
-    maxPower: 100000
-    minPower: 30000
-    addPowerSpeed: 30000
-    reducePowerSpeed: 30000
+    maxPower: 5000000
+    minPower: 500000
+    addPowerSpeed: 300000
+    reducePowerSpeed: 300000

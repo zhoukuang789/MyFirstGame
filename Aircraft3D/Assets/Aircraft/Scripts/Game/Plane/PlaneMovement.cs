@@ -12,6 +12,9 @@ public class PlaneMovement : MonoBehaviour
     private Vector3 _lift;
     private Vector3 _drag;
     private Vector3 _thrust;
+    public float liftMagnitude;
+    public float dragMagnitude;
+    public float thrustMagnitude;
 
     public LineRenderer lr_velo;
     public LineRenderer lr_drag;
@@ -42,14 +45,32 @@ public class PlaneMovement : MonoBehaviour
 
         //升力
         _lift = AirMechanismAlgorithm.GetLift(_airDensity, velocityYZ, _planeConfig, _aoa, transform.right);
+        liftMagnitude = _lift.magnitude;
 
         // 阻力
         _drag = AirMechanismAlgorithm.GetDrag(_airDensity, velocityYZ, _planeConfig, _aoa);
-
+        dragMagnitude = _drag.magnitude;
         //推力
-        _thrust = AirMechanismAlgorithm.GetThrust(velocityYZ, transform.forward, engine.power);
+        _thrust = AirMechanismAlgorithm.GetThrust(rb.velocity, transform.forward, engine.power);
+        thrustMagnitude = _thrust.magnitude;
+        
+        
+        
+        
+        // 侧力
+        // 1.侧滑角：速度在XZ平面的投影与机头方向的夹角
+        Vector3 velocityXZ = Vector3.ProjectOnPlane(rb.velocity, transform.up);
+        float sideAngle = 0f;
+        if (Vector3.Angle(velocityXZ, transform.right) < 90) {
+            sideAngle = -Vector3.Angle(velocityXZ, transform.forward);
+        } else {
+            sideAngle = Vector3.Angle(velocityXZ, transform.forward);
+        }
 
-        _combinedForce = _lift + _thrust + _drag;
+        Vector3 sideForce = transform.right * 0.5f * _airDensity * velocityXZ.sqrMagnitude * sideAngle;
+        
+        _combinedForce = _lift + _thrust + _drag + sideForce;
+
 
         if (lr_velo!=null)
         {
