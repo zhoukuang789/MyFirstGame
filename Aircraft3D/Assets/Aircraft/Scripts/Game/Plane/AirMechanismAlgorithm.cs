@@ -37,6 +37,17 @@ public class AirMechanismAlgorithm {
         // Mathf.Clamp(aoa, -18f, 25f);
         return aoa;
     }
+    
+    // 侧滑角
+    public static float GetSideAngle(Vector3 velocity, Vector3 transformRight, Vector3 transformForward) {
+        float sideAngle = 0f;
+        if (Vector3.Angle(velocity, transformRight) < 90) {
+            sideAngle = -Vector3.Angle(velocity, transformForward);
+        } else {
+            sideAngle = Vector3.Angle(velocity, transformForward);
+        }
+        return sideAngle;
+    }
 
     // 升力
     public static Vector3 GetLift(float airDensity, Vector3 velocity, PlaneConfig planeConfig, float aoa, Vector3 transformRight) {

@@ -53,21 +53,14 @@ public class PlaneMovement : MonoBehaviour
         //推力
         _thrust = AirMechanismAlgorithm.GetThrust(rb.velocity, transform.forward, engine.power);
         thrustMagnitude = _thrust.magnitude;
-        
-        
-        
-        
-        // 侧力
-        // 1.侧滑角：速度在XZ平面的投影与机头方向的夹角
-        Vector3 velocityXZ = Vector3.ProjectOnPlane(rb.velocity, transform.up);
-        float sideAngle = 0f;
-        if (Vector3.Angle(velocityXZ, transform.right) < 90) {
-            sideAngle = -Vector3.Angle(velocityXZ, transform.forward);
-        } else {
-            sideAngle = Vector3.Angle(velocityXZ, transform.forward);
-        }
 
+        // 侧力
+        // 侧滑角：速度在XZ平面的投影与机头方向的夹角
+        Vector3 velocityXZ = Vector3.ProjectOnPlane(rb.velocity, transform.up);
+        float sideAngle = AirMechanismAlgorithm.GetSideAngle(velocityXZ, transform.right, transform.forward);
         Vector3 sideForce = transform.right * 0.5f * _airDensity * velocityXZ.sqrMagnitude * sideAngle;
+        
+        
         
         _combinedForce = _lift + _thrust + _drag + sideForce;
 
