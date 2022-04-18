@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class PlayerPlaneWeapon : PlaneBasicWeapon
+public class PlayerPlaneWeapon : PlaneWeapon
 {
-    protected override void Update()
+    protected override void OnUpdate()
     {
-        base.Update();
+        base.OnUpdate();
 
         if (Input.GetMouseButton(0))
         {

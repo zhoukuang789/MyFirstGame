@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using com;
 
-public class BasicAi : Ticker
+public class BotAi : Ticker
 {
-    public BotPlaneController botPlane;
+    public BotPlane plane;
 
     private Transform _target;
 
@@ -40,11 +40,11 @@ public class BasicAi : Ticker
 
     protected override void Update()
     {
-        botPlane.AiControlYaw(_aiCondition_yaw);
+        plane.botController.AiControlYaw(_aiCondition_yaw);
 
         if (_aiCondition_fire == AiConditionFire.Yes)
         {
-            botPlane.weapon.TryFire();
+            plane.weapon.TryFire();
         }
 
 
@@ -86,9 +86,12 @@ public class BasicAi : Ticker
         }
 
         decisionCount++;
-        Debug.Log(gameObject.name + "第" + decisionCount + "个决定 -> yaw:" + _aiCondition_yaw);
+        Debug.Log(gameObject.name + " 决策:" + decisionCount);
+        Debug.Log("yaw->" + _aiCondition_yaw);
 
-        if (_aiCondition_fire == AiConditionFire.No)
+        bool shouldOpenFire = BotAiWeaponSolution.ShouldOpenFire(this.transform, _target.position);
+        Debug.Log("shouldOpenFire->" + shouldOpenFire);
+        if (shouldOpenFire)
         {
             _aiCondition_fire = AiConditionFire.Yes;
         }

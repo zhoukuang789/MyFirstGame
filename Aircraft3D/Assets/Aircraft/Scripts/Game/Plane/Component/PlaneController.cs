@@ -1,26 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-public class BasePlaneController : MonoBehaviour
+public class PlaneController : PlaneComponent
 {
     public Rigidbody rb;
-    public PlaneConfig planeConfig;
-    public PlaneEngine engine;
 
-    public PlaneBasicWeapon weapon;
-
-    protected virtual void Start()
+    protected override void PostStart()
     {
 
     }
 
-    public void SetPlaneConfig(PlaneConfig cfg)
-    {
-        planeConfig = cfg;
-        weapon.SetPlaneConfig(ConfigService.instance.planesConfig.PlayerPlaneConfig);
-    }
-
-    private void Update()
+    protected override void OnUpdate()
     {
         ReadPlaneInput();
     }

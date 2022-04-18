@@ -15,30 +15,30 @@ MonoBehaviour:
   id: Spitfire
   title: "\u55B7\u706B\u6218\u6597\u673A"
   desc: "\u5389\u5BB3\u7684\u98DE\u673A"
-  fireInterval: 0.17
+  fireInterval: 0.5
   movement:
-    initThrust: 100000
+    initThrust: 100
     pitchRateCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    pitchScaleFactor: 45
+    pitchScaleFactor: 24
     rollRateCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    rollScaleFactor: 90
+    rollScaleFactor: 75
     yawRateCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    yawScaleFactor: 10
+    yawScaleFactor: 24
     liftCoefficientCurve:
       serializedVersion: 2
       m_Curve:

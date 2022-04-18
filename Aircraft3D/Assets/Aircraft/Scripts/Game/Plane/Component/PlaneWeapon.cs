@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlaneBasicWeapon : MonoBehaviour
+public class PlaneWeapon : PlaneComponent
 {
     private float _fireTimer;
 
@@ -8,19 +8,12 @@ public class PlaneBasicWeapon : MonoBehaviour
     public Transform muzzle1;
     public Transform muzzle2;
 
-    private PlaneConfig _planeConfig;
-
-    private void Start()
+    protected override void PostStart()
     {
         _fireTimer = 0;
     }
 
-    public void SetPlaneConfig(PlaneConfig cfg)
-    {
-        _planeConfig = cfg;
-    }
-
-    protected virtual void Update()
+    protected override void OnUpdate()
     {
         DoCooldown();
     }
@@ -33,7 +26,7 @@ public class PlaneBasicWeapon : MonoBehaviour
     public void Fire()
     {
         //射击的冷却时间
-        _fireTimer += _planeConfig.fireInterval;
+        _fireTimer += plane.planeConfig.fireInterval;
 
         //创建子弹
         var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, transform.parent);

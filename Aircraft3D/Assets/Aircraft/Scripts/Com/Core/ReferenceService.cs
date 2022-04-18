@@ -6,7 +6,7 @@ namespace com
     {
         public static ReferenceService instance { get; private set; }
 
-        public PlayerPlaneController playerPlane;
+        public PlaneBehaviour playerPlane;
 
         private void Awake()
         {

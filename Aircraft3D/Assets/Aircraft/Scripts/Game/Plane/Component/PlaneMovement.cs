@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class PlaneMovement : MonoBehaviour
+public class PlaneMovement : PlaneComponent
 {
     public Rigidbody rb;
-    public PlaneEngine engine;
 
-    private PlaneConfig _planeConfig;
     private Vector3 _combinedForce;
     private float _airDensity;
     private float _aoa;
@@ -21,18 +19,16 @@ public class PlaneMovement : MonoBehaviour
     public LineRenderer lr_lift;
     public LineRenderer lr_thrust;
     public float lrLengthRatio = 0.4f;
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void PostStart()
     {
-        // 获取飞机配置
-        _planeConfig = ConfigService.instance.planesConfig.PlayerPlaneConfig;
         // 设置刚体质量
-        rb.mass = _planeConfig.movement.mass;
+        rb.mass = plane.planeConfig.movement.mass;
         // 设置刚体初始速度
-        rb.AddForce(transform.forward * _planeConfig.movement.initThrust);
+        rb.AddForce(transform.forward * plane.planeConfig.movement.initThrust);
     }
 
-    private void FixedUpdate()
+    protected override void OnUpdate()
     {
         // 1.空气密度
         _airDensity = AirMechanismAlgorithm.GetAirDensity(transform.position.y);
@@ -44,14 +40,14 @@ public class PlaneMovement : MonoBehaviour
         _aoa = AirMechanismAlgorithm.GetAoa(velocityYZ, transform.up, transform.forward);
 
         //升力
-        _lift = AirMechanismAlgorithm.GetLift(_airDensity, velocityYZ, _planeConfig, _aoa, transform.right);
+        _lift = AirMechanismAlgorithm.GetLift(_airDensity, velocityYZ, plane.planeConfig, _aoa, transform.right);
         liftMagnitude = _lift.magnitude;
 
         // 阻力
-        _drag = AirMechanismAlgorithm.GetDrag(_airDensity, velocityYZ, _planeConfig, _aoa);
+        _drag = AirMechanismAlgorithm.GetDrag(_airDensity, velocityYZ, plane.planeConfig, _aoa);
         dragMagnitude = _drag.magnitude;
         //推力
-        _thrust = AirMechanismAlgorithm.GetThrust(rb.velocity, transform.forward, engine.power);
+        _thrust = AirMechanismAlgorithm.GetThrust(rb.velocity, transform.forward, plane.engine.power);
         thrustMagnitude = _thrust.magnitude;
 
         // 侧力
@@ -59,13 +55,15 @@ public class PlaneMovement : MonoBehaviour
         Vector3 velocityXZ = Vector3.ProjectOnPlane(rb.velocity, transform.up);
         float sideAngle = AirMechanismAlgorithm.GetSideAngle(velocityXZ, transform.right, transform.forward);
         Vector3 sideForce = transform.right * 0.5f * _airDensity * velocityXZ.sqrMagnitude * sideAngle;
-        
-        
-        
+
         _combinedForce = _lift + _thrust + _drag + sideForce;
-
-
-        if (lr_velo!=null)
+        //Debug.Log(gameObject.name);
+        //Debug.Log(_lift);
+        //Debug.Log(_thrust);
+        //Debug.Log(_drag);
+        //Debug.Log(sideForce);
+        //Debug.Log(_combinedForce);
+        if (lr_velo != null)
         {
             var pos = transform.position;
             lr_velo.SetPosition(0, pos);

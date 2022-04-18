@@ -19,6 +19,8 @@ public class SpawnEnemy : MonoBehaviour
 
         Spawn("敌人1", playerPlane.transform.position - playerPlane.transform.forward * 60 + playerPlane.transform.right * 30, playerPlane.transform.rotation, enemyPrefab);
         Spawn("敌人2", playerPlane.transform.position - playerPlane.transform.forward * 60 + playerPlane.transform.right * (-30), playerPlane.transform.rotation, enemyPrefab);
+
+        Debug.Log("SpawnEnemies spawn!");
     }
 
     void Spawn(string name, Vector3 pos, Quaternion rot, GameObject enemyPrefab)

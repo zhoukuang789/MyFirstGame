@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class BotPlaneController : BasePlaneController
+public class BotPlaneController : PlaneController
 {
     public enum AIControlLevel
     {
@@ -16,10 +16,6 @@ public class BotPlaneController : BasePlaneController
         Negative_75,
         Negative_50,
         Negative_25,
-    }
-    protected override void Start()
-    {
-        weapon.SetPlaneConfig(planeConfig);
     }
 
     protected override void ReadPlaneInput()
@@ -62,16 +58,16 @@ public class BotPlaneController : BasePlaneController
 
     public void AiControlPitch(AIControlLevel level)
     {
-        DoPitch(GetValueByAiControlLevel(level) * planeConfig.movement.pitchScaleFactor * Time.deltaTime);
+        DoPitch(GetValueByAiControlLevel(level) * plane.planeConfig.movement.pitchScaleFactor * Time.deltaTime);
     }
 
     public void AiControlRoll(AIControlLevel level)
     {
-        DoRoll(GetValueByAiControlLevel(level) * planeConfig.movement.rollScaleFactor * Time.deltaTime);
+        DoRoll(GetValueByAiControlLevel(level) * plane.planeConfig.movement.rollScaleFactor * Time.deltaTime);
     }
 
     public void AiControlYaw(AIControlLevel level)
     {
-        DoYaw(GetValueByAiControlLevel(level) * planeConfig.movement.yawScaleFactor * Time.deltaTime);
+        DoYaw(GetValueByAiControlLevel(level) * plane.planeConfig.movement.yawScaleFactor * Time.deltaTime);
     }
 }

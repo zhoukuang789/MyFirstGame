@@ -1,21 +1,33 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using com;
 
 public class CameraShake : MonoBehaviour
 {
-    public PlaneEngine engine;
     public Transform target;
 
     public static CameraShake instance;
 
+    private PlaneEngine engine;
+
     private void Start()
     {
-        RegularShake();
         instance = this;
+
+
+        RegularShake();
     }
 
     void RegularShake()
     {
+        engine = ReferenceService.instance.playerPlane?.engine;
+        if (engine == null)
+        {
+            Debug.Log("engine == null");
+            Invoke("RegularShake", 2);
+            return;
+        }
+
         target.DOKill();
         var shakeMagnitude = engine.power / 1000000;
         shakeMagnitude = Mathf.Clamp(shakeMagnitude, 0, 1);
