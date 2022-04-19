@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using com;
 
 public class PlaneWeapon : PlaneComponent
 {
@@ -18,7 +19,7 @@ public class PlaneWeapon : PlaneComponent
         DoCooldown();
     }
 
-    protected void  DoCooldown()
+    protected void DoCooldown()
     {
         _fireTimer -= Time.deltaTime;
     }
@@ -29,11 +30,11 @@ public class PlaneWeapon : PlaneComponent
         _fireTimer += plane.planeConfig.fireInterval;
 
         //创建子弹
-        var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, transform.parent);
+        var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, GetSpawnBulletParent());
         //bullet1.name = "我的子弹1";
         bullet1.SetActive(true);
 
-        var bullet2 = Instantiate(bullet, muzzle2.position, muzzle2.rotation, transform.parent);
+        var bullet2 = Instantiate(bullet, muzzle2.position, muzzle2.rotation, GetSpawnBulletParent());
         //bullet2.name = "我的子弹2";
         bullet2.SetActive(true);
     }
@@ -44,5 +45,10 @@ public class PlaneWeapon : PlaneComponent
         {
             Fire();
         }
+    }
+
+    Transform GetSpawnBulletParent()
+    {
+        return ReferenceService.instance.bulletsParent;
     }
 }

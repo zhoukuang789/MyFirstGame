@@ -63,7 +63,7 @@ public class PlaneMovement : PlaneComponent
         //Debug.Log(_drag);
         //Debug.Log(sideForce);
         //Debug.Log(_combinedForce);
-        if (lr_velo != null)
+        if (lr_velo != null && lr_velo.gameObject.activeInHierarchy)
         {
             var pos = transform.position;
             lr_velo.SetPosition(0, pos);

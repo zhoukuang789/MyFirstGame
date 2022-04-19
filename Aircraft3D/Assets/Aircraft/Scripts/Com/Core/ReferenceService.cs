@@ -7,6 +7,8 @@ namespace com
         public static ReferenceService instance { get; private set; }
 
         public PlaneBehaviour playerPlane;
+        public Transform planesParent;
+        public Transform bulletsParent;
 
         private void Awake()
         {
