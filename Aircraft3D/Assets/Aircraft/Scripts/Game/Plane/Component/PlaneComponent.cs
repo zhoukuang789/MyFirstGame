@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.PlayerLoop;
 
 public class PlaneComponent : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PlaneComponent : MonoBehaviour
 
         OnUpdate();
     }
+    private void FixedUpdate()
+    {
+        
+        OnFixedUpdate();
+    }
 
     protected virtual void PostStart()
     {
@@ -25,6 +31,11 @@ public class PlaneComponent : MonoBehaviour
     }
 
     protected virtual void OnUpdate()
+    {
+
+    }
+    
+    protected virtual void OnFixedUpdate()
     {
 
     }

@@ -28,7 +28,7 @@ public class PlaneMovement : PlaneComponent
         rb.AddForce(transform.forward * plane.planeConfig.movement.initThrust);
     }
 
-    protected override void OnUpdate()
+    protected override void OnFixedUpdate()
     {
         // 1.空气密度
         _airDensity = AirMechanismAlgorithm.GetAirDensity(transform.position.y);
