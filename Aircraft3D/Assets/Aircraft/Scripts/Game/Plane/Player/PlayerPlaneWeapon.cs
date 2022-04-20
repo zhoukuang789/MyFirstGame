@@ -6,7 +6,7 @@ public class PlayerPlaneWeapon : PlaneWeapon
     {
         base.OnUpdate();
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Space))
         {
             TryFire();
         }

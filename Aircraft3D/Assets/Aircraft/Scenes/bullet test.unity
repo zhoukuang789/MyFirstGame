@@ -313,74 +313,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35119778}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &53060090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59102234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 2
-  color: {r: 0.9607843, g: 0.6558236, b: 0, a: 0.54901963}
-  explodeOnStart: 1
-  duration: 1.2
-  detail: 1
-  upwardsBias: 0
-  destroyTime: 1.5
-  useWorldSpace: 1
-  direction: {x: 0, y: 0, z: 0}
-  fireballAMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  fireballBMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  smokeAMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  smokeBMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  shockwaveMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  sparksMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  glowMaterial: {fileID: 2100000, guid: 35c8aea4fddc3f842bd829a8fd3d7e1c, type: 2}
-  heatwaveMaterial: {fileID: 0}
-  autoCreateFireball: 1
-  autoCreateSparks: 1
-  autoCreateShockwave: 0
-  autoCreateSmoke: 1
-  autoCreateGlow: 0
-  autoCreateLight: 0
-  autoCreateForce: 0
-  autoCreateHeatwave: 0
---- !u!4 &58869818
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59102234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5397.75, y: 133.41, z: -14686.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &59102234
+--- !u!1 &59102234 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2159364708989545268, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+  m_PrefabInstance: {fileID: 2159364708930682670}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 58869818}
-  - component: {fileID: 53060090}
-  m_Layer: 0
-  m_Name: Detonator-Simple
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &76397542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,107 +6485,122 @@ Transform:
   m_Father: {fileID: 1484580429}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &6099488322867629269
-Transform:
+--- !u!1001 &2159364708930682670
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6100472818325617621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.007928729, y: 1.0146024, z: -0.0032983422}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6100472818325617621
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5397.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 133.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14686.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989253396, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159364708989545268, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+      propertyPath: m_Name
+      value: Detonator-Simple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ac373d0d34089044bbe7503966bafef, type: 3}
+--- !u!1001 &5362349649706700969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2216860824118242172, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_Name
+      value: Detonator-Heatwave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.007928729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0146024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0032983422
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220090758879140988, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+--- !u!1 &6100472818325617621 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2216860824118242172, guid: 8d350cf41cbba16458b712c8e9e3aa89, type: 3}
+  m_PrefabInstance: {fileID: 5362349649706700969}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6099488322867629269}
-  - component: {fileID: 6142664645706298827}
-  - component: {fileID: 6139090189449078369}
-  m_Layer: 0
-  m_Name: Detonator-Heatwave
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &6139090189449078369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6100472818325617621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a30e21f576d054695cb3804fce8a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  detonatorControlled: 1
-  startSize: 1
-  size: 0.8
-  explodeDelayMin: 0
-  explodeDelayMax: 0
-  startDuration: 2
-  duration: 0.6
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  detailThreshold: 0
-  zOffset: 0
-  distortion: 2048
-  heatwaveMaterial: {fileID: 0}
---- !u!114 &6142664645706298827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6100472818325617621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 10
-  color: {r: 1, g: 0.423, b: 0, a: 1}
-  explodeOnStart: 1
-  duration: 1
-  detail: 1
-  upwardsBias: 0
-  destroyTime: 1.5
-  useWorldSpace: 1
-  direction: {x: 0, y: 0, z: 0}
-  fireballAMaterial: {fileID: 0}
-  fireballBMaterial: {fileID: 0}
-  smokeAMaterial: {fileID: 0}
-  smokeBMaterial: {fileID: 0}
-  shockwaveMaterial: {fileID: 0}
-  sparksMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
-  heatwaveMaterial: {fileID: 0}
-  autoCreateFireball: 1
-  autoCreateSparks: 1
-  autoCreateShockwave: 0
-  autoCreateSmoke: 1
-  autoCreateGlow: 0
-  autoCreateLight: 0
-  autoCreateForce: 0
-  autoCreateHeatwave: 1

@@ -25,7 +25,8 @@ public class BulletBehaviour : MonoBehaviour
         Camera.main.transform.DOShakePosition(0.8f, 1, 12, 90, false, true);
         var explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         explosion.SetActive(true);
-        Destroy(gameObject);
+        Destroy(this.transform.parent.gameObject);
+        
     }
 
 

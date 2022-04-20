@@ -25,6 +25,7 @@ public class PlaneMovement : PlaneComponent
         // 设置刚体质量
         rb.mass = plane.planeConfig.movement.mass;
         // 设置刚体初始速度
+        rb.velocity = transform.forward * 50f;
         rb.AddForce(transform.forward * plane.planeConfig.movement.initThrust);
     }
 
