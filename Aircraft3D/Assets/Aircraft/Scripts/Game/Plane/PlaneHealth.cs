@@ -39,7 +39,7 @@ public class PlaneHealth : MonoBehaviour {
             Debug.Log("对敌人造成伤害");
             Debug.Log("给出集中反馈，包含镜头震动");
             Debug.Log("删除子弹，播放击中特效");
-            health -= 20f;
+            health -= other.gameObject.GetComponentInParent<Projectile>().damage;
             Camera.main.transform.DOShakePosition(0.8f, 1, 12, 90, false, true);
             var explosion = Instantiate(hitEffect, transform.position, transform.rotation);
             explosion.SetActive(true);

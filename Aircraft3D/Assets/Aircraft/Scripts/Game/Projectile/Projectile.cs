@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Projectile : MonoBehaviour {
-    public float speed = 150;
+    public float speed = 150f;
+    public float damage = 20f;
     public float maxLifetime = 5;
 
+    
     float _dieTimestamp;
 
     void Start()
