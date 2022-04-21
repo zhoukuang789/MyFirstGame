@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PlaneBehaviour : MonoBehaviour
 {
@@ -13,6 +13,10 @@ public class PlaneBehaviour : MonoBehaviour
     public PlaneController controller;
     [HideInInspector]
     public PlaneEngine engine;
+    [HideInInspector]
+    public PlaneHealth health;
+
+    public List<PlaneHitCollider> hitColliders;
 
     protected virtual void Start()
     {
@@ -20,10 +24,17 @@ public class PlaneBehaviour : MonoBehaviour
         weapon = GetComponent<PlaneWeapon>();
         controller = GetComponent<PlaneController>();
         engine = GetComponent<PlaneEngine>();
+        health = GetComponent<PlaneHealth>();
 
         movement.plane = this;
         weapon.plane = this;
         controller.plane = this;
         engine.plane = this;
+        health.plane = this;
+
+        foreach (var hc in hitColliders)
+        {
+            hc.plane = this;
+        }
     }
 }
