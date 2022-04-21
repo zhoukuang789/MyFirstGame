@@ -12229,6 +12229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
+  damage: 20
   maxLifetime: 8
 --- !u!1 &2040070470
 GameObject:
@@ -17268,6 +17269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 150
+  damage: 20
   maxLifetime: 8
 --- !u!54 &2081810564
 Rigidbody:

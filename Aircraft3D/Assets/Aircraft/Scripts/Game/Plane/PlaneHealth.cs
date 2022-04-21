@@ -34,15 +34,18 @@ public class PlaneHealth : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        // 被子弹击中
         if (other.tag == "PlayerBullet") {
             Debug.Log("OnTriggerEnter");
             Debug.Log("对敌人造成伤害");
             Debug.Log("给出集中反馈，包含镜头震动");
             Debug.Log("删除子弹，播放击中特效");
+            Debug.Log(other.gameObject.GetComponentInParent<Projectile>().damage);
             health -= other.gameObject.GetComponentInParent<Projectile>().damage;
             Camera.main.transform.DOShakePosition(0.8f, 1, 12, 90, false, true);
             var explosion = Instantiate(hitEffect, transform.position, transform.rotation);
             explosion.SetActive(true);
+            Destroy(other.gameObject.transform.parent.gameObject);
         }
         
     }
