@@ -27,7 +27,7 @@ public class PlaneWeapon : PlaneComponent
     public void Fire()
     {
         //射击的冷却时间
-        _fireTimer += plane.planeConfig.fireInterval;
+        _fireTimer = plane.planeConfig.fireInterval;
         Debug.Log("Fire");
         //创建子弹
         var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, GetSpawnBulletParent());
