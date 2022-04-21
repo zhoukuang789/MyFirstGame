@@ -9,6 +9,7 @@ public class PlaneHealth : MonoBehaviour {
     public Rigidbody rb;
     public GameObject hitEffect;
     public GameObject deathEffect;
+    private float _exploreCount;
 
     //public PlaneHealth planeHealth;
 
@@ -20,8 +21,13 @@ public class PlaneHealth : MonoBehaviour {
 
     public MyPart part;
 
+    private void Start() {
+        _exploreCount = 1;
+    }
+
     private void Update() {
-        if (health <= 0) {
+        if (health <= 0 && _exploreCount > 0) {
+            _exploreCount--;
             Death();
         }
     }
@@ -46,8 +52,8 @@ public class PlaneHealth : MonoBehaviour {
         var explosion = Instantiate(deathEffect, transform.position, transform.rotation);
         explosion.SetActive(true);
         GetComponent<PlaneMovement>().enabled = false;
-        GetComponent<PlayerPlaneController>().enabled = false;
-        GetComponent<PlayerPlaneWeapon>().enabled = false;
+        GetComponent<PlaneController>().enabled = false;
+        GetComponent<PlaneWeapon>().enabled = false;
         rb.useGravity = false;
         Destroy(gameObject);
     }

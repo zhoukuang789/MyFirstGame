@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour
-{
-    public float speed = 20;
+public class Projectile : MonoBehaviour {
+    public float speed = 150;
     public float maxLifetime = 5;
 
     float _dieTimestamp;
