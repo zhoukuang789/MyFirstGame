@@ -7,7 +7,7 @@ public class BulletBehaviour : ProjectileBehaviour
     [Tooltip("阵营")]
     public Allies allies;
 
-    public int damgeValue = 40;
+    public float damgeValue = 40;
 
     void OnTriggerEnter(Collider other)
     {

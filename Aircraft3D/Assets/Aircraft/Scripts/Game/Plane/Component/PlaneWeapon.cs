@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using com;
 
 public class PlaneWeapon : PlaneComponent
@@ -6,8 +7,7 @@ public class PlaneWeapon : PlaneComponent
     private float _fireTimer;
 
     public GameObject bullet;
-    public Transform muzzle1;
-    public Transform muzzle2;
+    public List<Transform> muzzles; 
 
     protected override void PostStart()
     {
@@ -30,13 +30,12 @@ public class PlaneWeapon : PlaneComponent
         _fireTimer = plane.planeConfig.fireInterval;
         Debug.Log("Fire");
         //创建子弹
-        var bullet1 = Instantiate(bullet, muzzle1.position, muzzle1.rotation, GetSpawnBulletParent());
-        //bullet1.name = "我的子弹1";
-        bullet1.SetActive(true);
-
-        var bullet2 = Instantiate(bullet, muzzle2.position, muzzle2.rotation, GetSpawnBulletParent());
-        //bullet2.name = "我的子弹2";
-        bullet2.SetActive(true);
+        foreach (Transform muzzle in muzzles) {
+            var bullet = Instantiate(this.bullet, muzzle.position, muzzle.rotation, GetSpawnBulletParent());
+            //bullet1.name = "我的子弹1";
+            bullet.SetActive(true);
+            bullet.GetComponent<BulletBehaviour>().damgeValue = plane.planeConfig.fight.damage;
+        }
     }
 
     public void TryFire()

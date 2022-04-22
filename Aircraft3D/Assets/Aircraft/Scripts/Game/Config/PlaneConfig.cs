@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
@@ -11,6 +12,8 @@ public class PlaneConfig : ScriptableObject {
     public float fireInterval;
 
     public PlaneMovementConfig movement;
+
+    public PlaneFightConfig fight;
 }
 
 [System.Serializable]
@@ -47,4 +50,28 @@ public class PlaneMovementConfig {
 
     public float addPowerSpeed;
     public float reducePowerSpeed;
+}
+
+[System.Serializable]
+public class PlaneFightConfig {
+    
+    [Tooltip("总生命值")]
+    public float totalHealth;
+
+    [Tooltip("各个部位的生命值")]
+    public List<PartHealth> partHeaths;
+
+    [Tooltip("伤害")]
+    public float damage;
+
+    [Tooltip("子弹射程")]
+    public float bulletRange;
+    
+}
+
+[System.Serializable]
+public class PartHealth {
+    public PlaneHitCollider.PlaneHitPart part;
+    public float health;
+    public float armor;
 }

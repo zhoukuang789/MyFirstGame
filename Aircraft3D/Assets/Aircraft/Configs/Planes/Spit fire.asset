@@ -639,3 +639,20 @@ MonoBehaviour:
     minPower: 500000
     addPowerSpeed: 300000
     reducePowerSpeed: 300000
+  fight:
+    totalHealth: 100
+    partHeaths:
+    - part: 1
+      health: 20
+      armor: 3
+    - part: 2
+      health: 20
+      armor: 3
+    - part: 3
+      health: 40
+      armor: 5
+    - part: 4
+      health: 20
+      armor: 3
+    damage: 15
+    bulletRange: 150
