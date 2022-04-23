@@ -11,10 +11,16 @@ public class PlaneHealth : PlaneComponent
     public GameObject hitEffect;
     public GameObject deathEffect;
 
+
     public Transform leftWingTransform;
+    private GameObject _leftSmoke;
     private bool _isLeftWingSmoke = false;
     public Transform rightWingTransform;
+    private GameObject _rightSmoke;
     private bool _isRightWingSmoke = false;
+    public Transform bodyTransform;
+    private GameObject _bodySmoke;
+    private bool _isBodySmoke= false;
 
     public GameObject smokeEffect;
 
@@ -34,14 +40,40 @@ public class PlaneHealth : PlaneComponent
         _dead = false;
     }
     
-    protected override void OnUpdate()
-    {
+    protected override void OnUpdate() {
         foreach (PartHealth partHealth in partHealths) {
-            if (partHealth.health < 0) {
+            if (partHealth.health <= 0) {
                 if (partHealth.part == PlaneHitCollider.PlaneHitPart.Leftwing && !_isLeftWingSmoke) {
-                    GameObject smoke = Instantiate(smokeEffect, leftWingTransform.position, leftWingTransform.rotation);
-                    smoke.SetActive(true);
+                    _leftSmoke = Instantiate(smokeEffect, leftWingTransform.position, leftWingTransform.rotation * Quaternion.AngleAxis(90, -leftWingTransform.right));
+                    _leftSmoke.SetActive(true);
                     _isLeftWingSmoke = true;
+                }
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.Leftwing && _isLeftWingSmoke && _leftSmoke != null) {
+                    _leftSmoke.transform.position = leftWingTransform.position;
+                    _leftSmoke.transform.rotation =
+                        leftWingTransform.rotation * Quaternion.AngleAxis(90, -leftWingTransform.right);
+                }
+                
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.RightWing && !_isRightWingSmoke) {
+                    _rightSmoke = Instantiate(smokeEffect, rightWingTransform.position, rightWingTransform.rotation * Quaternion.AngleAxis(90, -rightWingTransform.right));
+                    _rightSmoke.SetActive(true);
+                    _isRightWingSmoke = true;
+                }
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.RightWing && _isRightWingSmoke && _rightSmoke != null) {
+                    _rightSmoke.transform.position = rightWingTransform.position;
+                    _rightSmoke.transform.rotation =
+                        rightWingTransform.rotation * Quaternion.AngleAxis(90, -rightWingTransform.right);
+                }
+                
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.Main && !_isBodySmoke) {
+                    _bodySmoke = Instantiate(smokeEffect, bodyTransform.position, bodyTransform.rotation * Quaternion.AngleAxis(180, -bodyTransform.right));
+                    _bodySmoke.SetActive(true);
+                    _isBodySmoke = true;
+                }
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.Main && _isBodySmoke && _bodySmoke != null) {
+                    _bodySmoke.transform.position = bodyTransform.position;
+                    _bodySmoke.transform.rotation = bodyTransform.rotation * bodyTransform.rotation *
+                                                    Quaternion.AngleAxis(180, -bodyTransform.right);
                 }
             }
         }

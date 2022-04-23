@@ -8530,6 +8530,7 @@ MonoBehaviour:
   deathEffect: {fileID: 44911058}
   leftWingTransform: {fileID: 0}
   rightWingTransform: {fileID: 0}
+  bodyTransform: {fileID: 0}
   smokeEffect: {fileID: 0}
 --- !u!1 &797780390
 GameObject:
@@ -10121,7 +10122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121286157}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 98.3, z: 46.7}
+  m_LocalPosition: {x: -3.6, y: 98.3, z: 46.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1380994435}
@@ -10285,6 +10286,7 @@ MonoBehaviour:
   deathEffect: {fileID: 44911058}
   leftWingTransform: {fileID: 30167022}
   rightWingTransform: {fileID: 633185797}
+  bodyTransform: {fileID: 523526375}
   smokeEffect: {fileID: 1583418094}
 --- !u!1 &1137408661
 GameObject:
