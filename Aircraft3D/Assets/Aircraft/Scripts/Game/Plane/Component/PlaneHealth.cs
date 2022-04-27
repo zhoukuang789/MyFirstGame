@@ -43,12 +43,12 @@ public class PlaneHealth : PlaneComponent
     protected override void OnUpdate() {
         foreach (PartHealth partHealth in partHealths) {
             if (partHealth.health <= 0) {
-                if (partHealth.part == PlaneHitCollider.PlaneHitPart.Leftwing && !_isLeftWingSmoke) {
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.LeftWing && !_isLeftWingSmoke) {
                     _leftSmoke = Instantiate(smokeEffect, leftWingTransform.position, leftWingTransform.rotation * Quaternion.AngleAxis(90, -leftWingTransform.right));
                     _leftSmoke.SetActive(true);
                     _isLeftWingSmoke = true;
                 }
-                if (partHealth.part == PlaneHitCollider.PlaneHitPart.Leftwing && _isLeftWingSmoke && _leftSmoke != null) {
+                if (partHealth.part == PlaneHitCollider.PlaneHitPart.LeftWing && _isLeftWingSmoke && _leftSmoke != null) {
                     _leftSmoke.transform.position = leftWingTransform.position;
                     _leftSmoke.transform.rotation =
                         leftWingTransform.rotation * Quaternion.AngleAxis(90, -leftWingTransform.right);

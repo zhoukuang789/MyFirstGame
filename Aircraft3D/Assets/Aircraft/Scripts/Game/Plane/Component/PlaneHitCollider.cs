@@ -6,7 +6,7 @@ public class PlaneHitCollider : PlaneComponent
     public enum PlaneHitPart
     {
         Other,
-        Leftwing,
+        LeftWing,
         RightWing,
         Main,
         BackWing
