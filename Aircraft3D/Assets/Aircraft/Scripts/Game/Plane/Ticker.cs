@@ -4,7 +4,7 @@
 public class Ticker : MonoBehaviour
 {
     public float TickTime;
-    private float _tickTimer;
+    protected float _tickTimer;
     public bool fixedUpdateTick;
 
     protected virtual void Update()

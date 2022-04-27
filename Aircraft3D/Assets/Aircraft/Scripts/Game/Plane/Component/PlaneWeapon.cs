@@ -36,6 +36,7 @@ public class PlaneWeapon : PlaneComponent
             //bullet1.name = "我的子弹1";
             bullet.SetActive(true);
             bullet.GetComponent<BulletBehaviour>().damgeValue = plane.planeConfig.fight.damage;
+            bullet.GetComponent<BulletMovement>().parentSpeed = plane.movement.rb.velocity;
         }
     }
 

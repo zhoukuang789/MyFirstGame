@@ -7430,10 +7430,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.28
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.6
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -7838,7 +7838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &649527320
 Transform:
   m_ObjectHideFlags: 0
@@ -8613,7 +8613,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797777828}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16a69c3a71ae8040b6681d893f61ca0, type: 3}
   m_Name: 
@@ -8641,6 +8641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
+  power: 0
 --- !u!114 &797777831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8670,7 +8671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5310693f1d2fe479085aa4a0960a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeConfig: {fileID: 11400000, guid: 7862785a29444704293f5068ab6f97c9, type: 2}
+  planeConfig: {fileID: 11400000, guid: 062ed03bd3a861c4fbe30c897a33724e, type: 2}
   movement: {fileID: 0}
   weapon: {fileID: 0}
   controller: {fileID: 0}
@@ -14637,7 +14638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2ff14ed20a93b439db8b701e117c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeConfig: {fileID: 11400000, guid: 7862785a29444704293f5068ab6f97c9, type: 2}
+  planeConfig: {fileID: 11400000, guid: cd0f0337ca88f9b4fb02fa4d7b6172be, type: 2}
   movement: {fileID: 0}
   weapon: {fileID: 0}
   controller: {fileID: 0}
@@ -14707,6 +14708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
+  power: 0
 --- !u!114 &1121286165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14714,7 +14716,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121286157}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16a69c3a71ae8040b6681d893f61ca0, type: 3}
   m_Name: 
@@ -15506,8 +15508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1302483673}
-  speed: 100
-  maxLifetime: 5
+  speed: 75
+  parentSpeed: {x: 0, y: 0, z: 0}
+  maxLifetime: 4
 --- !u!54 &1302483673
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15930,10 +15933,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.28
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.6
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -16832,7 +16835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1568833708
 Transform:
   m_ObjectHideFlags: 0
@@ -16886,7 +16889,7 @@ Camera:
   far clip plane: 500
   field of view: 60
   orthographic: 1
-  orthographic size: 120
+  orthographic size: 250
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -23068,7 +23071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2063328196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23267,8 +23270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2105950624}
-  speed: 100
-  maxLifetime: 5
+  speed: 75
+  parentSpeed: {x: 0, y: 0, z: 0}
+  maxLifetime: 4
 --- !u!54 &2105950624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23416,7 +23420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4209794605046501
 Transform:
   m_ObjectHideFlags: 0

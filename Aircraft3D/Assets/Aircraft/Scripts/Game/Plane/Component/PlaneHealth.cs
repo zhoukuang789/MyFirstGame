@@ -106,7 +106,7 @@ public class PlaneHealth : PlaneComponent
 
             var playerPlane = plane.GetComponent<PlayerPlane>();
             if (playerPlane != null)
-                Camera.main.transform.DOShakePosition(0.8f, 1, 12, 90, false, true);
+                Camera.main.transform.DOShakePosition(1.4f, 1.2f, 12, 90, false, true);
         }
 
         float trueDamage = 0;
@@ -147,6 +147,6 @@ public class PlaneHealth : PlaneComponent
 
         var playerPlane = plane.GetComponent<PlayerPlane>();
         if (playerPlane != null)
-            Camera.main.transform.DOShakePosition(4f, 4, 12, 90, false, true);
+            Camera.main.transform.DOShakePosition(5f, 5, 12, 90, false, true);
     }
 }

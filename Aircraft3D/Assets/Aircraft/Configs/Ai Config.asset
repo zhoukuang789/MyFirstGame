@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ai Config
   m_EditorClassIdentifier: 
   openFireAngleMax: 20
-  openFireRangeMax: 400
+  openFireRangeMax: 300

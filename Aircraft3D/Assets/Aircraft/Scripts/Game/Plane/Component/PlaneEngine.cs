@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlaneEngine : PlaneComponent
 {
-    public float power { get; private set; }
+    public float power;
 
     protected override void PostStart()
     {
