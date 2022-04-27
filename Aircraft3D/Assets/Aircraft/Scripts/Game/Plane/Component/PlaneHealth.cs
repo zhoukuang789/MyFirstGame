@@ -88,8 +88,10 @@ public class PlaneHealth : PlaneComponent
 
         if (damage>0)
         {
-            var hitExp = Instantiate(hitEffect, transform.position, transform.rotation);
-            hitExp.SetActive(true);
+            if (hitEffect != null) {
+                var hitExp = Instantiate(hitEffect, transform.position, transform.rotation);
+                hitExp.SetActive(true);
+            }
 
             var playerPlane = plane.GetComponent<PlayerPlane>();
             if (playerPlane != null)
