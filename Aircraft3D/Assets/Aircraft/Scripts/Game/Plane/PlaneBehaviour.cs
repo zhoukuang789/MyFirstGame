@@ -20,6 +20,11 @@ public class PlaneBehaviour : MonoBehaviour
 
     protected virtual void Start()
     {
+       
+    }
+
+    private void Awake()
+    {
         movement = GetComponent<PlaneMovement>();
         weapon = GetComponent<PlaneWeapon>();
         controller = GetComponent<PlaneController>();

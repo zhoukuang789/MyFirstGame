@@ -89,8 +89,8 @@ public class BotAi : Ticker
         Debug.Log(gameObject.name + " 决策:" + decisionCount);
         Debug.Log("yaw->" + _aiCondition_yaw);
 
-        bool shouldOpenFire = BotAiWeaponSolution.ShouldOpenFire(this.transform, _target.position);
-        Debug.Log("shouldOpenFire->" + shouldOpenFire);
+        bool shouldOpenFire = BotAiWeaponSolution.ShouldOpenFire(this.transform, _target);
+        Debug.Log("OpenFire-> " + shouldOpenFire);
         if (shouldOpenFire)
         {
             _aiCondition_fire = AiConditionFire.Yes;

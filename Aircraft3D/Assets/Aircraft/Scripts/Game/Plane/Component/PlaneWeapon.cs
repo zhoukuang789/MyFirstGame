@@ -7,7 +7,7 @@ public class PlaneWeapon : PlaneComponent
     private float _fireTimer;
 
     public GameObject bullet;
-    public List<Transform> muzzles; 
+    public List<Transform> muzzles;
 
     protected override void PostStart()
     {
@@ -28,9 +28,10 @@ public class PlaneWeapon : PlaneComponent
     {
         //射击的冷却时间
         _fireTimer = plane.planeConfig.fireInterval;
-        Debug.Log("Fire");
+        //Debug.Log("Fire");
         //创建子弹
-        foreach (Transform muzzle in muzzles) {
+        foreach (Transform muzzle in muzzles)
+        {
             var bullet = Instantiate(this.bullet, muzzle.position, muzzle.rotation, GetSpawnBulletParent());
             //bullet1.name = "我的子弹1";
             bullet.SetActive(true);

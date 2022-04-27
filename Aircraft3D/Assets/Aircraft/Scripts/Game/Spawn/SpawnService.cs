@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using com;
+using System.Collections.Generic;
 
 public class SpawnService : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class SpawnService : MonoBehaviour
     public GameObject playerPrefab;
 
     public Transform spawnPlayerTrans;
+
+    public List<Transform> enemyPos;
 
     void Start()
     {
@@ -19,8 +22,13 @@ public class SpawnService : MonoBehaviour
     {
         var playerPlane = ReferenceService.instance.playerPlane.transform;
 
-        SpawnEnemy("敌人1", playerPlane.transform.position - playerPlane.transform.forward * 60 + playerPlane.transform.right * 30, playerPlane.transform.rotation, enemyPrefab);
-        SpawnEnemy("敌人2", playerPlane.transform.position - playerPlane.transform.forward * 60 + playerPlane.transform.right * (-30), playerPlane.transform.rotation, enemyPrefab);
+        int i = 0;
+        foreach (var p in enemyPos)
+        {
+            i++;
+            SpawnEnemy("Enemy_" + i, p.position, p.rotation, enemyPrefab);
+        }
+
     }
 
     void SpawnEnemy(string name, Vector3 pos, Quaternion rot, GameObject enemyPrefab)
@@ -34,7 +42,7 @@ public class SpawnService : MonoBehaviour
     {
         var plane = Instantiate(playerPrefab, spawnPlayerTrans.position, spawnPlayerTrans.rotation, GetSpawnPlaneParent());
         plane.SetActive(true);
-        plane.name = "玩家";
+        plane.name = "PlayerPlane";
         ReferenceService.instance.playerPlane = plane.GetComponent<PlaneBehaviour>();
     }
 
