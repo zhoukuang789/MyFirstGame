@@ -13,6 +13,11 @@ public class FollowCam : MonoBehaviour
 
     void Update()
     {
+        if (com.ReferenceService.instance.playerPlane.health.IsDead())
+        {
+            return;
+        }
+
         transform.position = _player.position + (-_player.forward * offset.z + _player.up * offset.y);
         transform.LookAt(_player.position + _player.forward * distance, Vector3.up);
     }

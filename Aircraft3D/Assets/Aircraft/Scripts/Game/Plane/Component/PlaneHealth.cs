@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlaneHealth : PlaneComponent
 {
-    public float health;
+    protected float health;
     public List<PartHealth> partHealths;
     public GameObject hitEffect;
     public GameObject deathEffect;
@@ -125,6 +125,11 @@ public class PlaneHealth : PlaneComponent
         {
             Die();
         }
+    }
+
+    public bool IsDead()
+    {
+        return _dead;
     }
 
     public virtual void Die()

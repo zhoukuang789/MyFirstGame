@@ -640,7 +640,7 @@ MonoBehaviour:
     addPowerSpeed: 30000
     reducePowerSpeed: 30000
   fight:
-    totalHealth: 100
+    totalHealth: 10
     partHeaths:
     - part: 1
       health: 20
