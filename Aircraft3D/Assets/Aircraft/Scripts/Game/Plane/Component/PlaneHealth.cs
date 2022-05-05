@@ -89,12 +89,10 @@ public class PlaneHealth : PlaneComponent
         }
     }
 
-    public void ReceiveDamage(float damage, PlaneHitCollider.PlaneHitPart part = PlaneHitCollider.PlaneHitPart.Other)
+    public void ReceiveDamage(float damage, PlaneHitCollider.PlaneHitPart part = PlaneHitCollider.PlaneHitPart.Main)
     {
         if (_dead)
             return;
-
-
 
         if (damage > 0)
         {
@@ -149,9 +147,14 @@ public class PlaneHealth : PlaneComponent
         Debug.Log(gameObject.name + "死亡");
         var explosion = Instantiate(deathEffect, transform.position, transform.rotation);
         explosion.SetActive(true);
-
+        PlayDieSound();
         var playerPlane = plane.GetComponent<PlayerPlane>();
         if (playerPlane != null)
             Camera.main.transform.DOShakePosition(5f, 5, 12, 90, false, true);
+    }
+
+    protected virtual void PlayDieSound()
+    {
+        com.SoundService.instance.Play("explodeFar");
     }
 }

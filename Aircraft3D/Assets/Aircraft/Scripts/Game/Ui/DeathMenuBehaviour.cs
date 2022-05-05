@@ -34,11 +34,13 @@ public class DeathMenuBehaviour : MonoBehaviour
 
     public void OnClickRetry()
     {
+        //com.SoundService.instance.Play("click");
         SceneManager.LoadScene(0);
     }
 
     public void OnClickQuit()
     {
+       // com.SoundService.instance.Play("click");
         SceneManager.LoadScene(0);
     }
 }
