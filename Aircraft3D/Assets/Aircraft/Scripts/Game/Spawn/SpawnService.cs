@@ -44,6 +44,8 @@ public class SpawnService : MonoBehaviour
         plane.SetActive(true);
         plane.name = "PlayerPlane";
         ReferenceService.instance.playerPlane = plane.GetComponent<PlaneBehaviour>();
+
+        FollowCam.instance.Init();
     }
 
     Transform GetSpawnPlaneParent()

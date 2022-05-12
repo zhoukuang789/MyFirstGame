@@ -47,6 +47,11 @@ public class SceneService : MonoBehaviour
         _crtGameScene = gameScenes[3];
         RestartScene();
     }
+    public void OnClickSwitchScene_mission1()
+    {
+        _crtGameScene = gameScenes[4];
+        RestartScene();
+    }
 
     public void RestartScene()
     {
