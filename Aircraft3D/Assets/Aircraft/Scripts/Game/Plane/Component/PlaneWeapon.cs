@@ -4,7 +4,7 @@ using com;
 
 public class PlaneWeapon : PlaneComponent
 {
-    private float _fireTimer;
+    protected float _fireTimer;
 
     public GameObject bullet;
     public List<Transform> muzzles;
@@ -24,7 +24,7 @@ public class PlaneWeapon : PlaneComponent
         _fireTimer -= Time.deltaTime;
     }
 
-    public void Fire()
+    public virtual void Fire()
     {
         //射击的冷却时间
         _fireTimer = plane.planeConfig.fireInterval;
@@ -40,7 +40,7 @@ public class PlaneWeapon : PlaneComponent
         }
     }
 
-    public void TryFire()
+    public virtual void TryFire()
     {
         if (_fireTimer <= 0)
         {
@@ -48,7 +48,7 @@ public class PlaneWeapon : PlaneComponent
         }
     }
 
-    Transform GetSpawnBulletParent()
+    protected Transform GetSpawnBulletParent()
     {
         return ReferenceService.instance.bulletsParent;
     }

@@ -8,7 +8,7 @@ public class PlayerPlane : PlaneBehaviour
     protected override void Start()
     {
         base.Start();
-        Debug.Log("此处有测试代码");
+        //Debug.Log("此处有测试代码");
         return;
 
         Debug.Log("开始协程测试");

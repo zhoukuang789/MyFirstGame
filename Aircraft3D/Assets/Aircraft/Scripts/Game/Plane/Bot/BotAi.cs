@@ -5,9 +5,9 @@ public class BotAi : Ticker
 {
     public BotPlane plane;
 
-    private Transform _target;
+    public Transform target;
 
-    private int decisionCount;
+    protected int decisionCount;
 
     public enum AiConditionFire
     {
@@ -15,18 +15,18 @@ public class BotAi : Ticker
         Yes,
     }
 
-    private AiConditionFire _aiCondition_fire;
-    private Vector3 _ratio_yawPitchRoll;
+    protected AiConditionFire _aiCondition_fire;
+    protected Vector3 _ratio_yawPitchRoll;
 
-    private void Start()
+    protected virtual void Start()
     {
-        _target = ReferenceService.instance.playerPlane.transform;
-
         _aiCondition_fire = AiConditionFire.No;
 
         decisionCount = 0;
 
-        _tickTimer = TickTime*Random.value;
+        _tickTimer = TickTime * Random.value;
+
+        target = ReferenceService.instance.playerPlane.transform;
     }
 
     protected override void Tick()
@@ -34,7 +34,7 @@ public class BotAi : Ticker
         MakeDecision();
     }
 
-    void AiCondition2Ratio(ref Vector3 aiCondition)
+    protected void AiCondition2Ratio(ref Vector3 aiCondition)
     {
         RefineRatio(ref aiCondition.x);
         RefineRatio(ref aiCondition.y);
@@ -70,14 +70,14 @@ public class BotAi : Ticker
         base.Update();
     }
 
-    void MakeFireDecision()
+    protected virtual void MakeFireDecision()
     {
-        bool shouldOpenFire = BotAiWeaponSolution.ShouldOpenFire(this.transform, _target);
+        bool shouldOpenFire = BotAiWeaponSolution.ShouldOpenFire(this.transform, target);
         //Debug.Log("OpenFire-> " + shouldOpenFire);
         _aiCondition_fire = shouldOpenFire ? AiConditionFire.Yes : AiConditionFire.No;
     }
 
-    void MakeDecision()
+    protected virtual void MakeDecision()
     {
         //Debug.Log(gameObject.name + " 决定: " + decisionCount);
         MakeFireDecision();
@@ -85,9 +85,9 @@ public class BotAi : Ticker
         decisionCount++;
     }
 
-    void MakeMoveDecision()
+    protected virtual void MakeMoveDecision()
     {
-        _ratio_yawPitchRoll = BotAiMoveSolution.GetMoveYawPitchRollLevel(this.transform, _target);
+        _ratio_yawPitchRoll = BotAiMoveSolution.GetMoveYawPitchRollLevel(this.transform, target);
         AiCondition2Ratio(ref _ratio_yawPitchRoll);
         //Debug.Log("_ratio_yawPitchRoll-> " + _ratio_yawPitchRoll);
     }

@@ -46,7 +46,7 @@ public class HpBarSystem : MonoBehaviour
         var newHpBar = newHpBarGo.GetComponent<HpBar>();
         newHpBar.health = health;
         bars.Add(newHpBar);
-        Debug.Log("Register");
+        //Debug.Log("Register");
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class HpBarSystem : MonoBehaviour
             {
                 bars.Remove(bar);
                 GameObject.Destroy(bar.gameObject);
-                Debug.Log("UnRegister");
+                //Debug.Log("UnRegister");
                 break;
             }
         }

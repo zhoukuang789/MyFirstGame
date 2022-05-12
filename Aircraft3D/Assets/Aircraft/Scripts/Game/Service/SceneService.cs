@@ -24,32 +24,19 @@ public class SceneService : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    public void SwitchScene_Menu()
     {
-        _crtGameScene = gameScenes[1];
-        RestartScene();
+        SetScene(0);
     }
 
-    public void OnClickSwitchScene_AiTest()
-    {
-        _crtGameScene = gameScenes[1];
-        RestartScene();
-    }
-
-    public void OnClickSwitchScene_sample()
-    {
-        _crtGameScene = gameScenes[2];
-        RestartScene();
-    }
-
-    public void OnClickSwitchScene_bullet()
-    {
-        _crtGameScene = gameScenes[3];
-        RestartScene();
-    }
     public void OnClickSwitchScene_mission1()
     {
-        _crtGameScene = gameScenes[4];
+        SetScene(4);
+    }
+
+    public void SetScene(int i)
+    {
+        _crtGameScene = gameScenes[i];
         RestartScene();
     }
 
