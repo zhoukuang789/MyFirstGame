@@ -13,6 +13,7 @@ public class BombBulletBehaviour : BulletBehaviour
         if (cb != null)
         {
             //Debug.Log("对敌人造成伤害" + damgeValue);
+            com.SoundService.instance.Play("exp" + Random.Range(1, 3));
             cb.ReceiveDamage(damgeValue);
             DieUnsilent();
         }
