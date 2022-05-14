@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
-public class BulletBehaviour : MonoBehaviour {
+public class BulletBehaviour : MonoBehaviour
+{
     [Tooltip("阵营")]
     public Allies allies;
 
     public float damgeValue = 40;
     public GameObject bulletImpact;
 
-    void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other)
+    {
         //Debug.Log("BulletBehaviour OnTriggerEnter");
         //Debug.Log("对敌人造成伤害");
         //Debug.Log("给出集中反馈，包含镜头震动");
@@ -16,9 +18,11 @@ public class BulletBehaviour : MonoBehaviour {
         var part = PlaneHitCollider.PlaneHitPart.Other;
 
         var plane = other.GetComponent<PlaneBehaviour>();
-        if (plane == null) {
+        if (plane == null)
+        {
             var hc = other.GetComponent<PlaneHitCollider>();
-            if (hc != null) {
+            if (hc != null)
+            {
                 plane = hc.plane;
                 part = hc.part;
             }
@@ -30,9 +34,11 @@ public class BulletBehaviour : MonoBehaviour {
         DieUnsilent();
     }
 
-    private void DieUnsilent() {
+    protected void DieUnsilent()
+    {
         //feedback
-        if (bulletImpact != null) {
+        if (bulletImpact != null)
+        {
             var explosion = Instantiate(bulletImpact, transform.position, transform.rotation);
             explosion.SetActive(true);
         }

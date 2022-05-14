@@ -5,7 +5,7 @@ public class HpBar : MonoBehaviour
 {
     public Slider bar;
     public GameObject view;
-    public ConstructureHealth health;
+    public UnitHealth health;
     public RectTransform rect;
 
     private void Start()

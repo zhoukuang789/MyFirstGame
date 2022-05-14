@@ -11,15 +11,14 @@ public class BulletMovement : MonoBehaviour
 
     public float maxLifetime = 5;
 
-    float _dieTimestamp;
+    protected float _dieTimestamp;
 
-    void Start()
+    protected void Start()
     {
         _dieTimestamp = Time.time + maxLifetime;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         //transform.position += transform.forward * Time.deltaTime * speed;
         //transform.Translate(transform.forward * Time.deltaTime * speed);

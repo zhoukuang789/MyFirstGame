@@ -26,11 +26,11 @@ public class BomberWeapon : PlaneWeapon
         //创建子弹
         foreach (Transform muzzle in muzzles)
         {
-            Debug.Log("release bomb");
+            //Debug.Log(this.gameObject + " release bomb " + _crtBombCount);
             var bullet = Instantiate(this.bullet, muzzle.position, muzzle.rotation, GetSpawnBulletParent());
             bullet.SetActive(true);
             bullet.GetComponent<BulletBehaviour>().damgeValue = plane.planeConfig.fight.damage;
-            bullet.GetComponent<BulletMovement>().parentSpeed = plane.movement.rb.velocity;
+            bullet.GetComponent<BomberBulletMovement>().target = ((plane as BotPlane).ai as BomberAi).target;
         }
     }
 

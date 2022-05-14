@@ -33,7 +33,7 @@ public class HpBarSystem : MonoBehaviour
     /// 接受一个可以显示血条的对象的注册
     /// </summary>
     /// <param name="health"></param>
-    public void Register(ConstructureHealth health)
+    public void Register(UnitHealth health)
     {
         foreach (var bar in bars)
         {
@@ -53,7 +53,7 @@ public class HpBarSystem : MonoBehaviour
     /// 清除一个注册
     /// </summary>
     /// <param name="health"></param>
-    public void UnRegister(ConstructureHealth health)
+    public void UnRegister(UnitHealth health)
     {
         foreach (var bar in bars)
         {

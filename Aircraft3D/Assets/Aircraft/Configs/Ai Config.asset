@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openFireAngleMax: 20
   openFireRangeMax: 300
+  bomberReleaseBombHorizontalDistance: 100
+  bomberReleaseBombIdealHeight: 80
