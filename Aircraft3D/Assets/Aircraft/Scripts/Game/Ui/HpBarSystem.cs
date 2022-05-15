@@ -60,24 +60,27 @@ public class HpBarSystem : MonoBehaviour
             if (bar.health == health)
             {
                 bars.Remove(bar);
-                GameObject.Destroy(bar.gameObject);
+                if (bar != null && bar.gameObject != null)
+                {
+                    GameObject.Destroy(bar.gameObject);
+                }
                 //Debug.Log("UnRegister");
                 break;
             }
         }
     }
 
-   /// <summary>
-   /// 管理所有已经注册的血条
-   /// 管理包括了位置设置，是否显示
-   /// </summary>
+    /// <summary>
+    /// 管理所有已经注册的血条
+    /// 管理包括了位置设置，是否显示
+    /// </summary>
     private void Update()
     {
         foreach (var bar in bars)
         {
             var viewportPos = Camera.main.WorldToScreenPoint(bar.health.GetWorldPosition());
             bar.rect.anchoredPosition = new Vector2(viewportPos.x, viewportPos.y);
-            if (viewportPos.z<=0)
+            if (viewportPos.z <= 0)
             {
                 bar.Hide();
             }

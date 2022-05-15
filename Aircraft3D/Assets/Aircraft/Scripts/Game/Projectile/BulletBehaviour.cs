@@ -10,6 +10,10 @@ public class BulletBehaviour : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<PlotTriggerZone>() != null)
+        {
+            return;
+        }
         //Debug.Log("BulletBehaviour OnTriggerEnter");
         //Debug.Log("对敌人造成伤害");
         //Debug.Log("给出集中反馈，包含镜头震动");

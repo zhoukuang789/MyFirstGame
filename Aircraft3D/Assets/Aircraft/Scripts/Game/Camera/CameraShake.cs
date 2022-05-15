@@ -13,14 +13,11 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         instance = this;
-
-
-        RegularShake();
     }
 
     void RegularShake()
     {
-        engine = ReferenceService.instance.playerPlane?.engine;
+        engine = ReferenceService.instance?.playerPlane?.engine;
         if (engine == null)
         {
             Debug.Log("engine == null");
@@ -39,5 +36,15 @@ public class CameraShake : MonoBehaviour
     {
         target.DOKill();
         target.DOShakePosition(3, 2, 10);
+    }
+
+    private void OnDisable()
+    {
+        target.DOKill();
+    }
+
+    private void OnEnable()
+    {
+        RegularShake();
     }
 }
