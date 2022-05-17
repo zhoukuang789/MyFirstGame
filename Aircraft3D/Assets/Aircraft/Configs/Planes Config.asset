@@ -15,4 +15,6 @@ MonoBehaviour:
   planesConfigs:
   - {fileID: 11400000, guid: 7862785a29444704293f5068ab6f97c9, type: 2}
   - {fileID: 11400000, guid: 46ccc800132f2cd4b9a2ca3a91d43c8c, type: 2}
-  G: 9.81
+  - {fileID: 11400000, guid: 4165b2e8a8015a14bb171a34bc3cb5d2, type: 2}
+  - {fileID: 11400000, guid: cd0f0337ca88f9b4fb02fa4d7b6172be, type: 2}
+  - {fileID: 11400000, guid: 062ed03bd3a861c4fbe30c897a33724e, type: 2}
