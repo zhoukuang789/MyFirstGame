@@ -23241,7 +23241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97b9d0b324ae704c9b38da14c7a90a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlane: {fileID: 797777832}
+  playerPlane: {fileID: 0}
   planesParent: {fileID: 1065550234}
   bulletsParent: {fileID: 153224772}
 --- !u!114 &1804771727
@@ -23272,7 +23272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1121286157}
-  playerPrefab: {fileID: 797777828}
+  enemyBomberPrefab: {fileID: 0}
+  playerPrefab: {fileID: 0}
   spawnPlayerTrans: {fileID: 1754027953}
   enemyPos:
   - {fileID: 829482687}
@@ -23280,6 +23281,8 @@ MonoBehaviour:
   - {fileID: 196810593}
   - {fileID: 72526847}
   - {fileID: 1160061609}
+  enemyBomberPos: []
+  runtimeEnemies: []
 --- !u!114 &1804771730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23680,7 +23683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7285785f1d9a1c04ca41dc944934af13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1561702198}
+  player: {fileID: 0}
   text: {fileID: 1944848850}
 --- !u!1 &1978999119
 GameObject:
