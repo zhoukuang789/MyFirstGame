@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c046264e783840e6a353672bd2cc2e95, type: 3}
   m_Name: EnFighterMovementConfig
   m_EditorClassIdentifier: 
+  mass: 5
   accelerateTrustSizeCurve:
     serializedVersion: 2
     m_Curve:

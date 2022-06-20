@@ -16,11 +16,6 @@ namespace Plane {
         public string describe;
         
         /// <summary>
-        /// 飞机重量
-        /// </summary>
-        public float mass;
-        
-        /// <summary>
         /// 飞机运动配置
         /// </summary>
         public Movement.PlaneMovementConfig planeMovementConfig;

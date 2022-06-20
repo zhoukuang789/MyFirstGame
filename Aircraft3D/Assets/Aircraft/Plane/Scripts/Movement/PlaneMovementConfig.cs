@@ -7,6 +7,11 @@ namespace Plane.Movement {
     public class PlaneMovementConfig : ScriptableObject {
         
         /// <summary>
+        /// 飞机重量
+        /// </summary>
+        public float mass;
+        
+        /// <summary>
         /// 加速推力大小曲线，按住W加速时通过该曲线施加推力，横坐标是杆量，范围是0~1，纵坐标是推力比例，范围是0~1
         /// </summary>
         [Header("推力相关的参数")]

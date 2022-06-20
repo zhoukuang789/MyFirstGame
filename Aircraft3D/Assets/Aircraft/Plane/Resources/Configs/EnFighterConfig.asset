@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: EnFighter
   describe: Player Plane
-  mass: 5
   planeMovementConfig: {fileID: 11400000, guid: 8ab1352a91954c541bab686ba9991e9b, type: 2}
-  planeWeaponConfig: {fileID: 0}
+  planeWeaponConfig: {fileID: 11400000, guid: 4dffed05739a47f42b254a961284d4b5, type: 2}

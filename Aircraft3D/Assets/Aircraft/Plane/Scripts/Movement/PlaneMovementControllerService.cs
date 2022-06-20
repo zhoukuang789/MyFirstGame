@@ -3,10 +3,10 @@
 namespace Plane.Movement {
     public class PlaneMovementControllerService : Singletonable<PlaneMovementControllerService> {
         
-        private PlaneBehaviour plane;
+        private PlaneMovementBehaviour planeMovement;
 
-        public PlaneMovementControllerService SetPlane(PlaneBehaviour plane) {
-            this.plane = plane;
+        public PlaneMovementControllerService SetPlaneMovement(PlaneMovementBehaviour planeMovement) {
+            this.planeMovement = planeMovement;
             return this;
         }
 
@@ -15,11 +15,11 @@ namespace Plane.Movement {
         /// </summary>
         /// <param name="volume">表示操作杆杆量，操作杆推到底表示1，操作杆处于原地表示0，键盘操控时，可以根据按键时长表示杆量，比如按住w2秒以上表示杆量拉满</param>
         public void AddTrust(float volume) {
-            if (plane.GetPlaneMovement().GetCurrentSpeedOnForward() >=
-                plane.GetPlaneMovement().GetMaxSpeedOnForward()) {
+            if (planeMovement.GetCurrentSpeedOnForward() >=
+                planeMovement.GetMaxSpeedOnForward()) {
                 return;
             }
-            plane.GetRigidbody().AddForce(plane.transform.forward * plane.GetPlaneMovement().GetAccelerateTrustSize(volume));
+            planeMovement.GetRigidbody().AddForce(planeMovement.transform.forward * planeMovement.GetAccelerateTrustSize(volume));
         }
 
         /// <summary>
@@ -27,10 +27,10 @@ namespace Plane.Movement {
         /// </summary>
         /// <param name="volume">操作杆杆量</param>
         public void ReduceTrust(float volume) {
-            if (plane.GetPlaneMovement().GetCurrentSpeedOnForward() <= 5f) {
+            if (planeMovement.GetCurrentSpeedOnForward() <= 5f) {
                 return;
             }
-            plane.GetRigidbody().AddForce(-plane.transform.forward * plane.GetPlaneMovement().GetDecelerateTrustSize(volume));
+            planeMovement.GetRigidbody().AddForce(-planeMovement.transform.forward * planeMovement.GetDecelerateTrustSize(volume));
         }
         
         /// <summary>
@@ -38,8 +38,8 @@ namespace Plane.Movement {
         /// </summary>
         /// <param name="volume">杆量 -1~1 </param>
         public void DoPitch(float volume) {
-            float angle = plane.GetPlaneMovement().GetPitchRate(volume);
-            plane.GetPlaneMovement().Rotate(angle, -plane.transform.right);
+            float angle = planeMovement.GetPitchRate(volume);
+            planeMovement.Rotate(angle, -planeMovement.transform.right);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Plane.Movement {
         /// </summary>
         /// <param name="volume">杆量 -1~1 </param>
         public void DoYaw(float volume) {
-            float angle = plane.GetPlaneMovement().GetYawRate(volume);
-            plane.GetPlaneMovement().Rotate(angle, -plane.transform.up);
+            float angle = planeMovement.GetYawRate(volume);
+            planeMovement.Rotate(angle, -planeMovement.transform.up);
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Plane.Movement {
         /// </summary>
         /// <param name="volume">-1~1</param>
         public void DoRoll(float volume) {
-            float angle = plane.GetPlaneMovement().GetRollRate(volume);
-            plane.GetPlaneMovement().Rotate(angle, -plane.transform.forward);
+            float angle = planeMovement.GetRollRate(volume);
+            planeMovement.Rotate(angle, -planeMovement.transform.forward);
         }
     }
 }
