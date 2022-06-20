@@ -1,12 +1,14 @@
 ﻿using System;
 using Mission;
+using Plane.Movement;
 using ProjectBase.Input;
 using Record;
 using UnityEngine;
 
 namespace Plane {
     public class PlayerController : MonoBehaviour {
-        private PlaneMoveBehaviour planeBehaviour;
+        
+        private PlaneBehaviour plane;
 
         private KeyItem wKey;
 
@@ -18,11 +20,8 @@ namespace Plane {
 
         private KeyItem spaceKey;
 
-        private void Start() {
-            planeBehaviour = GetComponent<PlaneMoveBehaviour>();
-
-
-           
+        private void Awake() {
+            plane = GetComponent<PlaneBehaviour>();
         }
 
         private void OnEnable() {
@@ -33,14 +32,17 @@ namespace Plane {
                 .SetKeyCode(KeyCode.W)
                 .SetKeyName("飞机加速")
                 .SetOnKeyInput(OnWKeyInput);
+            
             sKey = new KeyItem()
                 .SetKeyCode(KeyCode.S)
                 .SetKeyName("飞机减速")
                 .SetOnKeyInput(OnSKeyInput);
+            
             aKey = new KeyItem()
                 .SetKeyCode(KeyCode.A)
                 .SetKeyName("向左偏航")
                 .SetOnKeyInput(OnAKeyInput);
+            
             dKey = new KeyItem()
                 .SetKeyCode(KeyCode.D)
                 .SetKeyName("向右偏航")
@@ -59,43 +61,38 @@ namespace Plane {
                 .RegisterKey(dKey)
                 .RegisterKey(spaceKey)
                 .RegisterMouseMove(OnMouseMove);
-
-            InputService.GetInstance()
-                .RegisterKey(new KeyItem().SetKeyCode(KeyCode.K).SetKeyName("Test").SetOnKeyDown(() => {
-                    GameObject.Find("Bomber").GetComponent<PlaneHealth>().Die();
-                }));
         }
 
         /// <summary>
         /// 加速按键
         /// </summary>
         private void OnWKeyInput() {
-            PlaneControllerService.GetInstance().SetPlane(planeBehaviour).AddTrust(wKey.GetVolume());
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(wKey.GetVolume());
         }
 
         /// <summary>
         /// 减速按键
         /// </summary>
         private void OnSKeyInput() {
-            PlaneControllerService.GetInstance().SetPlane(planeBehaviour).ReduceTrust(sKey.GetVolume());
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).ReduceTrust(sKey.GetVolume());
         }
 
         private void OnAKeyInput() {
-            PlaneControllerService.GetInstance().SetPlane(planeBehaviour).YawLeft(aKey.GetVolume());
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(aKey.GetVolume());
         }
 
         private void OnDKeyInput() {
-            PlaneControllerService.GetInstance().SetPlane(planeBehaviour).YawRight(dKey.GetVolume());
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(-aKey.GetVolume());
         }
 
         private void OnSpaceKeyInout() {
-            PlaneControllerService.GetInstance().SetPlane(planeBehaviour).DoPitch(spaceKey.GetVolume());
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(spaceKey.GetVolume());
         }
 
         private void OnMouseMove(Vector2 mouseAxis) {
             if (mouseAxis.x != 0 || mouseAxis.y != 0) {
-                PlaneControllerService.GetInstance().SetPlane(planeBehaviour).DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
-                PlaneControllerService.GetInstance().SetPlane(planeBehaviour).DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
+                PlaneMovementControllerService.GetInstance().SetPlane(plane).DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
+                PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
             }
         }
     }
