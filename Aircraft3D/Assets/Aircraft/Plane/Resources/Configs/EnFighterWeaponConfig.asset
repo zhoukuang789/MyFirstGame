@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994bd50d08504b1db8faa47bf248d342, type: 3}
   m_Name: EnFighterWeaponConfig
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 100
   fireInterval: 0.2
   bulletRange: 150
   bulletInitialSpeed: 100
