@@ -73,7 +73,7 @@ namespace Plane.Bullet {
             bool isCollider = Physics.Raycast(origin, direction, out hit, maxDistance);
             if (isCollider) {
                 //射线检测到物体，执行以下动作
-                Debug.Log(hit.collider.GetComponentInParent<PlaneBehaviour>());
+                hit.collider.gameObject.GetComponent<global::PlaneHealth>()?.ReceiveDamage(damage);
             }
             
             lastPosition = transform.position;
