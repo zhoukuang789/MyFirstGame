@@ -31,6 +31,14 @@ namespace Plane
         {
             planeMovement = GetComponent<PlaneMovementBehaviour>();
             planeWeapon = GetComponent<PlaneWeaponBehaviour>();
+
+        }
+
+        string id;
+        private void Start()
+        {
+            id = "player " + this.GetHashCode();
+            Debug.LogWarning(id);
         }
 
         private void OnEnable()
@@ -121,11 +129,11 @@ namespace Plane
         {
             if (mouseAxis.x != 0 || mouseAxis.y != 0)
             {
+                Debug.LogWarning(id);
                 PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
                 PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
             }
         }
-
 
         private void OnMouse0KeyDown()
         {
@@ -144,6 +152,7 @@ namespace Plane
 
         private void OnDestroy()
         {
+            Debug.LogWarning("OnDestroy");
             PlaneMovementControllerService.SetInstance(null);
         }
     }
