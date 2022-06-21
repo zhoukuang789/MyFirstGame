@@ -71,7 +71,6 @@ namespace Plane.Bullet {
             RaycastHit hit;
             //光线投射，检测是否发生碰撞
             bool isCollider = Physics.Raycast(origin, direction, out hit, maxDistance);
-            Debug.Log(isCollider);
             if (isCollider) {
                 //射线检测到物体，执行以下动作
                 Debug.Log(hit.collider.GetComponentInParent<PlaneBehaviour>());
