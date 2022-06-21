@@ -6,9 +6,11 @@ using ProjectBase.Input;
 using Record;
 using UnityEngine;
 
-namespace Plane {
-    public class PlayerController : MonoBehaviour {
-        
+namespace Plane
+{
+    public class PlayerController : MonoBehaviour
+    {
+
         private PlaneMovementBehaviour planeMovement;
 
         private PlaneWeaponBehaviour planeWeapon;
@@ -22,15 +24,17 @@ namespace Plane {
         private KeyItem dKey;
 
         private KeyItem spaceKey;
-        
+
         private KeyItem mouse0Key;
 
-        private void Awake() {
+        private void Awake()
+        {
             planeMovement = GetComponent<PlaneMovementBehaviour>();
             planeWeapon = GetComponent<PlaneWeaponBehaviour>();
         }
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             // 开启输入
             InputService.GetInstance().StartInput();
 
@@ -38,17 +42,17 @@ namespace Plane {
                 .SetKeyCode(KeyCode.W)
                 .SetKeyName("飞机加速")
                 .SetOnKeyInput(OnWKeyInput);
-            
+
             sKey = new KeyItem()
                 .SetKeyCode(KeyCode.S)
                 .SetKeyName("飞机减速")
                 .SetOnKeyInput(OnSKeyInput);
-            
+
             aKey = new KeyItem()
                 .SetKeyCode(KeyCode.A)
                 .SetKeyName("向左偏航")
                 .SetOnKeyInput(OnAKeyInput);
-            
+
             dKey = new KeyItem()
                 .SetKeyCode(KeyCode.D)
                 .SetKeyName("向右偏航")
@@ -77,54 +81,70 @@ namespace Plane {
                 .RegisterMouseMove(OnMouseMove);
         }
 
-        private void OnDisable() {
+        private void OnDisable()
+        {
             InputService.GetInstance().CloseInput();
         }
 
         /// <summary>
         /// 加速按键
         /// </summary>
-        private void OnWKeyInput() {
+        private void OnWKeyInput()
+        {
             PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).AddTrust(wKey.GetVolume());
         }
 
         /// <summary>
         /// 减速按键
         /// </summary>
-        private void OnSKeyInput() {
+        private void OnSKeyInput()
+        {
             PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).ReduceTrust(sKey.GetVolume());
         }
 
-        private void OnAKeyInput() {
+        private void OnAKeyInput()
+        {
             PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoYaw(aKey.GetVolume());
         }
 
-        private void OnDKeyInput() {
+        private void OnDKeyInput()
+        {
             PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoYaw(-aKey.GetVolume());
         }
 
-        private void OnSpaceKeyInout() {
+        private void OnSpaceKeyInout()
+        {
             PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoPitch(spaceKey.GetVolume());
         }
 
-        private void OnMouseMove(Vector2 mouseAxis) {
-            if (mouseAxis.x != 0 || mouseAxis.y != 0) {
+        private void OnMouseMove(Vector2 mouseAxis)
+        {
+            if (mouseAxis.x != 0 || mouseAxis.y != 0)
+            {
                 PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
                 PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
             }
         }
 
 
-        private void OnMouse0KeyDown() {
-            
+        private void OnMouse0KeyDown()
+        {
+
         }
-        
-        private void OnMouse0KeyInput() {
+
+        private void OnMouse0KeyInput()
+        {
             PlaneWeaponControllerService.GetInstance().SetPlaneWeapon(planeWeapon).Fire();
         }
 
-        private void OnMouse0KeyUp() {
-            
+        private void OnMouse0KeyUp()
+        {
+
+        }
+
+        private void OnDestroy()
+        {
+            PlaneMovementControllerService.SetInstance(null);
         }
     }
 }
