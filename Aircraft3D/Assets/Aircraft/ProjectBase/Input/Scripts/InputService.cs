@@ -62,6 +62,9 @@ namespace ProjectBase.Input {
         public void CloseInput() {
             MonoService.GetInstance().RemoveUpdateEventListener(InputUpdate);
             MonoService.GetInstance().RemoveFixedUpdateEventListener(InputFixedUpdate);
+            keyItemInUpdateList.Clear();
+            keyItemInFixedUpdateList.Clear();
+            onMouseMove = null;
             isStart = false;
         }
 

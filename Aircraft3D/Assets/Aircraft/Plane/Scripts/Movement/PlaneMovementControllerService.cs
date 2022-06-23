@@ -3,13 +3,22 @@
 namespace Plane.Movement {
     public class PlaneMovementControllerService : Singletonable<PlaneMovementControllerService> {
         
+        //------------------field ---------------------------------------
+        private PlaneBehaviour plane;
+
         private PlaneMovementBehaviour planeMovement;
 
-        public PlaneMovementControllerService SetPlaneMovement(PlaneMovementBehaviour planeMovement) {
-            this.planeMovement = planeMovement;
+        
+        //-------------------------getter & setter ----------------------
+        public PlaneMovementControllerService SetPlane(PlaneBehaviour plane) {
+            this.plane = plane;
+            planeMovement = plane.GetPlaneMovement();
             return this;
         }
 
+        
+        // ---------------------function -------------------------------
+        
         /// <summary>
         /// 增加推力
         /// </summary>

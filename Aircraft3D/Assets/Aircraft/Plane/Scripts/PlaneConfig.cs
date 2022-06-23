@@ -14,7 +14,7 @@ namespace Plane {
         /// 飞机介绍
         /// </summary>
         public string describe;
-        
+
         /// <summary>
         /// 飞机运动配置
         /// </summary>

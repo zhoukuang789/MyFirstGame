@@ -3,12 +3,22 @@ using UnityEngine;
 
 namespace Plane.Weapon {
     public class PlaneWeaponControllerService : Singletonable<PlaneWeaponControllerService> {
+        
+        //------------------field ---------------------------------------
+        private PlaneBehaviour plane;
+        
         private PlaneWeaponBehaviour planeWeapon;
 
-        public PlaneWeaponControllerService SetPlaneWeapon(PlaneWeaponBehaviour planeWeapon) {
-            this.planeWeapon = planeWeapon;
+        
+        //-------------------------getter & setter ----------------------
+        public PlaneWeaponControllerService SetPlane(PlaneBehaviour plane) {
+            this.plane = plane;
+            planeWeapon = plane.GetPlaneWeapon();
             return this;
         }
+        
+        
+        // ---------------------function -------------------------------
 
         public void Fire() {
             if (planeWeapon.GetCooldownTime() <= 0f) {
@@ -29,6 +39,7 @@ namespace Plane.Weapon {
                 // 初始化子弹属性
                 bullet.transform.LookAt(aimingPositionInWorldPoint);
                 bullet.GetComponent<Bullet.BulletBehaviour>()
+                    .SetCamp(plane.camp)
                     .SetDamage(planeWeapon.GetDamage())
                     .SetRange(planeWeapon.GetBulletRange())
                     .SetInitialSpeed(planeWeapon.GetBulletInitialSpeed())

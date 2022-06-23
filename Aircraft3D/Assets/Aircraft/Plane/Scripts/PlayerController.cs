@@ -6,14 +6,9 @@ using ProjectBase.Input;
 using Record;
 using UnityEngine;
 
-namespace Plane
-{
-    public class PlayerController : MonoBehaviour
-    {
-
-        private PlaneMovementBehaviour planeMovement;
-
-        private PlaneWeaponBehaviour planeWeapon;
+namespace Plane {
+    public class PlayerController : MonoBehaviour {
+        private PlaneBehaviour plane;
 
         private KeyItem wKey;
 
@@ -27,22 +22,11 @@ namespace Plane
 
         private KeyItem mouse0Key;
 
-        private void Awake()
-        {
-            planeMovement = GetComponent<PlaneMovementBehaviour>();
-            planeWeapon = GetComponent<PlaneWeaponBehaviour>();
-
+        private void Awake() {
+            plane = GetComponent<PlaneBehaviour>();
         }
 
-        string id;
-        private void Start()
-        {
-            id = "player " + this.GetHashCode();
-            Debug.LogWarning(id);
-        }
-
-        private void OnEnable()
-        {
+        private void OnEnable() {
             // 开启输入
             InputService.GetInstance().StartInput();
 
@@ -74,9 +58,7 @@ namespace Plane
             mouse0Key = new KeyItem()
                 .SetKeyCode(KeyCode.Mouse0)
                 .SetKeyName("开火")
-                .SetOnKeyDown(OnMouse0KeyDown)
-                .SetOnKeyInput(OnMouse0KeyInput)
-                .SetOnKeyUp(OnMouse0KeyUp);
+                .SetOnKeyInput(OnMouse0KeyInput);
 
 
             InputService.GetInstance()
@@ -89,71 +71,47 @@ namespace Plane
                 .RegisterMouseMove(OnMouseMove);
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() {
             InputService.GetInstance().CloseInput();
         }
 
         /// <summary>
         /// 加速按键
         /// </summary>
-        private void OnWKeyInput()
-        {
-            PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).AddTrust(wKey.GetVolume());
+        private void OnWKeyInput() {
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(wKey.GetVolume());
         }
 
         /// <summary>
         /// 减速按键
         /// </summary>
-        private void OnSKeyInput()
-        {
-            PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).ReduceTrust(sKey.GetVolume());
+        private void OnSKeyInput() {
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).ReduceTrust(sKey.GetVolume());
         }
 
-        private void OnAKeyInput()
-        {
-            PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoYaw(aKey.GetVolume());
+        private void OnAKeyInput() {
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(aKey.GetVolume());
         }
 
-        private void OnDKeyInput()
-        {
-            PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoYaw(-aKey.GetVolume());
+        private void OnDKeyInput() {
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(-aKey.GetVolume());
         }
 
-        private void OnSpaceKeyInout()
-        {
-            PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoPitch(spaceKey.GetVolume());
+        private void OnSpaceKeyInout() {
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(spaceKey.GetVolume());
         }
 
-        private void OnMouseMove(Vector2 mouseAxis)
-        {
-            if (mouseAxis.x != 0 || mouseAxis.y != 0)
-            {
-                Debug.LogWarning(id);
-                PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
-                PlaneMovementControllerService.GetInstance().SetPlaneMovement(planeMovement).DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
+        private void OnMouseMove(Vector2 mouseAxis) {
+            if (mouseAxis.x != 0 || mouseAxis.y != 0) {
+                PlaneMovementControllerService.GetInstance().SetPlane(plane)
+                    .DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
+                PlaneMovementControllerService.GetInstance().SetPlane(plane)
+                    .DoPitch(Mathf.Clamp(mouseAxis.y, -1, 1));
             }
         }
 
-        private void OnMouse0KeyDown()
-        {
-
-        }
-
-        private void OnMouse0KeyInput()
-        {
-            PlaneWeaponControllerService.GetInstance().SetPlaneWeapon(planeWeapon).Fire();
-        }
-
-        private void OnMouse0KeyUp()
-        {
-
-        }
-
-        private void OnDestroy()
-        {
-            Debug.LogWarning("OnDestroy");
-            PlaneMovementControllerService.SetInstance(null);
+        private void OnMouse0KeyInput() {
+            PlaneWeaponControllerService.GetInstance().SetPlane(plane).Fire();
         }
     }
 }

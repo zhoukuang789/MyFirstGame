@@ -7,6 +7,8 @@ namespace Plane.Bullet {
         // -------------------field------------------------------------------
 
         private Rigidbody rb;
+
+        private Camp camp;
         
         /// <summary>
         /// 武器伤害
@@ -73,7 +75,10 @@ namespace Plane.Bullet {
             bool isCollider = Physics.Raycast(origin, direction, out hit, maxDistance);
             if (isCollider) {
                 //射线检测到物体，执行以下动作
-                hit.collider.gameObject.GetComponentInParent<global::PlaneHealth>()?.ReceiveDamage(damage);
+                Camp hitCamp = hit.collider.gameObject.GetComponentInParent<PlaneBehaviour>().camp;
+                if (hitCamp != camp) {
+                    hit.collider.gameObject.GetComponentInParent<global::PlaneHealth>()?.ReceiveDamage(damage);
+                }
             }
             
             lastPosition = transform.position;
@@ -84,6 +89,12 @@ namespace Plane.Bullet {
         
         
         // --------------------------getter & setter----------------------------------------
+
+        public BulletBehaviour SetCamp(Camp camp) {
+            this.camp = camp;
+            return this;
+        }
+        
         public BulletBehaviour SetDamage(float damage) {
             this.damage = damage;
             return this;
