@@ -99,7 +99,8 @@ namespace Plane.Health {
             // 广播死亡事件
             PlaneHealthService.GetInstance().SetPlane(plane).PublishPlaneDeathEvent();
             // 销毁该飞机
-            Destroy(this);
+            Destroy(damageSmokeVfx);
+            Destroy(gameObject);
         }
 
     }

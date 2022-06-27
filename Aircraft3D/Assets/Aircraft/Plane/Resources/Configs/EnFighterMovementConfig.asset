@@ -64,8 +64,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   maxDecelerateTrustSize: 100
   maxSpeedOnForward: 56
-  autoSpeedOnForward: 38
-  autoTrust: 100
+  autoSpeedOnForward: 7
+  autoTrust: 50
   angleOfAttack0: -3
   wingArea: 1
   liftCoefficientCurve:

@@ -17,7 +17,7 @@ public class MissionHud : MonoBehaviour
 
     public void Start()
     {
-        UpdateMission();
+        // UpdateMission();
     }
 
     public void UpdateMission()

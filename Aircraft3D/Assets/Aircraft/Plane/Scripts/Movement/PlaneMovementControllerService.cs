@@ -46,9 +46,10 @@ namespace Plane.Movement {
         /// 俯仰操作
         /// </summary>
         /// <param name="volume">杆量 -1~1 </param>
-        public void DoPitch(float volume) {
+        public float DoPitch(float volume) {
             float angle = planeMovement.GetPitchRate(volume);
             planeMovement.Rotate(angle, -planeMovement.transform.right);
+            return angle;
         }
 
         /// <summary>
@@ -64,9 +65,10 @@ namespace Plane.Movement {
         /// 滚转操作
         /// </summary>
         /// <param name="volume">-1~1</param>
-        public void DoRoll(float volume) {
+        public float DoRoll(float volume) {
             float angle = planeMovement.GetRollRate(volume);
             planeMovement.Rotate(angle, -planeMovement.transform.forward);
+            return angle;
         }
 
         public float GetSpeed() {

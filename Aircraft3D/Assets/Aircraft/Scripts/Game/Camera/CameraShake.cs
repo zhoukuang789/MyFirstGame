@@ -20,7 +20,6 @@ public class CameraShake : MonoBehaviour
         engine = ReferenceService.instance?.playerPlane?.engine;
         if (engine == null)
         {
-            Debug.Log("engine == null");
             Invoke("RegularShake", 2);
             return;
         }

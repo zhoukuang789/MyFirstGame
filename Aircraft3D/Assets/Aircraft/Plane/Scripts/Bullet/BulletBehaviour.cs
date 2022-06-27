@@ -1,4 +1,5 @@
 ﻿using System;
+using Plane.Health;
 using UnityEngine;
 
 namespace Plane.Bullet {
@@ -75,9 +76,13 @@ namespace Plane.Bullet {
             bool isCollider = Physics.Raycast(origin, direction, out hit, maxDistance);
             if (isCollider) {
                 //射线检测到物体，执行以下动作
-                Camp hitCamp = hit.collider.gameObject.GetComponentInParent<PlaneBehaviour>().camp;
-                if (hitCamp != camp) {
-                    hit.collider.gameObject.GetComponentInParent<global::PlaneHealth>()?.ReceiveDamage(damage);
+                PlaneBehaviour hitPlane = hit.collider.gameObject.GetComponentInParent<PlaneBehaviour>();
+                if (hitPlane != null) {
+                    Camp hitCamp = hitPlane.camp;
+                    if (camp != hitCamp) {
+                        PlaneHealthService.GetInstance().SetPlane(hitPlane).ReceiveDamage(damage);
+                    }
+                    
                 }
             }
             
