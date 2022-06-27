@@ -54,7 +54,7 @@ namespace Plane.Bullet {
 
         private void FixedUpdate() {
             // 移动
-            rb.MovePosition(transform.position + (transform.forward * (initialSpeed + flightSpeed)) * Time.fixedDeltaTime);
+            rb.MovePosition(transform.position + transform.forward * ((initialSpeed + flightSpeed) * Time.fixedDeltaTime));
             // 自动销毁
             passedRange += Vector3.Distance(transform.position, lastPosition);
             if (passedRange >= range) {

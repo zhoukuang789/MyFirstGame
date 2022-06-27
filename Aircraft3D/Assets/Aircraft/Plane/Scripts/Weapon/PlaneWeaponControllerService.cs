@@ -28,16 +28,12 @@ namespace Plane.Weapon {
         }
 
         private void ShootABullet() {
-            // 准心位置在三维世界空间中的坐标
-            Camera main = Camera.main;
-            Vector3 aimingPositionInWorldPoint =
-                main.ScreenToWorldPoint(new Vector3(main.pixelWidth / 2f, main.pixelHeight / 2f, 150f));
             foreach (Transform muzzleTransform in planeWeapon.muzzleTransformList) {
                 // 生成子弹
-                GameObject bullet = GameObject.Instantiate(planeWeapon.bulletPrefab, muzzleTransform.position,
+                GameObject bullet = GameObject.Instantiate(planeWeapon.GetBulletPrefab(), muzzleTransform.position,
                     muzzleTransform.rotation);
                 // 初始化子弹属性
-                bullet.transform.LookAt(aimingPositionInWorldPoint);
+                bullet.transform.LookAt(plane.transform.position + plane.transform.forward * planeWeapon.GetBulletRange());
                 bullet.GetComponent<Bullet.BulletBehaviour>()
                     .SetCamp(plane.camp)
                     .SetDamage(planeWeapon.GetDamage())

@@ -8,7 +8,7 @@ namespace Plane {
     public class PlaneBehaviour : MonoBehaviour {
 
         //------------------field ---------------------------------------
-        
+
         /// <summary>
         /// 飞机配置
         /// </summary>
@@ -18,6 +18,8 @@ namespace Plane {
         /// 飞机阵营
         /// </summary>
         public Camp camp;
+
+        public Controller controller;
 
         /// <summary>
         /// 飞机运动

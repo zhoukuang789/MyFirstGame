@@ -257,20 +257,15 @@ GameObject:
   - component: {fileID: 897311931448941925}
   - component: {fileID: 897311931448941924}
   - component: {fileID: 897311931448941923}
+  - component: {fileID: 2210037975028149676}
   - component: {fileID: 897311931448941926}
-  - component: {fileID: 897311931448941913}
-  - component: {fileID: 897311931448941914}
-  - component: {fileID: 897311931448941915}
-  - component: {fileID: 897311931448941916}
-  - component: {fileID: 897311931448941917}
-  - component: {fileID: 897311931448941918}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &897311931448941919
 Transform:
   m_ObjectHideFlags: 0
@@ -278,8 +273,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897311931448941904}
-  m_LocalRotation: {x: -0, y: -0.686472, z: -0, w: 0.7271563}
-  m_LocalPosition: {x: 4911, y: 100, z: 1.63}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 897311932235390832}
@@ -289,7 +284,7 @@ Transform:
   - {fileID: 897311932970767225}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -86.703, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &897311931448941927
 Animator:
   serializedVersion: 3
@@ -320,11 +315,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 1
 --- !u!114 &897311931448941925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeConfig: {fileID: 11400000, guid: 0ed2c612b0e23714f94412164d352aaf, type: 2}
+  camp: 0
+  controller: 0
 --- !u!114 &897311931448941924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +342,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 613be1b11c2d450a9bf04e7cf47bf08e, type: 3}
   m_Name: 
@@ -365,7 +362,19 @@ MonoBehaviour:
   muzzleTransformList:
   - {fileID: 897311932349384750}
   - {fileID: 897311931405535369}
-  bulletPrefab: {fileID: 7252069882787772313, guid: b0bbcaaaab695e045a0530bbb9e1cc17, type: 3}
+--- !u!114 &2210037975028149676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897311931448941904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bd556203684a31afc9a3f0d338aa61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokeTransform: {fileID: 897311932553776880}
 --- !u!114 &897311931448941926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,117 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589def2fbd6f41759eb08e33af18d662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &897311931448941913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e16a69c3a71ae8040b6681d893f61ca0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  rb: {fileID: 897311931448941912}
-  liftMagnitude: 0
-  dragMagnitude: 0
-  thrustMagnitude: 0
-  lr_velo: {fileID: 897311931592315775}
-  lr_drag: {fileID: 897311932070326885}
-  lr_lift: {fileID: 897311932737462198}
-  lr_thrust: {fileID: 897311931754110496}
-  lrLengthRatio: 0.002
---- !u!114 &897311931448941914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7cea02fcebc4448bcb60479cc4da83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  power: 0
---- !u!114 &897311931448941915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5310693f1d2fe479085aa4a0960a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planeConfig: {fileID: 11400000, guid: 062ed03bd3a861c4fbe30c897a33724e, type: 2}
-  movement: {fileID: 0}
-  weapon: {fileID: 0}
-  controller: {fileID: 0}
-  engine: {fileID: 0}
-  health: {fileID: 0}
-  hitColliders:
-  - {fileID: 897311932553776895}
-  - {fileID: 897311932148739496}
-  - {fileID: 897311932674591796}
-  - {fileID: 897311931712849086}
-  a: 0
---- !u!114 &897311931448941916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230c71e59246a44419dd498957644170, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  rb: {fileID: 897311931448941912}
---- !u!114 &897311931448941917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c86c5bf32219d44ac194c89f775b19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  bullet: {fileID: 0}
-  muzzles:
-  - {fileID: 897311932349384750}
-  - {fileID: 897311931405535369}
---- !u!114 &897311931448941918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897311931448941904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7ce59b2d70a854492bf54d6172c572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 0}
-  partHealths: []
-  hitEffect: {fileID: 0}
-  deathEffect: {fileID: 0}
-  leftWingTransform: {fileID: 897311932148739497}
-  rightWingTransform: {fileID: 897311932674591797}
-  bodyTransform: {fileID: 897311932553776880}
-  smokeEffect: {fileID: 0}
 --- !u!1 &897311931544617498
 GameObject:
   m_ObjectHideFlags: 0

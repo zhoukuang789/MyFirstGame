@@ -68,5 +68,9 @@ namespace Plane.Movement {
             float angle = planeMovement.GetRollRate(volume);
             planeMovement.Rotate(angle, -planeMovement.transform.forward);
         }
+
+        public float GetSpeed() {
+            return plane.GetPlaneMovement().GetRigidbody().velocity.magnitude;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Plane.Weapon {
         /// <summary>
         /// 子弹预制体
         /// </summary>
-        public GameObject bulletPrefab;
+        private GameObject bulletPrefab;
 
         /// <summary>
         /// 武器伤害
@@ -64,6 +64,8 @@ namespace Plane.Weapon {
             bulletRange = planeWeaponConfig.bulletRange;
             bulletInitialSpeed = planeWeaponConfig.bulletInitialSpeed;
             bulletFlightSpeed = planeWeaponConfig.bulletFlightSpeed;
+
+            bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
         }
         
         private void Start() {
@@ -77,6 +79,10 @@ namespace Plane.Weapon {
         }
 
         // ---------------------------Getter & Setter----------------------------------
+        public GameObject GetBulletPrefab() {
+            return bulletPrefab;
+        }
+        
         /// <summary>
         /// 武器伤害
         /// </summary>
