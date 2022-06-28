@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Aircraft/Scenes/Mission 1-dev.unity
     guid: aa9f9ebdc7cc8614b977fabbc4ee9ef1
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d81fdf0fe9f66ed48b3bf6b2212f4450, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5dbfceb940152e24aa7e89ccec78389d, type: 2}
