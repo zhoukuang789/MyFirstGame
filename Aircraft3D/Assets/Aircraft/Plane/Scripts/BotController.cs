@@ -10,6 +10,21 @@ namespace Plane {
         // -------------------field ----------------------------
         private PlaneBehaviour plane;
 
+        enum CurrentAction {
+            None,   // 无行为
+            RestorePosture, // 恢复姿态
+            Pitch,  // 俯仰
+            Roll,   // 滚转
+            DirectFly   // 直飞
+        }
+
+        /// <summary>
+        /// 当前行为
+        /// </summary>
+        private CurrentAction currentAction = CurrentAction.None;
+
+        private int actionNum = 0;
+
         public float pitchAngle;
 
         public float rollAngle;
@@ -51,7 +66,7 @@ namespace Plane {
         }
 
         private void Start() {
-            TurnLeft();
+            Climb(30f, 100f);
         }
 
         private void Update() {
@@ -62,8 +77,8 @@ namespace Plane {
             rollAngle = Vector3.SignedAngle(rightOnXY, Vector3.right, transform.forward);
             
             // 恢复飞行姿态
-            if (isRestorePosture) {
-                Debug.Log("恢复飞行姿态中");
+            if (currentAction == CurrentAction.RestorePosture) {
+                actionNum++;
                 if (rollAngle > 2f) {
                     PlaneMovementControllerService.GetInstance().SetPlane(plane).DoRoll(-1);
                 }
@@ -78,27 +93,30 @@ namespace Plane {
                 }
 
                 if (rollAngle >= -2f && rollAngle <= 2f && pitchAngle >= 0f && pitchAngle <= 2f) {
-                    isRestorePosture = false;
+                    currentAction = CurrentAction.None;
+                    actionNum--;
                 }
             }
 
             // 往前直飞
-            if (isDirectFly  && !isRestorePosture) {
-                Debug.Log("直飞中");
+            if (currentAction == CurrentAction.DirectFly) {
+                actionNum++;
                 if (Vector3.Distance(positionBeforeDirectFly, transform.position) < directFlyDistance) {
                     PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(1);
                 } else {
-                    isDirectFly = false;
+                    currentAction = CurrentAction.None;
+                    actionNum--;
                 }
             }
             
             // 向上俯仰
-            if (isPitchUp && !isRestorePosture && !isRollRight && !isRollRight) {
-                Debug.Log("向上俯仰中");
+            if (currentAction == CurrentAction.Pitch) {
+                actionNum++;
                 if (pitchUpAngle > 0f) {
                     pitchUpAngle -= PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(1);
                 } else {
-                    isPitchUp = false;
+                    currentAction = CurrentAction.None;
+                    actionNum--;
                 }
             }
             
@@ -136,28 +154,44 @@ namespace Plane {
         // ---------------------function -----------------------
 
         /// <summary>
+        /// 等待当前动作变为None
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator WaitOtherAction() {
+            while (actionNum > 0) {
+                yield return null;
+            }
+        }
+        
+        /// <summary>
         /// 恢复飞行姿态
         /// </summary>
-        public void RestorePosture() {
-            isRestorePosture = true;
+        public IEnumerator RestorePosture() {
+            yield return WaitOtherAction();
+            Debug.Log("恢复飞行姿态中");
+            currentAction = CurrentAction.RestorePosture;
         }
         
         /// <summary>
         /// 直飞 distance 米
         /// </summary>
-        public void DirectFly(float distance) {
+        public IEnumerator DirectFly(float distance) {
+            yield return WaitOtherAction();
+            Debug.Log("直飞中");
             positionBeforeDirectFly = transform.position;
             directFlyDistance = distance;
-            isDirectFly = true;
+            currentAction = CurrentAction.DirectFly;
         }
 
         /// <summary>
         /// 向上俯仰 angle 度
         /// </summary>
         /// <param name="angle"></param>
-        public void PitchUp(float angle) {
+        public IEnumerator PitchUp(float angle) {
+            yield return WaitOtherAction();
+            Debug.Log("向上俯仰中");
             pitchUpAngle = angle;
-            isPitchUp = true;
+            currentAction = CurrentAction.Pitch;
         }
 
         /// <summary>
@@ -194,10 +228,10 @@ namespace Plane {
         /// <param name="angle"></param>
         /// <param name="altitude"></param>
         public void Climb(float angle, float altitude) {
-            RestorePosture();
-            PitchUp(angle);
-            DirectFly(altitude / Mathf.Sin(angle * Mathf.Deg2Rad));
-            RestorePosture();
+            StartCoroutine(RestorePosture());
+            StartCoroutine(PitchUp(angle));
+            StartCoroutine(DirectFly(altitude / Mathf.Sin(angle * Mathf.Deg2Rad)));
+            StartCoroutine(RestorePosture());
         }
 
         /// <summary>
