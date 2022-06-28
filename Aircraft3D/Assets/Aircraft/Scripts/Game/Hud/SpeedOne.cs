@@ -1,10 +1,10 @@
-using Plane.Movement;
+using Airplane.Movement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SpeedOne : MonoBehaviour {
 
-    public Plane.PlaneBehaviour playerPlane;
+    public Airplane.PlaneBehaviour playerPlane;
     public Text text;
 
     // Update is called once per frame
