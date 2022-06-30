@@ -27,8 +27,16 @@ namespace Airplane.Bot {
         }
 
         private void Start() {
-            Moveset.Moveset moveset = new Climb(30f, 100f, plane.transform.position);
-            foreach (MovesetAction.MovesetAction movesetAction in moveset.GetMovesetActionQueue()) {
+            Moveset.Moveset moveset1 = new Climb(30f, 100, plane.transform.position);
+            Moveset.Moveset moveset2 = new TurnLeft();
+            Moveset.Moveset moveset3 = new TurnBack();
+            foreach (MovesetAction.MovesetAction movesetAction in moveset1.GetMovesetActionQueue()) {
+                currentMovesetActionQueue.Enqueue(movesetAction);
+            }
+            foreach (MovesetAction.MovesetAction movesetAction in moveset2.GetMovesetActionQueue()) {
+                currentMovesetActionQueue.Enqueue(movesetAction);
+            }
+            foreach (MovesetAction.MovesetAction movesetAction in moveset3.GetMovesetActionQueue()) {
                 currentMovesetActionQueue.Enqueue(movesetAction);
             }
         }
@@ -49,61 +57,6 @@ namespace Airplane.Bot {
                 currentMovesetActionQueue.Dequeue();
             }
 
-            
-            
-            
-            // // 向下俯仰
-            // if (currentMovesetAction == MovesetAction.PitchDown) {
-            //     if (pitchDownAngle > 0f) {
-            //         pitchDownAngle += PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(-1);
-            //     } else {
-            //         // 如果达标
-            //         currentMovesetActionQueue.Dequeue();
-            //         Debug.Log(currentMovesetActionQueue.Count);
-            //         if (currentMovesetActionQueue.Count != 0) {
-            //             currentMovesetAction = currentMovesetActionQueue.Peek();
-            //             Debug.Log(currentMovesetAction);
-            //         } else {
-            //             // currentMovesetAction = MovesetAction.None;
-            //         }
-            //     }
-            // }
-            //
-            // // 向右滚转
-            // if (currentMovesetAction == MovesetAction.RollRight) {
-            //     Debug.Log("向右滚转中");
-            //     if (rollRightAngle > 0f) {
-            //         rollRightAngle -= PlaneMovementControllerService.GetInstance().SetPlane(plane).DoRoll(1);
-            //     } else {
-            //         // 如果达标
-            //         currentMovesetActionQueue.Dequeue();
-            //         Debug.Log(currentMovesetActionQueue.Count);
-            //         if (currentMovesetActionQueue.Count != 0) {
-            //             currentMovesetAction = currentMovesetActionQueue.Peek();
-            //             Debug.Log(currentMovesetAction);
-            //         } else {
-            //             // currentMovesetAction = MovesetAction.None;
-            //         }
-            //     }
-            // }
-            //
-            // // 向左滚转
-            // if (currentMovesetAction == MovesetAction.RollLeft) {
-            //     Debug.Log("向左滚转中");
-            //     if (rollLeftAngle > 0f) {
-            //         rollLeftAngle += PlaneMovementControllerService.GetInstance().SetPlane(plane).DoRoll(-1);
-            //     } else {
-            //         // 如果达标
-            //         currentMovesetActionQueue.Dequeue();
-            //         Debug.Log(currentMovesetActionQueue.Count);
-            //         if (currentMovesetActionQueue.Count != 0) {
-            //             currentMovesetAction = currentMovesetActionQueue.Peek();
-            //             Debug.Log(currentMovesetAction);
-            //         } else {
-            //             // currentMovesetAction = MovesetAction.None;
-            //         }
-            //     }
-            // }
         }
         
         // --------------------function ---------------------------------

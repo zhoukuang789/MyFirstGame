@@ -9,6 +9,7 @@ namespace Airplane.Bot.MovesetAction {
             PlanePosture currentPlanePosture = GetCurrentPlanePosture(plane);
             float rollAngle = currentPlanePosture.GetRollAngle();
             float pitchAngle = currentPlanePosture.GetPitchAngle();
+            PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(1);
             if (rollAngle > 2f) {
                 PlaneMovementControllerService.GetInstance().SetPlane(plane).DoRoll(-1);
             }

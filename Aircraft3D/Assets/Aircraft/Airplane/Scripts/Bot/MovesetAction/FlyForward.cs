@@ -6,6 +6,10 @@ namespace Airplane.Bot.MovesetAction {
     public class FlyForward : MovesetAction {
 
         private readonly Vector3 positionBeforeAction;
+        
+        public FlyForward(float value) {
+            this.value = value;
+        }
 
         /// <summary>
         /// 往前飞的距离，如果value《0 表示一直往前飞
