@@ -13,6 +13,14 @@ namespace Mission {
 
         private MissionStatus status;
 
+        private int totalProgress;
+        private int currentProgress = 0;
+
+        /// <summary>
+        /// 进度更新事件，当进度有更新时，广播此事件
+        /// </summary>
+        private event Action progressUpdateEvent;
+
 
         public string GetName() {
             return name;
@@ -60,6 +68,32 @@ namespace Mission {
         public MissionItem SetStatus(MissionStatus status) {
             this.status = status;
             return this;
+        }
+
+        public int GetTotalProgress() {
+            return totalProgress;
+        }
+        public MissionItem SetTotalProgress(int totalProgress) {
+            this.totalProgress = totalProgress;
+            return this;
+        }
+        
+        public int GetCurrentProgress() {
+            return currentProgress;
+        }
+        public void UpdateCurrentProgress() {
+            currentProgress++;
+            if (progressUpdateEvent != null) {
+                progressUpdateEvent();
+            }
+        }
+
+        public void AddProgressUpdateEventListener(Action action) {
+            progressUpdateEvent += action;
+        }
+
+        public void RemoveProgressUpdateEventListener(Action action) {
+            progressUpdateEvent -= action;
         }
 
     }

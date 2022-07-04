@@ -64,7 +64,6 @@ namespace Airplane.Bot {
             if (currentMovesetActionQueue.Count != 0) {
                 return;
             }
-            Debug.Log("ChangeMoveset = " + moveset);
             currentMoveset = moveset;
             currentMovesetActionQueue.Clear();
             foreach (MovesetAction.MovesetAction movesetAction in currentMoveset.GetMovesetActionQueue()) {

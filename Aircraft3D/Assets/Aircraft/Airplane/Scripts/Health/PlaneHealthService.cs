@@ -40,7 +40,7 @@ namespace Airplane.Health {
         /// </summary>
         /// <param name="action"></param>
         public void RemovePlaneDeathEventListener(Action<PlaneBehaviour> action) {
-            planeDeathEvent += action;
+            planeDeathEvent -= action;
         }
 
         // ---------------------function -------------------------------

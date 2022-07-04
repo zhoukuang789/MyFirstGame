@@ -9,7 +9,7 @@ namespace Airplane.Bullet {
 
         private Rigidbody rb;
 
-        private Camp camp;
+        private PlaneCamp camp;
         
         /// <summary>
         /// 武器伤害
@@ -78,7 +78,7 @@ namespace Airplane.Bullet {
                 //射线检测到物体，执行以下动作
                 PlaneBehaviour hitPlane = hit.collider.gameObject.GetComponentInParent<PlaneBehaviour>();
                 if (hitPlane != null) {
-                    Camp hitCamp = hitPlane.camp;
+                    PlaneCamp hitCamp = hitPlane.camp;
                     if (camp != hitCamp) {
                         PlaneHealthService.GetInstance().SetPlane(hitPlane).ReceiveDamage(damage);
                     }
@@ -95,7 +95,7 @@ namespace Airplane.Bullet {
         
         // --------------------------getter & setter----------------------------------------
 
-        public BulletBehaviour SetCamp(Camp camp) {
+        public BulletBehaviour SetCamp(PlaneCamp camp) {
             this.camp = camp;
             return this;
         }

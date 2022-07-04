@@ -9,6 +9,8 @@ namespace Airplane.Bot {
         //---------------------field ----------------------------
         private BotBehaviour bot;
 
+        public GameObject targets;
+
         public List<Transform> targetTransformList;
 
         private int cursor;
@@ -23,6 +25,10 @@ namespace Airplane.Bot {
         //--------------------- mono method ---------------------
         private void Awake() {
             bot = GetComponent<BotBehaviour>();
+            targetTransformList = new List<Transform>();
+            foreach (Transform target in targets.transform) {
+                targetTransformList.Add(target);
+            }
             cursor = 0;
             currentTartgetTransform = targetTransformList[cursor];
         }
@@ -37,8 +43,6 @@ namespace Airplane.Bot {
                 //做一次决策
                 
                 
-                Debug.Log(currentTartgetTransform.gameObject.name);
-                Debug.Log(Vector3.Distance(bot.transform.position, currentTartgetTransform.position));
                 // 到达目标点，切换下一个目标点
                 if (Vector3.Distance(bot.transform.position, currentTartgetTransform.position) <= 20f) {
                     cursor++;

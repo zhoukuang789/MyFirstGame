@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeConfig: {fileID: 11400000, guid: 0ed2c612b0e23714f94412164d352aaf, type: 2}
   camp: 0
+  type: 1
   controller: 0
 --- !u!114 &897311931448941924
 MonoBehaviour:

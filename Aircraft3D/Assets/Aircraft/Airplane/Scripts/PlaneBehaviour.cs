@@ -17,9 +17,11 @@ namespace Airplane {
         /// <summary>
         /// 飞机阵营
         /// </summary>
-        public Camp camp;
+        public PlaneCamp camp;
 
-        public Controller controller;
+        public PlaneType type;
+
+        public PlaneController controller;
 
         /// <summary>
         /// 飞机运动

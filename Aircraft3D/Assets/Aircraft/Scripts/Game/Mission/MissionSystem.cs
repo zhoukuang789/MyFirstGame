@@ -46,7 +46,7 @@ public class MissionSystem : MonoBehaviour
         currentMission.quota = 0;
         currentMission.id = proto.id;
 
-        MissionHud.instance.UpdateMission();
+        // MissionHud.instance.UpdateMission();
     }
 
     public void TryPushforwardMission(MissionCompleteTrigger trigger)
