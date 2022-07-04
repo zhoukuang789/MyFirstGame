@@ -26,13 +26,13 @@ namespace Airplane.Bot.MovesetAction {
         }
 
         public float GetPitchAngle() {
-            Vector3 forwardOnYZ = Vector3.ProjectOnPlane(transform.forward, Vector3.right);
-            return Vector3.SignedAngle(forwardOnYZ, Vector3.forward, transform.right);
+            Vector3 forwardOnHorizontal = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
+            return Vector3.SignedAngle(transform.forward, forwardOnHorizontal, transform.right);
         }
 
         public float GetRollAngle() {
-            Vector3 rightOnXY = Vector3.ProjectOnPlane(transform.right, Vector3.forward);
-            return Vector3.SignedAngle(rightOnXY, Vector3.right, transform.forward);
+            Vector3 rightOnHorizontal = Vector3.ProjectOnPlane(transform.right, Vector3.up);
+            return Vector3.SignedAngle(transform.right, rightOnHorizontal, transform.forward);
         }
         
     }

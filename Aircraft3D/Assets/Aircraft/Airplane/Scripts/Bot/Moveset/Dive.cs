@@ -12,6 +12,7 @@ namespace Airplane.Bot.Moveset {
         /// <param name="height"></param>
         /// <param name="positionBeforeAction"></param>
         public Dive(float angle, float height, Vector3 positionBeforeAction) {
+            name = MovesetName.Dive;
             movesetActionQueue = new Queue<MovesetAction.MovesetAction>();
             movesetActionQueue.Enqueue(new RestorePosture());
             movesetActionQueue.Enqueue(new PitchDown(angle));

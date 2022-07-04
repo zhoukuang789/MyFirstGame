@@ -22,12 +22,12 @@ namespace Airplane.Bot.MovesetAction {
         }
         
         public override void DoAction(PlaneBehaviour plane) {
+            // Debug.Log("MovesetAction FlyForward");
             if (value < 0) {
                 PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(1);
             } else {
                 Vector3 currentPosition = GetCurrentPlanePosture(plane).GetPosition();
                 if (Vector3.Distance(positionBeforeAction, currentPosition) < value) {
-                    Debug.Log(Vector3.Distance(positionBeforeAction, currentPosition));
                     PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(1);
                 } else {
                     // 如果达标

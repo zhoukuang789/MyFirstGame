@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Airplane.Bot.Moveset;
+using Airplane.Bot.MovesetAction;
 using UnityEngine;
 
 namespace Airplane.Bot {
@@ -19,6 +20,8 @@ namespace Airplane.Bot {
         /// </summary>
         private Queue<MovesetAction.MovesetAction> currentMovesetActionQueue;
 
+        private Moveset.Moveset currentMoveset = new DefaultMoveset();
+
 
         // -------------------mono method ----------------------
         private void Awake() {
@@ -27,18 +30,7 @@ namespace Airplane.Bot {
         }
 
         private void Start() {
-            Moveset.Moveset moveset1 = new Climb(30f, 100, plane.transform.position);
-            Moveset.Moveset moveset2 = new TurnLeft();
-            Moveset.Moveset moveset3 = new TurnBack();
-            foreach (MovesetAction.MovesetAction movesetAction in moveset1.GetMovesetActionQueue()) {
-                currentMovesetActionQueue.Enqueue(movesetAction);
-            }
-            foreach (MovesetAction.MovesetAction movesetAction in moveset2.GetMovesetActionQueue()) {
-                currentMovesetActionQueue.Enqueue(movesetAction);
-            }
-            foreach (MovesetAction.MovesetAction movesetAction in moveset3.GetMovesetActionQueue()) {
-                currentMovesetActionQueue.Enqueue(movesetAction);
-            }
+            
         }
 
         
@@ -63,10 +55,22 @@ namespace Airplane.Bot {
         private bool CheckObstacle() {
             return false;
         }
-        
-        // -------------------getter & setter ----------------------------
-        public PlaneBehaviour GetPlane() {
-            return plane;
+
+        /// <summary>
+        /// 改变当前的Moveset
+        /// </summary>
+        /// <param name="moveset"></param>
+        public void ChangeMoveset(Moveset.Moveset moveset) {
+            if (currentMovesetActionQueue.Count != 0) {
+                return;
+            }
+            Debug.Log("ChangeMoveset = " + moveset);
+            currentMoveset = moveset;
+            currentMovesetActionQueue.Clear();
+            foreach (MovesetAction.MovesetAction movesetAction in currentMoveset.GetMovesetActionQueue()) {
+                currentMovesetActionQueue.Enqueue(movesetAction);
+            }
+            // currentMovesetActionQueue.Enqueue(new FlyForward(100f, transform.position));
         }
 
     }

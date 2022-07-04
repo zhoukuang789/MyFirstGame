@@ -10,6 +10,7 @@ namespace Airplane.Bot.MovesetAction {
         }
         
         public override void DoAction(PlaneBehaviour plane) {
+            // Debug.Log("MovesetAction PitchUp");
             if (value > 0f) {
                 PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(1);
                 value -= PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(1);
