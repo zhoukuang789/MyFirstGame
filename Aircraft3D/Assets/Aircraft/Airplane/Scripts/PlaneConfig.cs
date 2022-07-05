@@ -1,4 +1,5 @@
 ﻿using System;
+using Airplane.Weapon;
 using UnityEngine;
 
 namespace Airplane {
@@ -24,5 +25,10 @@ namespace Airplane {
         /// 飞机武器配置
         /// </summary>
         public Weapon.PlaneWeaponConfig planeWeaponConfig;
+
+        /// <summary>
+        /// 炸弹武器配置
+        /// </summary>
+        public BomberWeaponConfig bomberWeaponConfig;
     }
 }
