@@ -59,10 +59,12 @@ public class SceneService : MonoBehaviour
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
-
+        int maxWait = 1000;
         // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        while (!asyncLoad.isDone && maxWait > 0)
         {
+            maxWait--;
+            Debug.Log(maxWait);
             yield return null;
         }
         Debug.Log("load scene done ");
