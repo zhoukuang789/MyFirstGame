@@ -6,9 +6,12 @@ using ProjectBase.Input;
 using Record;
 using UnityEngine;
 
-namespace Airplane {
-    public class PlayerController : MonoBehaviour {
+namespace Airplane
+{
+    public class PlayerController : MonoBehaviour
+    {
         private PlaneBehaviour plane;
+        PlaneTakeOffBehaviour takeOff;
 
         private KeyItem wKey;
 
@@ -22,11 +25,14 @@ namespace Airplane {
 
         private KeyItem mouse0Key;
 
-        private void Awake() {
+        private void Awake()
+        {
             plane = GetComponent<PlaneBehaviour>();
+            takeOff = GetComponent<PlaneTakeOffBehaviour>();
         }
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             // 开启输入
             InputService.GetInstance().StartInput();
 
@@ -71,38 +77,56 @@ namespace Airplane {
                 .RegisterMouseMove(OnMouseMove);
         }
 
-        private void OnDisable() {
+        private void OnDisable()
+        {
             InputService.GetInstance().CloseInput();
         }
 
         /// <summary>
         /// 加速按键
         /// </summary>
-        private void OnWKeyInput() {
+        private void OnWKeyInput()
+        {
             PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(wKey.GetVolume());
         }
 
         /// <summary>
         /// 减速按键
         /// </summary>
-        private void OnSKeyInput() {
+        private void OnSKeyInput()
+        {
+            if (takeOff.InputDisabled)
+                return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).ReduceTrust(sKey.GetVolume());
         }
 
-        private void OnAKeyInput() {
+        private void OnAKeyInput()
+        {
+            if (takeOff.InputDisabled)
+                return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(aKey.GetVolume());
         }
 
-        private void OnDKeyInput() {
+        private void OnDKeyInput()
+        {
+            if (takeOff.InputDisabled)
+                return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(-aKey.GetVolume());
         }
 
-        private void OnSpaceKeyInout() {
+        private void OnSpaceKeyInout()
+        {
+            if (takeOff.InputDisabled)
+                return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(spaceKey.GetVolume());
         }
 
-        private void OnMouseMove(Vector2 mouseAxis) {
-            if (mouseAxis.x != 0 || mouseAxis.y != 0) {
+        private void OnMouseMove(Vector2 mouseAxis)
+        {
+            if (takeOff.InputDisabled)
+                return;
+            if (mouseAxis.x != 0 || mouseAxis.y != 0)
+            {
                 PlaneMovementControllerService.GetInstance().SetPlane(plane)
                     .DoRoll(Mathf.Clamp(mouseAxis.x, -1, 1));
                 PlaneMovementControllerService.GetInstance().SetPlane(plane)
@@ -110,7 +134,10 @@ namespace Airplane {
             }
         }
 
-        private void OnMouse0KeyInput() {
+        private void OnMouse0KeyInput()
+        {
+            if (takeOff.InputDisabled)
+                return;
             PlaneWeaponControllerService.GetInstance().SetPlane(plane).Fire();
         }
     }
