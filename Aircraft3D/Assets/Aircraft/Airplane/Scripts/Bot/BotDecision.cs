@@ -15,6 +15,7 @@ namespace Airplane.Bot {
 
         private int cursor;
 
+        [SerializeField]
         private Transform currentTartgetTransform;
 
         /// <summary>

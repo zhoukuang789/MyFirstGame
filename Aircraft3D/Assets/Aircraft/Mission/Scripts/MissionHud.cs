@@ -15,6 +15,8 @@ namespace Mission {
         private MissionItem currentMission;
 
         private void Awake() {
+            txt = GetComponentInChildren<Text>();
+            cg = GetComponent<CanvasGroup>();
             MissionService.GetInstance().AddCurrentMissionChangedEventListener(CurrentMissionChanged);
         }
 
