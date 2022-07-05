@@ -82,11 +82,18 @@ namespace Airplane
             InputService.GetInstance().CloseInput();
         }
 
+        bool TakeOffInputDisabled
+        {
+            get { return takeOff != null && takeOff.enabled && takeOff.InputDisabled; }
+        }
+
         /// <summary>
         /// 加速按键
         /// </summary>
         private void OnWKeyInput()
         {
+            if (TakeOffInputDisabled)
+                return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).AddTrust(wKey.GetVolume());
         }
 
@@ -95,35 +102,35 @@ namespace Airplane
         /// </summary>
         private void OnSKeyInput()
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).ReduceTrust(sKey.GetVolume());
         }
 
         private void OnAKeyInput()
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(aKey.GetVolume());
         }
 
         private void OnDKeyInput()
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoYaw(-aKey.GetVolume());
         }
 
         private void OnSpaceKeyInout()
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             PlaneMovementControllerService.GetInstance().SetPlane(plane).DoPitch(spaceKey.GetVolume());
         }
 
         private void OnMouseMove(Vector2 mouseAxis)
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             if (mouseAxis.x != 0 || mouseAxis.y != 0)
             {
@@ -136,7 +143,7 @@ namespace Airplane
 
         private void OnMouse0KeyInput()
         {
-            if (takeOff.InputDisabled)
+            if (TakeOffInputDisabled)
                 return;
             PlaneWeaponControllerService.GetInstance().SetPlane(plane).Fire();
         }
