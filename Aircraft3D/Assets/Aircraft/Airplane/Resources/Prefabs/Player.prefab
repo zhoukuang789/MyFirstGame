@@ -364,6 +364,7 @@ MonoBehaviour:
   muzzleTransformList:
   - {fileID: 897311932349384750}
   - {fileID: 897311931405535369}
+  bulletPrefab: {fileID: 7252069882787772313, guid: b0bbcaaaab695e045a0530bbb9e1cc17, type: 3}
 --- !u!114 &2210037975028149676
 MonoBehaviour:
   m_ObjectHideFlags: 0

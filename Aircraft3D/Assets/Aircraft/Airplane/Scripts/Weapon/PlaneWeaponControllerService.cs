@@ -1,4 +1,5 @@
-﻿using ProjectBase.SingletonBase;
+﻿using Airplane.Bullet;
+using ProjectBase.SingletonBase;
 using UnityEngine;
 
 namespace Airplane.Weapon {
@@ -9,11 +10,14 @@ namespace Airplane.Weapon {
         
         private PlaneWeaponBehaviour planeWeapon;
 
+        private BomberWeaponBehaviour bomberWeapon;
+
         
         //-------------------------getter & setter ----------------------
         public PlaneWeaponControllerService SetPlane(PlaneBehaviour plane) {
             this.plane = plane;
             planeWeapon = plane.GetPlaneWeapon();
+            bomberWeapon = plane.GetBomberWeapon();
             return this;
         }
         
@@ -24,6 +28,13 @@ namespace Airplane.Weapon {
             if (planeWeapon.GetCooldownTime() <= 0f) {
                 ShootABullet();
                 planeWeapon.ResetCooldownTime();
+            }
+        }
+
+        public void Bomb() {
+            if (bomberWeapon.GetCooldownTime() <= 0f) {
+                ShootABomber();
+                bomberWeapon.ResetCooldownTime();
             }
         }
 
@@ -44,5 +55,22 @@ namespace Airplane.Weapon {
                 bullet.SetActive(true);
             }
         }
+        
+        private void ShootABomber() {
+            foreach (Transform muzzleTransform in bomberWeapon.muzzleTransformList) {
+                // 生成炸弹
+                GameObject bomb = GameObject.Instantiate(bomberWeapon.GetBombPrefab(), muzzleTransform.position,
+                    muzzleTransform.rotation);
+                bomb.GetComponent<BombBehaviour>()
+                    .SetCamp(plane.camp)
+                    .SetDamage(bomberWeapon.GetDamage())
+                    .SetTarget(bomberWeapon.GetBombTarget())
+                    .SetSpeed(bomberWeapon.GetSpeed());
+                // 激活子弹
+                bomb.SetActive(true);
+            }
+        }
+        
+        
     }
 }

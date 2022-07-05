@@ -34,6 +34,11 @@ namespace Airplane {
         private PlaneWeaponBehaviour planeWeapon;
 
         /// <summary>
+        /// 炸弹武器
+        /// </summary>
+        private BomberWeaponBehaviour bomberWeapon;
+
+        /// <summary>
         /// 飞机生命
         /// </summary>
         private PlaneHealthBehaviour planeHealth;
@@ -43,6 +48,7 @@ namespace Airplane {
         private void Awake() {
             planeMovement = GetComponent<PlaneMovementBehaviour>();
             planeWeapon = GetComponent<PlaneWeaponBehaviour>();
+            bomberWeapon = GetComponent<BomberWeaponBehaviour>();
             planeHealth = GetComponent<PlaneHealthBehaviour>();
         }
         
@@ -58,6 +64,10 @@ namespace Airplane {
         
         public PlaneHealthBehaviour GetPlaneHealth() {
             return planeHealth;
+        }
+
+        public BomberWeaponBehaviour GetBomberWeapon() {
+            return bomberWeapon;
         }
     }
 }

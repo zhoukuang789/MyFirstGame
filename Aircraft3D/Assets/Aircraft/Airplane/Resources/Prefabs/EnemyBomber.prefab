@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7824715713597853023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.12, y: -0.245, z: 3.064}
+  m_LocalPosition: {x: 0.03, y: -1.77, z: 1.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7824715714622116382}
@@ -7332,7 +7332,7 @@ GameObject:
   - component: {fileID: 7824715715413913833}
   - component: {fileID: 7824715715413913828}
   - component: {fileID: 7824715715413913829}
-  - component: {fileID: 7824715715413913834}
+  - component: {fileID: 6360083007943022816}
   - component: {fileID: 7824715715413913835}
   - component: {fileID: 7824715715413913831}
   - component: {fileID: 7824715715413913830}
@@ -7411,6 +7411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeConfig: {fileID: 11400000, guid: 0ed2c612b0e23714f94412164d352aaf, type: 2}
   camp: 1
+  type: 0
   controller: 1
 --- !u!114 &7824715715413913829
 MonoBehaviour:
@@ -7424,7 +7425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613be1b11c2d450a9bf04e7cf47bf08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7824715715413913834
+--- !u!114 &6360083007943022816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7433,12 +7434,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7824715715413913839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb8a61e6c744628a39058aef9a5cfac, type: 3}
+  m_Script: {fileID: 11500000, guid: 369346af0cbe428b92d3e42c51f2d6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleTransformList:
   - {fileID: 7824715713597853022}
-  - {fileID: 7824715715677898181}
 --- !u!114 &7824715715413913835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7485,6 +7485,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentTartgetTransform: {fileID: 0}
 --- !u!1 &7824715715474882093
 GameObject:
   m_ObjectHideFlags: 0
