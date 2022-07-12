@@ -28,19 +28,22 @@ namespace Dialog.Scripts {
         /// <summary>
         /// 显示菜单
         /// </summary>
-        public void ShowMenu(string text, List<ButtonData> buttonList) {
+        public MenuBehaviour ShowMenu(string text, List<ButtonData> buttonList = null) {
             GameObject menuPrefab = Resources.Load<GameObject>("Prefabs/Menu");
             GameObject canvas = GameObject.Find("Canvas");
             GameObject menu = GameObject.Instantiate(menuPrefab, canvas.transform);
             MenuBehaviour menuBehaviour = menu.GetComponent<MenuBehaviour>();
             menuBehaviour.SetText(text);
-            foreach (ButtonData button in buttonList) {
-                menuBehaviour.AddButton(button.GetText(), button.GetOnClick());
+            if (buttonList != null) {
+                foreach (ButtonData button in buttonList) {
+                    menuBehaviour.AddButton(button.GetText(), button.GetOnClick());
+                }
             }
             menu.SetActive(true);
             CanvasGroup cg = menu.GetComponent<CanvasGroup>();
             cg.DOFade(1, 2).SetDelay(0.25f);
             cg.blocksRaycasts = true;
+            return menuBehaviour;
         }
 
         
