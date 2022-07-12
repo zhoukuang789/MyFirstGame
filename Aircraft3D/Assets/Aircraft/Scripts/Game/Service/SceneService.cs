@@ -31,7 +31,7 @@ public class SceneService : MonoBehaviour
 
     public void OnClickSwitchScene_mission1()
     {
-        SetScene(4);
+        SetScene(1);
     }
 
     public void SetScene(int i)

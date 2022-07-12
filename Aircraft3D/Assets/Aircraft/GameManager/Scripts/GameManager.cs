@@ -68,7 +68,7 @@ namespace GameManager {
             mission1 = MissionService.GetInstance().CreateMission()
                 .SetName("任务1")
                 .SetDescription("摧毁两架敌军轰炸机。")
-                .SetTotalProgress(2)
+                .SetTotalProgress(1)
                 .SetOnStart(() => {
                     // 记下当前击杀轰炸机的数量
                     currentKillBomberNumber = Record.RecordService.GetInstance().GetKillRecord(PlaneType.Bomber);
@@ -78,10 +78,16 @@ namespace GameManager {
                         .CreateMissionPoint(missionPointTransform, Mission1PointEnter, false);
                 })
                 .SetOnComplete(() => {
-                    List<ButtonData> buttonList = new List<ButtonData>();
-                    buttonList.Add(new ButtonData("NEXT", () => { SceneManager.LoadScene(2); }));
-                    buttonList.Add(new ButtonData("Quit", () => { SceneManager.LoadScene(0); }));
-                    DialogService.GetInstance().ShowMenu("mission complete", buttonList);
+                    MenuBehaviour completeMenu = DialogService.GetInstance().ShowMenu("mission complete");
+                    completeMenu.AddButton("Next", () => {
+                        SceneManager.LoadScene(2);
+                        Destroy(completeMenu.gameObject);
+                    });
+                    completeMenu.AddButton("Quit", () => {
+                        SceneManager.LoadScene(0);
+                        Destroy(completeMenu.gameObject);
+                    });
+                    
                 })
                 .SetOnFail(() => {
                     List<ButtonData> buttonList = new List<ButtonData>();

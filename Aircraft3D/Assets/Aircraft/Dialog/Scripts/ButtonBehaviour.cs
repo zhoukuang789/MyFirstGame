@@ -1,8 +1,6 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Dialog.Scripts {
     public class ButtonBehaviour : MonoBehaviour {
