@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MyCamera
 {
@@ -18,6 +19,7 @@ namespace MyCamera
         public CameraTrackingMode trackingMode = CameraTrackingMode.Follow;
         private float _endTime;
         private Transform spotTarget;
+        private Action spotCallback;
 
         private void LateUpdate()
         {
@@ -33,8 +35,9 @@ namespace MyCamera
                     break;
 
                 case CameraTrackingMode.Spot:
-                    if (Time.time > _endTime)
-                    {
+                    if (Time.time > _endTime) {
+                        if (spotCallback != null)
+                            spotCallback();
                         ResumeToPlayer();
                         break;
                     }
@@ -61,12 +64,13 @@ namespace MyCamera
             _currentDistance = Mathf.Lerp(startDistance, endDistance, r);
         }
 
-        public void ChangeTrackingMode(CameraTrackingMode mode, float duration, Transform spotTarget, Vector3 spotPos)
+        public void ChangeTrackingMode(CameraTrackingMode mode, float duration, Transform spotTarget, Vector3 spotPos, Action callback = null)
         {
             trackingMode = mode;
             _endTime = Time.time + duration;
             transform.position = spotPos;
             this.spotTarget = spotTarget;
+            spotCallback = callback;
         }
     }
 }

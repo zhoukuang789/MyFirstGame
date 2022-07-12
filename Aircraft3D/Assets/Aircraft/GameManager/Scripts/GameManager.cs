@@ -126,13 +126,11 @@ namespace GameManager
                 timer.Init(null, null, () =>
                 {
                     GameObject enemyBomber = GameObject.Find("EnemyBomber");
-                    mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 5f, enemyBomber.transform, transParam1.position);
-                    Timer timer2 = TimerManager.instance.GetTimer();
-                    timer.Init(null, null, () =>
-                    {
-                        PlaneMovementControllerService.GetInstance().SetPlane(playerPlane).RestorePlane();
-                    }, "test2", 1, 5);
-                    timer2.Start();
+                    mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 5f, enemyBomber.transform, transParam1.position,
+                        () => {
+                            PlaneMovementControllerService.GetInstance().SetPlane(playerPlane).RestorePlane();
+                        });
+                    
                 }, "test", 1, 2);
                 timer.Start();
 
