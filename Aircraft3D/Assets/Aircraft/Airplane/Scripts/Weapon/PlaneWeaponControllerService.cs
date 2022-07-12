@@ -2,44 +2,53 @@
 using ProjectBase.SingletonBase;
 using UnityEngine;
 
-namespace Airplane.Weapon {
-    public class PlaneWeaponControllerService : Singletonable<PlaneWeaponControllerService> {
-        
+namespace Airplane.Weapon
+{
+    public class PlaneWeaponControllerService : Singletonable<PlaneWeaponControllerService>
+    {
+
         //------------------field ---------------------------------------
         private PlaneBehaviour plane;
-        
+
         private PlaneWeaponBehaviour planeWeapon;
 
         private BomberWeaponBehaviour bomberWeapon;
 
-        
+
         //-------------------------getter & setter ----------------------
-        public PlaneWeaponControllerService SetPlane(PlaneBehaviour plane) {
+        public PlaneWeaponControllerService SetPlane(PlaneBehaviour plane)
+        {
             this.plane = plane;
             planeWeapon = plane.GetPlaneWeapon();
             bomberWeapon = plane.GetBomberWeapon();
             return this;
         }
-        
-        
+
+
         // ---------------------function -------------------------------
 
-        public void Fire() {
-            if (planeWeapon.GetCooldownTime() <= 0f) {
+        public void Fire()
+        {
+            if (planeWeapon.GetCooldownTime() <= 0f)
+            {
                 ShootABullet();
                 planeWeapon.ResetCooldownTime();
             }
         }
 
-        public void Bomb(Transform target) {
-            if (bomberWeapon.GetCooldownTime() <= 0f) {
+        public void Bomb(Transform target)
+        {
+            if (bomberWeapon.GetCooldownTime() <= 0f)
+            {
                 ShootABomber(target);
                 bomberWeapon.ResetCooldownTime();
             }
         }
 
-        private void ShootABullet() {
-            foreach (Transform muzzleTransform in planeWeapon.muzzleTransformList) {
+        private void ShootABullet()
+        {
+            foreach (Transform muzzleTransform in planeWeapon.muzzleTransformList)
+            {
                 // 生成子弹
                 GameObject bullet = GameObject.Instantiate(planeWeapon.GetBulletPrefab(), muzzleTransform.position,
                     muzzleTransform.rotation);
@@ -55,22 +64,22 @@ namespace Airplane.Weapon {
                 bullet.SetActive(true);
             }
         }
-        
-        private void ShootABomber(Transform target) {
-            foreach (Transform muzzleTransform in bomberWeapon.muzzleTransformList) {
+
+        private void ShootABomber(Transform target)
+        {
+            foreach (Transform muzzleTransform in bomberWeapon.muzzleTransformList)
+            {
                 // 生成炸弹
                 GameObject bomb = GameObject.Instantiate(bomberWeapon.GetBombPrefab(), muzzleTransform.position,
                     muzzleTransform.rotation);
                 bomb.GetComponent<BombBehaviour>()
                     .SetCamp(plane.camp)
                     .SetDamage(bomberWeapon.GetDamage())
-                    .SetTarget(target)
+                    .SetTarget(target.position)
                     .SetSpeed(bomberWeapon.GetSpeed());
                 // 激活子弹
                 bomb.SetActive(true);
             }
         }
-        
-        
     }
 }

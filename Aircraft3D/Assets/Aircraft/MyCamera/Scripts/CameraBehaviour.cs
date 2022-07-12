@@ -1,13 +1,12 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MyCamera
 {
     public class CameraBehaviour : MonoBehaviour
     {
         public Transform target;
+        public Transform playerPlane;
         public Vector3 offset;
-
 
         public float distanceLerpDuration = 2;
         public float startDistance;
@@ -16,34 +15,40 @@ namespace MyCamera
         float _distanceTimer;
         float _currentDistance;
 
-        public CameraTrackingMode currentTrackingMode = CameraTrackingMode.HorizontalTracking;
-        private float endTime;
+        public CameraTrackingMode trackingMode = CameraTrackingMode.Follow;
+        private float _endTime;
         private Transform spotTarget;
-
-        [Header("SpotTracking")]
-        public Transform spot;
 
         private void LateUpdate()
         {
             if (target == null)
                 return;
 
-            switch (currentTrackingMode) {
-                case CameraTrackingMode.HorizontalTracking:
+            switch (trackingMode)
+            {
+                case CameraTrackingMode.Follow:
                     SyncDistance();
                     transform.position = target.position + (-target.forward * offset.z + target.up * offset.y).normalized * _currentDistance;
                     transform.LookAt(target.position + target.forward * lookAtDistance, Vector3.up);
                     break;
-                case CameraTrackingMode.SpotTracking:
-                    if (endTime < Time.time) {
-                        currentTrackingMode = CameraTrackingMode.HorizontalTracking;
+
+                case CameraTrackingMode.Spot:
+                    if (Time.time > _endTime)
+                    {
+                        ResumeToPlayer();
                         break;
                     }
-                    transform.position = spot.position;
+
                     transform.LookAt(spotTarget.position, Vector3.up);
                     break;
             }
-            
+        }
+
+        private void ResumeToPlayer()
+        {
+            trackingMode = CameraTrackingMode.Follow;
+            target = playerPlane;
+            _distanceTimer = distanceLerpDuration;
         }
 
         void SyncDistance()
@@ -52,16 +57,15 @@ namespace MyCamera
                 return;
 
             _distanceTimer += Time.deltaTime;
-            var r = _distanceTimer / distanceLerpDuration;
-            if (r > 1)
-                r = 1;
-
+            var r = Mathf.Clamp01(_distanceTimer / distanceLerpDuration);
             _currentDistance = Mathf.Lerp(startDistance, endDistance, r);
         }
 
-        public void ChangeTrackingMode(CameraTrackingMode cameraTrackingMode, float duration, Transform spotTarget) {
-            currentTrackingMode = cameraTrackingMode;
-            endTime = Time.time + duration;
+        public void ChangeTrackingMode(CameraTrackingMode mode, float duration, Transform spotTarget, Vector3 spotPos)
+        {
+            trackingMode = mode;
+            _endTime = Time.time + duration;
+            transform.position = spotPos;
             this.spotTarget = spotTarget;
         }
     }

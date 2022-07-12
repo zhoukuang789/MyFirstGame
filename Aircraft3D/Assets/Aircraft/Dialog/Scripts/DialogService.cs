@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using ProjectBase.SingletonBase;
-using UnityEditor;
 using UnityEngine;
 
 namespace Dialog.Scripts {

@@ -103,18 +103,14 @@ namespace GameManager {
             Airplane.PlaneBehaviour plane = other.gameObject.GetComponentInParent<Airplane.PlaneBehaviour>();
             if (plane != null && plane.controller == Airplane.PlaneController.Player) {
 
-                mainCamera.spot = transParam2;
-                mainCamera.ChangeTrackingMode(CameraTrackingMode.SpotTracking, 2f, transParam3);
-                
+                mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 2f, transParam3, transParam2.position);
+
                 Timer timer = TimerManager.instance.GetTimer();
                 timer.Init(null, null, () => {
-                    mainCamera.spot = transParam1;
                     GameObject enemyBomber = GameObject.Find("EnemyBomber");
-                    mainCamera.ChangeTrackingMode(CameraTrackingMode.SpotTracking, 5f, enemyBomber.transform);
+                    mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 5f, enemyBomber.transform, transParam1.position);
                 }, "test", 1, 2);
                 timer.Start();
-                
-                
 
                 Destroy(mission1Point.gameObject);
             }

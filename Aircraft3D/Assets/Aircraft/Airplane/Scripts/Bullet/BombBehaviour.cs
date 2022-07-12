@@ -26,26 +26,33 @@ namespace Airplane.Bullet {
         /// <summary>
         /// 轰炸目标
         /// </summary>
-        private Transform target;
+        private Vector3 targetPos;
 
+
+        float timeToDie;
         // --------------------------mono method----------------------------------------
         private void Awake() {
             rb = GetComponent<Rigidbody>();
         }
 
         private void Start() {
-            
+            timeToDie = Time.time + 7f;
         }
 
         private void FixedUpdate() {
             //移动
-            Vector3 speedVec = target.position - transform.position;
+            Vector3 speedVec = targetPos - transform.position;
             rb.MovePosition(transform.position + (speedVec.normalized * speed) * Time.fixedDeltaTime);
             // 自动销毁
             // passedRange += Vector3.Distance(transform.position, lastPosition);
             // if (passedRange >= range) {
             //     Destroy(gameObject);
             // }
+
+            if (Time.time>timeToDie)
+            {
+                Destroy(gameObject);
+            }
         }
         
         private void OnTriggerEnter(Collider other)
@@ -76,8 +83,8 @@ namespace Airplane.Bullet {
             return this;
         }
 
-        public BombBehaviour SetTarget(Transform target) {
-            this.target = target;
+        public BombBehaviour SetTarget(Vector3 pos) {
+            this.targetPos = pos;
             return this;
         }
 
