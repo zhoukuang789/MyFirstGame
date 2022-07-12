@@ -1,4 +1,5 @@
 ﻿using ProjectBase.SingletonBase;
+using UnityEngine;
 
 namespace Airplane.Movement {
     public class PlaneMovementControllerService : Singletonable<PlaneMovementControllerService> {
@@ -73,6 +74,16 @@ namespace Airplane.Movement {
 
         public float GetSpeed() {
             return plane.GetPlaneMovement().GetRigidbody().velocity.magnitude;
+        }
+
+        public void StopPlane() {
+            plane.GetComponent<Rigidbody>().useGravity = false;
+            plane.GetComponent<PlaneMovementBehaviour>().enabled = false;
+        }
+
+        public void RestorePlane() {
+            plane.GetComponent<Rigidbody>().useGravity = true;
+            plane.GetComponent<PlaneMovementBehaviour>().enabled = true;
         }
     }
 }
