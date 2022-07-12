@@ -5,7 +5,7 @@ namespace Mission {
     public class MissionPointBehaviour : MonoBehaviour {
         
         private Vector3 nextPosition;
-        private Action onTriggerEnter;
+        private Action<Collider> onTriggerEnter;
         private bool isLastPosition;
 
         public bool GetIsLastPosition() {
@@ -27,7 +27,7 @@ namespace Mission {
             return this;
         }
 
-        public MissionPointBehaviour SetOnTriggerEnter(Action action) {
+        public MissionPointBehaviour SetOnTriggerEnter(Action<Collider> action) {
             onTriggerEnter += action;
             return this;
         }
@@ -36,7 +36,7 @@ namespace Mission {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (onTriggerEnter != null) onTriggerEnter();
+            if (onTriggerEnter != null) onTriggerEnter(other);
         }
     }
 }

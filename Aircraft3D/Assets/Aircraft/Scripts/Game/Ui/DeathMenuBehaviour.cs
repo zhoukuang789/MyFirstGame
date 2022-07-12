@@ -4,42 +4,39 @@ using DG.Tweening;
 using com;
 using UnityEngine.SceneManagement;
 
-public class DeathMenuBehaviour : MonoBehaviour
-{
+public class DeathMenuBehaviour : MonoBehaviour {
     public CanvasGroup cg;
     public GameObject[] btns;
     public static DeathMenuBehaviour instance;
 
-    void Start()
-    {
+    void Start() {
         instance = this;
         Hide();
     }
 
-    public void Hide()
-    {
+    public void Hide() {
         cg.alpha = 0;
         cg.blocksRaycasts = false;
-        foreach (var btn in btns) { btn.SetActive(false); }
+        foreach (var btn in btns) {
+            btn.SetActive(false);
+        }
     }
 
-    public void Show()
-    {
+    public void Show() {
         cg.blocksRaycasts = true;
-        cg.DOFade(1, 2).SetDelay(0.25f).OnComplete(() =>
-        {
-            foreach (var btn in btns) { btn.SetActive(true); }
+        cg.DOFade(1, 2).SetDelay(0.25f).OnComplete(() => {
+            foreach (var btn in btns) {
+                btn.SetActive(true);
+            }
         });
     }
 
-    public void OnClickRetry()
-    {
+    public void OnClickRetry() {
         //com.SoundService.instance.Play("click");
         SceneService.instance.RestartScene();
     }
 
-    public void OnClickQuit()
-    {
+    public void OnClickQuit() {
         // com.SoundService.instance.Play("click");
         SceneService.instance.SwitchScene_Menu();
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dialog.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 namespace Mission {
@@ -18,6 +20,7 @@ namespace Mission {
             missionItem
                 .SetName("关卡2任务")
                 .SetDescription("经过路径点")
+                .SetTotalProgress(3)
                 .SetOnStart(() => {
                     missionPoint = Instantiate(missionPointPrefab);
                     if (i == missionPositionList.Count - 1) {
@@ -39,22 +42,28 @@ namespace Mission {
                 })
                 .SetOnComplete(() => {
                     // 下一关
-                    Debug.Log("Complete");
+                    List<ButtonData> buttonList = new List<ButtonData>();
+                    buttonList.Add(new ButtonData("Quit", () => { SceneManager.LoadScene(0); }));
+                    DialogService.GetInstance().ShowMenu("mission complete", buttonList);
                 })
                 .SetStatus(MissionStatus.Ready);
 
             MissionService.GetInstance().Start(missionItem);
         }
 
-        private void triggerEnter() {
+        private void triggerEnter(Collider other) {
+            
+            
             if (i == missionPositionList.Count - 1) {
+                missionItem.UpdateCurrentProgress();
                 missionPoint.GetComponent<MissionPointBehaviour>()
                     .SetPosition(missionPositionList[i].position)
                     .SetIsLastPosition(true)
-                    .SetOnTriggerEnter(() => { missionItem.GetOnComplete()(); });
+                    .SetOnTriggerEnter((other) => { missionItem.GetOnComplete()(); });
             }
 
             if (i != missionPositionList.Count - 1) {
+                missionItem.UpdateCurrentProgress();
                 missionPoint.GetComponent<MissionPointBehaviour>()
                     .SetPosition(missionPositionList[i].position)
                     .SetNextPosition(missionPositionList[i + 1].position)

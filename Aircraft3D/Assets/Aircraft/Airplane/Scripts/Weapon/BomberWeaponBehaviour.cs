@@ -31,11 +31,6 @@ namespace Airplane.Weapon {
         /// 开火间隔
         /// </summary>
         private float fireInterval;
-        
-        /// <summary>
-        /// 炸弹目标
-        /// </summary>
-        private Transform bombTarget;
 
         /// <summary>
         /// 冷却时间
@@ -92,13 +87,6 @@ namespace Airplane.Weapon {
         /// <returns></returns>
         public float GetSpeed() {
             return speed;
-        }
-
-        /// <summary>
-        /// 炸弹目标
-        /// </summary>
-        public Transform GetBombTarget() {
-            return bombTarget;
         }
 
         /// <summary>

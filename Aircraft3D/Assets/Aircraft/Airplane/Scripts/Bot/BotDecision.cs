@@ -45,7 +45,7 @@ namespace Airplane.Bot {
                 
                 
                 // 到达目标点，切换下一个目标点
-                if (Vector3.Distance(bot.transform.position, currentTartgetTransform.position) <= 20f) {
+                if (Vector3.Distance(bot.transform.position, currentTartgetTransform.position) <= 10f) {
                     cursor++;
                     if (cursor > targetTransformList.Count - 1) {
                         cursor = 0;
@@ -99,20 +99,6 @@ namespace Airplane.Bot {
             
             
             return new StraightFly(5f, botTransform.position);
-        }
-        
-        /// <summary>
-        /// 向量 from 在向量 to 上的投影向量
-        /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <returns></returns>
-        private Vector3 ProjectOnVector(Vector3 from, Vector3 to) {
-            //to的单位向量
-            Vector3 unitNormalized = to.normalized;
-            //投影向量的长度
-            float length = Vector3.Dot(from, to) / to.magnitude;
-            return length * unitNormalized;
         }
 
         /// <summary>

@@ -1,9 +1,6 @@
-﻿using System;
-using Airplane.Movement;
+﻿using Airplane.Movement;
 using Airplane.Weapon;
-using Mission;
 using ProjectBase.Input;
-using Record;
 using UnityEngine;
 
 namespace Airplane
@@ -11,7 +8,7 @@ namespace Airplane
     public class PlayerController : MonoBehaviour
     {
         private PlaneBehaviour plane;
-        PlaneTakeOffBehaviour takeOff;
+        private PlaneTakeOffBehaviour takeOff;
 
         private KeyItem wKey;
 

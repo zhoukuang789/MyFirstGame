@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using Airplane.Movement;
+﻿using Airplane.Movement;
+using UnityEngine;
 
-namespace Airplane
-{
+namespace Airplane {
     public class PlaneTakeOffBehaviour : MonoBehaviour
     {
         public float disableInputDuration = 4;

@@ -31,9 +31,9 @@ namespace Airplane.Weapon {
             }
         }
 
-        public void Bomb() {
+        public void Bomb(Transform target) {
             if (bomberWeapon.GetCooldownTime() <= 0f) {
-                ShootABomber();
+                ShootABomber(target);
                 bomberWeapon.ResetCooldownTime();
             }
         }
@@ -56,7 +56,7 @@ namespace Airplane.Weapon {
             }
         }
         
-        private void ShootABomber() {
+        private void ShootABomber(Transform target) {
             foreach (Transform muzzleTransform in bomberWeapon.muzzleTransformList) {
                 // 生成炸弹
                 GameObject bomb = GameObject.Instantiate(bomberWeapon.GetBombPrefab(), muzzleTransform.position,
@@ -64,7 +64,7 @@ namespace Airplane.Weapon {
                 bomb.GetComponent<BombBehaviour>()
                     .SetCamp(plane.camp)
                     .SetDamage(bomberWeapon.GetDamage())
-                    .SetTarget(bomberWeapon.GetBombTarget())
+                    .SetTarget(target)
                     .SetSpeed(bomberWeapon.GetSpeed());
                 // 激活子弹
                 bomb.SetActive(true);

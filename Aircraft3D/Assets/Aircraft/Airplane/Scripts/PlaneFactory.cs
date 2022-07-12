@@ -1,4 +1,5 @@
-﻿using MyCamera;
+﻿using Airplane.Bot;
+using MyCamera;
 using ProjectBase.SingletonBase;
 using UnityEngine;
 
@@ -21,10 +22,10 @@ namespace Airplane {
         }
 
         public void CreateEnemyBomber(Vector3 position, Quaternion rotation) {
-            GameObject playerPlanePrefab = Resources.Load<GameObject>("Prefabs/EnemyBomber");
-            GameObject playerPlane = GameObject.Instantiate(playerPlanePrefab, position, rotation);
-            playerPlane.name = "EnemyBomber";
-            playerPlane.SetActive(true);
+            GameObject enemyBomberPrefab = Resources.Load<GameObject>("Prefabs/EnemyBomber");
+            GameObject enemyBomber = GameObject.Instantiate(enemyBomberPrefab, position, rotation);
+            enemyBomber.name = "EnemyBomber";
+            enemyBomber.SetActive(true);
         }
         
     }

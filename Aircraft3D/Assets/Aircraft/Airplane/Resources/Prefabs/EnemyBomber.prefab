@@ -7336,6 +7336,7 @@ GameObject:
   - component: {fileID: 7824715715413913835}
   - component: {fileID: 7824715715413913831}
   - component: {fileID: 7824715715413913830}
+  - component: {fileID: 7134602981111257017}
   m_Layer: 0
   m_Name: EnemyBomber
   m_TagString: Untagged
@@ -7477,15 +7478,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: {fileID: 2077238310692078790, guid: 71870891d18bd0748b7c02d676b271a8, type: 3}
-  targetTransformList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  targetTransformList: []
   currentTartgetTransform: {fileID: 0}
+--- !u!114 &7134602981111257017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824715715413913839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a42b22e39af4a26a3fb631375ff784c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombTargets: {fileID: 0}
+  currentTarget: {fileID: 0}
 --- !u!1 &7824715715474882093
 GameObject:
   m_ObjectHideFlags: 0

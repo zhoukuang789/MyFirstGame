@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ConstructureBehaviour : MonoBehaviour
 {
@@ -56,4 +57,5 @@ public class ConstructureBehaviour : MonoBehaviour
         var go = Instantiate(explodePrefab, transform.position, Quaternion.identity, transform.parent);
         go.SetActive(true);
     }
+
 }

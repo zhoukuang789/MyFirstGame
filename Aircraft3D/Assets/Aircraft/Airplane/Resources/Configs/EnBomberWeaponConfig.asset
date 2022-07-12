@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f79a57695e44cab9e3ae2644be84384, type: 3}
   m_Name: EnBomberWeaponConfig
   m_EditorClassIdentifier: 
-  damage: 49
+  damage: 100
   fireInterval: 5
   speed: 150

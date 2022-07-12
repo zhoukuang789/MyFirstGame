@@ -1,5 +1,6 @@
 ﻿using System;
 using ProjectBase.SingletonBase;
+using UnityEngine;
 
 namespace Mission {
     public class MissionService : Singletonable<MissionService> {
@@ -18,6 +19,8 @@ namespace Mission {
         }
         
         public void Start(MissionItem missionItem) {
+            if (missionItem.GetStatus() == MissionStatus.Processing)
+                return;
             currentMission = missionItem;
             if (currentMissionChangedEvent != null) {
                 currentMissionChangedEvent();
@@ -27,11 +30,15 @@ namespace Mission {
         }
         
         public void Complete(MissionItem missionItem) {
+            if (missionItem.GetStatus() == MissionStatus.Completed)
+                return;
             missionItem.GetOnComplete()();
             missionItem.SetStatus(MissionStatus.Completed);
         }
 
         public void Fail(MissionItem missionItem) {
+            if (missionItem.GetStatus() == MissionStatus.Failed)
+                return;
             missionItem.GetOnFail()();
             missionItem.SetStatus(MissionStatus.Failed);
         }
@@ -46,6 +53,16 @@ namespace Mission {
         
         public void RemoveCurrentMissionChangedEventListener(Action action) {
             currentMissionChangedEvent -= action;
+        }
+
+        public MissionPointBehaviour CreateMissionPoint(Transform transform, Action<Collider> onTrigger, bool isCanSee = true) {
+            GameObject missionPointPrefab = Resources.Load<GameObject>("Prefabs/MissionPoint");
+            GameObject missionPoint = GameObject.Instantiate(missionPointPrefab, transform.position, transform.rotation);
+            MissionPointBehaviour missionPointBehaviour = missionPoint.GetComponent<MissionPointBehaviour>();
+            missionPointBehaviour.SetOnTriggerEnter(onTrigger);
+            if (!isCanSee) missionPoint.GetComponent<MeshRenderer>().enabled = false;
+            missionPoint.SetActive(true);
+            return missionPointBehaviour;
         }
     }
 }
