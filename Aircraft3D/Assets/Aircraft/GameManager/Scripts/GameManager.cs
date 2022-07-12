@@ -4,6 +4,7 @@ using Airplane;
 using Mission;
 using UnityEngine;
 using System.Collections;
+using Airplane.Movement;
 using com;
 using Dialog.Scripts;
 using MyCamera;
@@ -103,12 +104,18 @@ namespace GameManager {
             Airplane.PlaneBehaviour plane = other.gameObject.GetComponentInParent<Airplane.PlaneBehaviour>();
             if (plane != null && plane.controller == Airplane.PlaneController.Player) {
 
+                Airplane.PlaneBehaviour playerPlane = GameObject.Find("PlayerPlane").GetComponent<Airplane.PlaneBehaviour>();
+                PlaneMovementControllerService.GetInstance().SetPlane(playerPlane).StopPlane();
                 mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 2f, transParam3, transParam2.position);
-
+                
                 Timer timer = TimerManager.instance.GetTimer();
                 timer.Init(null, null, () => {
                     GameObject enemyBomber = GameObject.Find("EnemyBomber");
                     mainCamera.ChangeTrackingMode(CameraTrackingMode.Spot, 5f, enemyBomber.transform, transParam1.position);
+                    Timer timer2 = TimerManager.instance.GetTimer();
+                    timer.Init(null, null, () => {
+                        PlaneMovementControllerService.GetInstance().SetPlane(playerPlane).RestorePlane();
+                    },"test2", 1, 5);
                 }, "test", 1, 2);
                 timer.Start();
 
