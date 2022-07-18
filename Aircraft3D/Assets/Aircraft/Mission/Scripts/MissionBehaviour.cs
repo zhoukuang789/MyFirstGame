@@ -44,7 +44,7 @@ namespace Mission {
                     // 下一关
                     List<ButtonData> buttonList = new List<ButtonData>();
                     buttonList.Add(new ButtonData("Quit", () => { SceneManager.LoadScene(0); }));
-                    DialogService.GetInstance().ShowMenu("mission complete", buttonList);
+                    // DialogService.GetInstance().ShowMenu("mission complete", buttonList);
                 })
                 .SetStatus(MissionStatus.Ready);
 

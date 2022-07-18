@@ -7410,7 +7410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1698cdd4052244bf8f748bd489bb187e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeConfig: {fileID: 11400000, guid: 0ed2c612b0e23714f94412164d352aaf, type: 2}
+  planeConfig: {fileID: 11400000, guid: 8d8f1179b2f23a741b0ec96d6d44b348, type: 2}
   camp: 1
   type: 0
   controller: 1

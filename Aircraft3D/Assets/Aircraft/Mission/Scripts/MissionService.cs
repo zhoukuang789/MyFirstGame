@@ -55,11 +55,12 @@ namespace Mission {
             currentMissionChangedEvent -= action;
         }
 
-        public MissionPointBehaviour CreateMissionPoint(Transform transform, Action<Collider> onTrigger, bool isCanSee = true) {
+        public MissionPointBehaviour CreateMissionPoint(Transform transform, Action<Collider> onTrigger, bool isCanSee = true, bool isAutoDestroy = false) {
             GameObject missionPointPrefab = Resources.Load<GameObject>("Prefabs/MissionPoint");
             GameObject missionPoint = GameObject.Instantiate(missionPointPrefab, transform.position, transform.rotation);
             MissionPointBehaviour missionPointBehaviour = missionPoint.GetComponent<MissionPointBehaviour>();
             missionPointBehaviour.SetOnTriggerEnter(onTrigger);
+            missionPointBehaviour.SetIsAutoDestroy(isAutoDestroy);
             if (!isCanSee) missionPoint.GetComponent<MeshRenderer>().enabled = false;
             missionPoint.SetActive(true);
             return missionPointBehaviour;

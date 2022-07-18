@@ -1,6 +1,7 @@
 ﻿using System;
 using Airplane;
 using Airplane.Health;
+using Mission;
 using UnityEngine;
 
 namespace GameManager {
@@ -16,6 +17,10 @@ namespace GameManager {
         private void PlaneOnDeath(Airplane.PlaneBehaviour plane) {
             if (plane.camp == PlaneCamp.Enemy) {
                 Record.RecordService.GetInstance().AddKillRecord(plane.type);
+            }
+
+            if (plane.controller == Airplane.PlaneController.Player) {
+                MissionService.GetInstance().Fail(MissionService.GetInstance().GetCurrentMission());
             }
         }
     }

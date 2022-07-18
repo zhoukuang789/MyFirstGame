@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using ProjectBase.SingletonBase;
+using UnityEditor;
 using UnityEngine;
 
 namespace Dialog.Scripts {
@@ -26,9 +27,12 @@ namespace Dialog.Scripts {
         }
 
         /// <summary>
-        /// 显示菜单
+        /// 创建菜单
         /// </summary>
-        public MenuBehaviour ShowMenu(string text, List<ButtonData> buttonList = null) {
+        /// <param name="text"></param>
+        /// <param name="buttonList"></param>
+        /// <returns></returns>
+        public MenuBehaviour CreateMenu(string text, List<ButtonData> buttonList = null) {
             GameObject menuPrefab = Resources.Load<GameObject>("Prefabs/Menu");
             GameObject canvas = GameObject.Find("Canvas");
             GameObject menu = GameObject.Instantiate(menuPrefab, canvas.transform);
@@ -39,12 +43,33 @@ namespace Dialog.Scripts {
                     menuBehaviour.AddButton(button.GetText(), button.GetOnClick());
                 }
             }
-            menu.SetActive(true);
+            menu.SetActive(false);
             CanvasGroup cg = menu.GetComponent<CanvasGroup>();
-            cg.DOFade(1, 2).SetDelay(0.25f);
-            cg.blocksRaycasts = true;
+            cg.alpha = 0;
+            cg.blocksRaycasts = false;
             return menuBehaviour;
         }
+        
+        /// <summary>
+        /// 显示菜单
+        /// </summary>
+        // public MenuBehaviour ShowMenu(string text, List<ButtonData> buttonList = null) {
+        //     GameObject menuPrefab = Resources.Load<GameObject>("Prefabs/Menu");
+        //     GameObject canvas = GameObject.Find("Canvas");
+        //     GameObject menu = GameObject.Instantiate(menuPrefab, canvas.transform);
+        //     MenuBehaviour menuBehaviour = menu.GetComponent<MenuBehaviour>();
+        //     menuBehaviour.SetText(text);
+        //     if (buttonList != null) {
+        //         foreach (ButtonData button in buttonList) {
+        //             menuBehaviour.AddButton(button.GetText(), button.GetOnClick());
+        //         }
+        //     }
+        //     menu.SetActive(true);
+        //     CanvasGroup cg = menu.GetComponent<CanvasGroup>();
+        //     cg.DOFade(1, 2).SetDelay(0.25f);
+        //     cg.blocksRaycasts = true;
+        //     return menuBehaviour;
+        // }
 
         
         

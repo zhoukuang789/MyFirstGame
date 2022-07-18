@@ -7,6 +7,7 @@ namespace Mission {
         private Vector3 nextPosition;
         private Action<Collider> onTriggerEnter;
         private bool isLastPosition;
+        private bool isAutoDestroy;
 
         public bool GetIsLastPosition() {
             return isLastPosition;
@@ -14,6 +15,11 @@ namespace Mission {
         
         public MissionPointBehaviour SetIsLastPosition(bool isLastPosition) {
             this.isLastPosition = isLastPosition;
+            return this;
+        }
+        
+        public MissionPointBehaviour SetIsAutoDestroy(bool isAutoDestroy) {
+            this.isAutoDestroy = isAutoDestroy;
             return this;
         }
         
@@ -37,6 +43,9 @@ namespace Mission {
 
         private void OnTriggerEnter(Collider other) {
             if (onTriggerEnter != null) onTriggerEnter(other);
+            if (isAutoDestroy) {
+                Destroy(gameObject);
+            }
         }
     }
 }

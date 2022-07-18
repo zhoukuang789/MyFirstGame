@@ -47,7 +47,7 @@ namespace MyCamera
             }
         }
 
-        private void ResumeToPlayer()
+        public void ResumeToPlayer()
         {
             trackingMode = CameraTrackingMode.Follow;
             target = playerPlane;

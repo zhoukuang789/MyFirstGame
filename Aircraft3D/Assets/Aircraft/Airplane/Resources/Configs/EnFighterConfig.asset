@@ -16,4 +16,4 @@ MonoBehaviour:
   describe: Player Plane
   planeMovementConfig: {fileID: 11400000, guid: 8ab1352a91954c541bab686ba9991e9b, type: 2}
   planeWeaponConfig: {fileID: 11400000, guid: 4dffed05739a47f42b254a961284d4b5, type: 2}
-  bomberWeaponConfig: {fileID: 11400000, guid: 5ba4f0d1978fdde4ebccd6fa4b701410, type: 2}
+  bomberWeaponConfig: {fileID: 0}

@@ -42,7 +42,7 @@ namespace Airplane.Bot {
         private IEnumerator MakeDecision(float seconds) {
             while (true) {
                 //做一次决策
-                
+                Debug.Log("Bot Decision");
                 
                 // 到达目标点，切换下一个目标点
                 if (Vector3.Distance(bot.transform.position, currentTartgetTransform.position) <= 10f) {

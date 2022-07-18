@@ -72,5 +72,9 @@ namespace Airplane.Bot {
             // currentMovesetActionQueue.Enqueue(new FlyForward(100f, transform.position));
         }
 
+        public PlaneBehaviour GetPlane() {
+            return plane;
+        }
+
     }
 }

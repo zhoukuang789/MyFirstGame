@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 namespace Dialog.Scripts {
     public class MenuBehaviour : MonoBehaviour {
 
+        public Transform buttons;
+        
         private int buttonCount;
 
         private void Awake() {
@@ -24,13 +27,19 @@ namespace Dialog.Scripts {
         public void AddButton(string text, Action onClick) {
             buttonCount++;
             if (buttonCount > 3) return;
-            GameObject buttons = GameObject.Find("Buttons");
             Transform buttonTransform = buttons.transform.GetChild(buttonCount - 1);
             GameObject menuButtonPrefab = Resources.Load<GameObject>("Prefabs/MenuButton");
             GameObject menuButton = Instantiate(menuButtonPrefab, buttonTransform.position, buttonTransform.rotation,buttons.transform);
             ButtonBehaviour buttonBehaviour = menuButton.GetComponent<ButtonBehaviour>();
             buttonBehaviour.SetText(text).AddOnClick(onClick);
             menuButton.SetActive(true);
+        }
+
+        public void Show() {
+            gameObject.SetActive(true);
+            CanvasGroup cg = GetComponent<CanvasGroup>();
+            cg.DOFade(1, 2).SetDelay(0.25f);
+            cg.blocksRaycasts = true;
         }
     }
 }
