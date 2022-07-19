@@ -32,12 +32,13 @@ namespace Dialog.Scripts {
         /// <param name="text"></param>
         /// <param name="buttonList"></param>
         /// <returns></returns>
-        public MenuBehaviour CreateMenu(string text, List<ButtonData> buttonList = null) {
+        public MenuBehaviour CreateMenu(string text, List<ButtonData> buttonList = null,bool hasRedVignette=true) {
             GameObject menuPrefab = Resources.Load<GameObject>("Prefabs/Menu");
             GameObject canvas = GameObject.Find("Canvas");
             GameObject menu = GameObject.Instantiate(menuPrefab, canvas.transform);
             MenuBehaviour menuBehaviour = menu.GetComponent<MenuBehaviour>();
             menuBehaviour.SetText(text);
+            menuBehaviour.SetVignette(hasRedVignette);
             if (buttonList != null) {
                 foreach (ButtonData button in buttonList) {
                     menuBehaviour.AddButton(button.GetText(), button.GetOnClick());

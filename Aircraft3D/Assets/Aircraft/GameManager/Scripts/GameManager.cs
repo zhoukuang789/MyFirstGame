@@ -113,7 +113,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示完成菜单
-                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission\ncomplete");
+                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("Mission\nComplete", null, false);
                     completeMenu.AddButton("Next", () => {
                         SceneManager.LoadScene(2);
                         Destroy(completeMenu.gameObject);
@@ -125,7 +125,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示失败菜单
-                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission\nfailed");
+                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission failed");
                     failMenu.AddButton("Retry", () => {
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         Destroy(failMenu.gameObject);
@@ -236,7 +236,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示完成菜单
-                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission\ncomplete");
+                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission complete");
                     completeMenu.AddButton("Main Menu", () => {
                         SceneManager.LoadScene(0);
                         Destroy(completeMenu.gameObject);
@@ -248,7 +248,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示失败菜单
-                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission\nfailed");
+                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission failed");
                     failMenu.AddButton("Retry", () => {
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         Destroy(failMenu.gameObject);
