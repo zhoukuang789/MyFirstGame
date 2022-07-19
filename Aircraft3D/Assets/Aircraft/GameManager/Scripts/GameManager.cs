@@ -280,7 +280,7 @@ namespace GameManager {
                     () => {
                         PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour)
                             .RestorePlane();
-                        DialogService.GetInstance().Hint("Go back to our base along the point.");
+                        DialogService.GetInstance().Hint("Go back to our base along the check points.");
                         enemyFighter1.GetComponent<PlaneWeaponBehaviour>().enabled = true;
                         enemyFighter2.GetComponent<PlaneWeaponBehaviour>().enabled = true;
                         enemyFighter3.GetComponent<PlaneWeaponBehaviour>().enabled = true;
@@ -289,7 +289,7 @@ namespace GameManager {
                 // 更新任务进度，生成下一个任务点
                 mission2.UpdateCurrentProgress();
                 CreateNextMissionPoint();
-                mission2.SetDescription("Go back to our base along the point.");
+                mission2.SetDescription("Go back to our base along the check points.");
             }
         }
 
