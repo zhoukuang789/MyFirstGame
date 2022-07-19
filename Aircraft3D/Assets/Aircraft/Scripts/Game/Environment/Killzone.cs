@@ -1,20 +1,14 @@
-﻿using UnityEngine;
+﻿using Airplane.Health;
+using UnityEngine;
 
 public class Killzone : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other);
-        var plane = other.GetComponent<PlaneBehaviour>();
-        if (plane == null)
-        {
-            var hc = other.GetComponent<PlaneHitCollider>();
-            if (hc != null)
-            {
-                plane = hc.plane;
-            }
+        
+        Airplane.PlaneBehaviour plane = other.gameObject.GetComponentInParent<Airplane.PlaneBehaviour>();
+        if (plane != null && plane.controller == Airplane.PlaneController.Player) {
+            PlaneHealthService.GetInstance().SetPlane(plane).ReceiveDamage(100f);
         }
-        if (plane != null)
-            plane.health?.ReceiveDamage(int.MaxValue, PlaneHitCollider.PlaneHitPart.Main);
     }
 }
