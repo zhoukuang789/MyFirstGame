@@ -113,7 +113,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示完成菜单
-                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission complete",null, false);
+                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("Mission\nComplete", null, false);
                     completeMenu.AddButton("Next", () => {
                         SceneManager.LoadScene(2);
                         Destroy(completeMenu.gameObject);
