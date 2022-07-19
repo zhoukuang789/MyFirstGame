@@ -97,7 +97,7 @@ namespace GameManager {
             // 创建关卡1任务
             mission1 = MissionService.GetInstance().CreateMission()
                 .SetName("任务1")
-                .SetDescription("摧毁至少一架敌军轰炸机。")
+                .SetDescription("Protect allied buildings from being destroyed and shoot down at least 1 enemy bomber.")
                 .SetTotalProgress(1)
                 .SetOnStart(() => {
                     // 任务开始时
@@ -155,7 +155,7 @@ namespace GameManager {
                     GameObject enemyBomber = enemyBomberList[0];
                     CameraService.GetInstance().SpotTrack(transParam1.position, enemyBomber.transform, 5f, () => {
                         PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).RestorePlane();
-                        DialogService.GetInstance().Hint("保护我方设施，并消灭敌军至少2驾轰炸机。");
+                        DialogService.GetInstance().Hint("Protect allied buildings from being destroyed and shoot down at least 1 enemy bomber.");
                     });
                 });
                 transParam3.DOMove(transParam4.position, 3f);
@@ -197,7 +197,7 @@ namespace GameManager {
             // 创建关卡2任务
             mission2 = MissionService.GetInstance().CreateMission()
                 .SetName("任务2")
-                .SetDescription("乘胜追击，追击敌方撤退的轰炸机。")
+                .SetDescription("Take advantage of the victory and pursue the retreating enemy bombers.")
                 .SetTotalProgress(7)
                 .SetOnStart(() => {
                     // 任务开始时
@@ -221,13 +221,13 @@ namespace GameManager {
                                 () => {
                                     PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour)
                                         .RestorePlane();
-                                    DialogService.GetInstance().Hint("逃回我方基地。");
+                                    DialogService.GetInstance().Hint("Go back to our base along the point.");
                                 });
                             
                             // 更新任务进度，生成下一个任务点
                             mission2.UpdateCurrentProgress();
                             CreateNextMissionPoint();
-                            mission2.SetDescription("逃回我方基地。");
+                            mission2.SetDescription("Go back to our base along the point.");
                         }
                     }, true, true);
                 })
@@ -272,7 +272,7 @@ namespace GameManager {
                 // 镜头动画
                 CameraService.GetInstance().SpotTrack(transParamII1.position, enemyBomberList[0].transform, 5f, () => {
                     PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).RestorePlane();
-                    DialogService.GetInstance().Hint("追击敌军撤退的轰炸机。");
+                    DialogService.GetInstance().Hint("Take advantage of the victory and pursue the retreating enemy bombers.");
                 });
                 Destroy(mission1Point.gameObject);
             }
