@@ -5,6 +5,7 @@ using Mission;
 using UnityEngine;
 using System.Collections;
 using Airplane.Movement;
+using Airplane.Weapon;
 using com;
 using DG.Tweening;
 using Dialog.Scripts;
@@ -36,6 +37,7 @@ namespace GameManager {
         public Transform transParam2;
         public Transform transParam3;
         public Transform transParam4;
+        public Transform transParam5;
         private Mission.MissionItem mission1;
         private int currentKillBomberNumber;
         private MissionPointBehaviour mission1Point;
@@ -48,6 +50,7 @@ namespace GameManager {
         public Transform transParamII2;
         public Transform transParamII3;
         public Transform transParamII4;
+        public Transform transParamII5;
         public Transform firstMissionPoint;
         public Transform level2MissionPoints;
         private List<Transform> level2MissionPointList;
@@ -158,7 +161,10 @@ namespace GameManager {
                         DialogService.GetInstance().Hint("Protect allied buildings from being destroyed and shoot down at least 1 enemy bomber.");
                     });
                 });
-                transParam3.DOMove(transParam4.position, 3f);
+                transParam3.DOMove(transParam4.position, 1.5f).OnComplete(() => {
+                    transParam3.DOMove(transParam5.position, 1.5f);
+                });
+                
                 Destroy(mission1Point.gameObject);
             }
         }
@@ -203,40 +209,14 @@ namespace GameManager {
                     // 任务开始时
                     // 生成任务点
                     mission1Point = MissionService.GetInstance().CreateMissionPoint(missionPointTransform, Mission2PointEnter, false);
-                    MissionService.GetInstance().CreateMissionPoint(firstMissionPoint, other => {
-                        Airplane.PlaneBehaviour plane = other.gameObject.GetComponentInParent<Airplane.PlaneBehaviour>();
-                        if (plane != null && plane.controller == Airplane.PlaneController.Player) {
-                            // 销毁轰炸机
-                            foreach (GameObject enemyBomber in enemyBomberList) {
-                                Destroy(enemyBomber);
-                            }
-                            // 生成敌方战斗机
-                            GameObject enemyFighter = PlaneFactory.GetInstance().CreateEnemyFighter(transParamII2.position, transParamII2.rotation);
-                            PlaneFactory.GetInstance().CreateEnemyFighter(transParamII3.position, transParamII3.rotation);
-                            PlaneFactory.GetInstance().CreateEnemyFighter(transParamII4.position, transParamII4.rotation);
-                            // 飞机停止动作
-                            Airplane.PlaneBehaviour playerPlaneBehaviour = playerPlane.GetComponent<Airplane.PlaneBehaviour>();
-                            PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).StopPlane();
-                            CameraService.GetInstance().SpotTrack(firstMissionPoint.position + Vector3.up * 50f, enemyFighter.transform, 5f,
-                                () => {
-                                    PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour)
-                                        .RestorePlane();
-                                    DialogService.GetInstance().Hint("Go back to our base along the point.");
-                                });
-                            
-                            // 更新任务进度，生成下一个任务点
-                            mission2.UpdateCurrentProgress();
-                            CreateNextMissionPoint();
-                            mission2.SetDescription("Go back to our base along the point.");
-                        }
-                    }, true, true);
+                    
                 })
                 .SetOnComplete(() => {
                     // 任务完成时
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示完成菜单
-                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission complete");
+                    MenuBehaviour completeMenu = DialogService.GetInstance().CreateMenu("mission\ncomplete");
                     completeMenu.AddButton("Main Menu", () => {
                         SceneManager.LoadScene(0);
                         Destroy(completeMenu.gameObject);
@@ -248,7 +228,7 @@ namespace GameManager {
                     // 禁用输入
                     InputService.GetInstance().CloseInput();
                     // 显示失败菜单
-                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission failed");
+                    MenuBehaviour failMenu = DialogService.GetInstance().CreateMenu("mission\nfailed");
                     failMenu.AddButton("Retry", () => {
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         Destroy(failMenu.gameObject);
@@ -273,8 +253,43 @@ namespace GameManager {
                 CameraService.GetInstance().SpotTrack(transParamII1.position, enemyBomberList[0].transform, 5f, () => {
                     PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).RestorePlane();
                     DialogService.GetInstance().Hint("Take advantage of the victory and pursue the retreating enemy bombers.");
+                    MissionService.GetInstance().CreateMissionPoint(firstMissionPoint, firstPointEnter, true, true);
                 });
                 Destroy(mission1Point.gameObject);
+            }
+        }
+
+        private void firstPointEnter(Collider other) {
+            Airplane.PlaneBehaviour plane = other.gameObject.GetComponentInParent<Airplane.PlaneBehaviour>();
+            if (plane != null && plane.controller == Airplane.PlaneController.Player) {
+                // 销毁轰炸机
+                foreach (GameObject enemyBomber in enemyBomberList) {
+                    Destroy(enemyBomber);
+                }
+                // 生成敌方战斗机
+                GameObject enemyFighter1 = PlaneFactory.GetInstance().CreateEnemyFighter(transParamII2.position, transParamII2.rotation);
+                GameObject enemyFighter2 = PlaneFactory.GetInstance().CreateEnemyFighter(transParamII3.position, transParamII3.rotation);
+                GameObject enemyFighter3 = PlaneFactory.GetInstance().CreateEnemyFighter(transParamII4.position, transParamII4.rotation);
+                enemyFighter1.GetComponent<PlaneWeaponBehaviour>().enabled = false;
+                enemyFighter2.GetComponent<PlaneWeaponBehaviour>().enabled = false;
+                enemyFighter3.GetComponent<PlaneWeaponBehaviour>().enabled = false;
+                // 飞机停止动作
+                Airplane.PlaneBehaviour playerPlaneBehaviour = playerPlane.GetComponent<Airplane.PlaneBehaviour>();
+                PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).StopPlane();
+                CameraService.GetInstance().SpotTrack(transParamII5.position, transParamII2, 3f,
+                    () => {
+                        PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour)
+                            .RestorePlane();
+                        DialogService.GetInstance().Hint("Go back to our base along the point.");
+                        enemyFighter1.GetComponent<PlaneWeaponBehaviour>().enabled = true;
+                        enemyFighter2.GetComponent<PlaneWeaponBehaviour>().enabled = true;
+                        enemyFighter3.GetComponent<PlaneWeaponBehaviour>().enabled = true;
+                    });
+                transParamII2.DOMove(transParamII3.position, 3f);
+                // 更新任务进度，生成下一个任务点
+                mission2.UpdateCurrentProgress();
+                CreateNextMissionPoint();
+                mission2.SetDescription("Go back to our base along the point.");
             }
         }
 

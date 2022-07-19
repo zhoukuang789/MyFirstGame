@@ -43,7 +43,7 @@ namespace GameManager {
         } else {
             timer = new Timer();
         }
-
+        timer = new Timer();
         return timer;
     }
     }
