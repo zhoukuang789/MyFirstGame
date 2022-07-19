@@ -100,7 +100,7 @@ namespace GameManager {
             // 创建关卡1任务
             mission1 = MissionService.GetInstance().CreateMission()
                 .SetName("任务1")
-                .SetDescription("Protect allied buildings from being destroyed and shoot down at least 1 enemy bomber.")
+                .SetDescription("Shoot down at least <color=#FFAAAA>1 Enemy Bomber</color> before they destroy all the constructions.")
                 .SetTotalProgress(1)
                 .SetOnStart(() => {
                     // 任务开始时
@@ -158,7 +158,7 @@ namespace GameManager {
                     GameObject enemyBomber = enemyBomberList[0];
                     CameraService.GetInstance().SpotTrack(transParam1.position, enemyBomber.transform, 5f, () => {
                         PlaneMovementControllerService.GetInstance().SetPlane(playerPlaneBehaviour).RestorePlane();
-                        DialogService.GetInstance().Hint("Protect allied buildings from being destroyed and shoot down at least 1 enemy bomber.");
+                        DialogService.GetInstance().Hint("<color=#FFAAAA>Enemy Bombers</color> are destroying our <color=#AAFFAA>constructions</color>\nAttack them!");
                     });
                 });
                 transParam3.DOMove(transParam4.position, 1.5f).OnComplete(() => {
