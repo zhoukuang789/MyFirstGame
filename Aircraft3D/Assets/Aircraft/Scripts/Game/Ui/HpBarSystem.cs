@@ -13,6 +13,7 @@ public class HpBarSystem : MonoBehaviour
 
     public List<HpBar> bars;
 
+     Camera cam;
     private void Awake()
     {
         instance = this;
@@ -21,7 +22,7 @@ public class HpBarSystem : MonoBehaviour
 
     private void Start()
     {
-
+        cam = Camera.main;
     }
 
     void Init()
@@ -78,7 +79,7 @@ public class HpBarSystem : MonoBehaviour
     {
         foreach (var bar in bars)
         {
-            var viewportPos = Camera.main.WorldToScreenPoint(bar.health.GetWorldPosition());
+            var viewportPos = cam.WorldToScreenPoint(bar.health.GetWorldPosition());
             bar.rect.anchoredPosition = new Vector2(viewportPos.x, viewportPos.y);
             if (viewportPos.z <= 0)
             {

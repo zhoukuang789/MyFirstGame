@@ -5,6 +5,12 @@ namespace MyCamera
 {
     public class CameraBehaviour : MonoBehaviour
     {
+        public static CameraBehaviour fpInstance;
+        public static CameraBehaviour tpInstance;
+
+        public bool isFpCam;
+        public bool isTpCam;
+
         public Transform target;
         public Transform playerPlane;
         public Vector3 offset;
@@ -21,6 +27,12 @@ namespace MyCamera
         private Transform spotTarget;
         private Action spotCallback;
 
+        private void Awake()
+        {
+            if (isFpCam) fpInstance = this;
+            if (isTpCam) tpInstance = this;
+        }
+
         private void LateUpdate()
         {
             if (target == null)
@@ -35,7 +47,8 @@ namespace MyCamera
                     break;
 
                 case CameraTrackingMode.Spot:
-                    if (Time.time > _endTime) {
+                    if (Time.time > _endTime)
+                    {
                         if (spotCallback != null)
                             spotCallback();
                         ResumeToPlayer();
