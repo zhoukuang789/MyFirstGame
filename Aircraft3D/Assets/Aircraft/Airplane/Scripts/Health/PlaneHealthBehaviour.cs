@@ -12,6 +12,7 @@ namespace Airplane.Health {
         /// <summary>
         /// 飞机生命值
         /// </summary>
+        [SerializeField]
         private float health = 100f;
         
         /// <summary>
@@ -93,9 +94,12 @@ namespace Airplane.Health {
         /// 飞机死亡
         /// </summary>
         private void PlaneDie() {
+            Debug.Log(gameObject + "die");
             // 生成爆炸特效
             GameObject planeDeathVfx = Instantiate(planeDeathVfxPrefab, transform.position, transform.rotation);
             planeDeathVfx.SetActive(true);
+            // 播放音效
+            com.SoundService.instance.Play("explodeFar");
             // 广播死亡事件
             PlaneHealthService.GetInstance().SetPlane(plane).PublishPlaneDeathEvent();
             // 销毁该飞机

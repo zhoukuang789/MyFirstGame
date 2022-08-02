@@ -62,6 +62,8 @@ namespace Airplane.Weapon
                     .SetFlightSpeed(planeWeapon.GetBulletFlightSpeed());
                 // 激活子弹
                 bullet.SetActive(true);
+                // 播放音效
+                com.SoundService.instance.Play("hit_1");
             }
         }
 

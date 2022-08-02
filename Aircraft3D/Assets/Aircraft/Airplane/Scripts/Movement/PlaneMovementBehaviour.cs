@@ -296,6 +296,7 @@ namespace Airplane.Movement {
                 rb.AddForce(transform.forward * autoTrust);
             if (currentSpeedOnForward > autoSpeedOnForward)
                 rb.AddForce(-transform.forward * autoTrust);
+            
         }
         
         // -------------------------------function---------------------------------------

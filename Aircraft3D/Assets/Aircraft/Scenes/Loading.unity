@@ -917,6 +917,8 @@ MonoBehaviour:
       ac: {fileID: 8300000, guid: 724b1a758f3778f48950d2504ad53981, type: 3}
     - name: exp3
       ac: {fileID: 8300000, guid: 88707c8a28f4c35418a3096223f7daf4, type: 3}
+    - name: hit_1
+      ac: {fileID: 8300000, guid: 3b027c35506008f4ca1057d287eeee68, type: 3}
   - tag: misc
     siList:
     - name: click
