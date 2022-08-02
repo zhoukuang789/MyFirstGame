@@ -8,7 +8,7 @@ namespace MyVR {
         // private SteamVR_GazeTracker tracker;
 
         private void Start() {
-            
+
         }
 
         private void Update() {
