@@ -1,0 +1,43 @@
+Hello,
+My game is called Aircraft3D.
+
+The core gameplay of this game is to control the aircraft to fight in a 3D scene.
+I want to develop an aircraft fighting game which is easy to play while apply the real physics rules as much as possible.
+
+Let’s first introduce my development process.
+At first, I developed the fly, control and fire systems of the aircraft.
+After that, I started to work on other systems like task, Bot AI, UI, etc.
+
+When I worked on the game design, I designed two tasks, 
+in order to familiarize players with the operation of this game in the shortest possible time, 
+
+These 2 simple tasks, 
+cover the movement and steering control of the aircraft, the control of fire, and basic aerial combat skills.
+The difficulty is gradual, so that novice players can also experience a little air combat fun.
+During Play test I found the tasks are easy for me but still a bit challenging for new players.
+In mission 1, players need to follow the bot's plane to fly and fire.
+In mission 2, players need more proficient flying skills to avoid enemy attacks.
+
+Air combat is not a simple game type. 
+During the development, I undoubtedly encountered a lot of difficulties.
+
+The first difficulty is the core gameplay part.
+In order to understand how airplane works in the real world, I bought two books on the principles of flight and aerodynamics to learn.
+But real-world physics is really complex.
+So I had to simplify the complex mechanics formula in the game.
+The second difficulty is more complicated than I expected, and it is about the AI ​​system of the Bot to control enemy planes.
+Although there are many mature algorithms for AI pathfinding, such as the A*.
+But considering inertia and 3D space, these are far from the needs of aerial combat.
+So I learned the AI ​​behavior tree framework.
+By observed AI in other games, I summarized the AI rules, and finally implemented a decent AI by my own code.
+
+During the development of this game,
+I recognized the importance of frameworks when coding for a complex game.
+I applied what I learned about software engineering in university.
+And flexible use of a variety of data structures and design patterns to help me achieve functions.
+In some service classes, I use the singleton pattern.
+When creating objects like airplane, bullet, etc. I use the simple factory pattern.
+In the implementation of the AI ​​of aircraft Bot, I used the strategy pattern.
+In the task module and death management, I use the publish-subscriber pattern.
+
+You are welcome to download and play the game for free.
