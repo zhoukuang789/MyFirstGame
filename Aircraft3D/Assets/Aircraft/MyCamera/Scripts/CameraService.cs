@@ -17,8 +17,10 @@ namespace MyCamera {
             CameraBehaviour camera = Camera.main.GetComponent<CameraBehaviour>();
             Timer timer = TimerManager.instance.GetTimer();
             timer.Init(() => {
+                camera.muzzleObj.SetActive(false);
                 camera.ChangeTrackingMode(CameraTrackingMode.Spot, duration, target, cameraPosition);
             }, null, () => {
+                camera.muzzleObj.SetActive(true);
                 camera.ResumeToPlayer();
                 if (callback != null) {
                     callback();

@@ -58,6 +58,7 @@ namespace GameManager {
         private Mission.MissionItem mission2;
 
         private void Start() {
+            Cursor.lockState = CursorLockMode.Locked;
             // 生成玩家飞机
             playerPlane = PlaneFactory.GetInstance().CreatePlayerPlane(playerPlaneSpawnTransform.position,
                 playerPlaneSpawnTransform.rotation);

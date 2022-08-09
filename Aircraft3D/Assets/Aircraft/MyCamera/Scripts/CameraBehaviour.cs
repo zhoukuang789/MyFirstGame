@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace MyCamera
 {
-    public class CameraBehaviour : MonoBehaviour
-    {
+    public class CameraBehaviour : MonoBehaviour {
+
+        public GameObject muzzleObj;
+        
         public static CameraBehaviour fpInstance;
         public static CameraBehaviour tpInstance;
 
