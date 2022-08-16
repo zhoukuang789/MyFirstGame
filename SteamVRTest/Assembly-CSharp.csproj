@@ -52,8 +52,122 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Main\Com\Util\Screen\BlinkCanvasGroup.cs" />
      <Compile Include="Assets\PlayerMovementScript.cs" />
+     <Compile Include="Assets\Main\Com\Storage\EncryptedPrefsStorage.cs" />
+     <Compile Include="Assets\Main\Com\Core\PoolingInstance.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Weapon\PlaneWeaponBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Movement\PlaneMovementConfig.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Health\PlaneHealthBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\MovesetName.cs" />
+     <Compile Include="Assets\Main\Com\Sound\PlaySoundBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\Dive.cs" />
+     <Compile Include="Assets\Main\Com\Util\Screen\BlinkTipBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Storage\PlayerPrefsStorage.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bullet\BulletBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Health\PlaneHealthService.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Weapon\PlaneWeaponConfig.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Movement\PlaneMovementBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Storage\EncryptedSavePrefsWorker.cs" />
+     <Compile Include="Assets\Main\ProjectBase\SingletonBase\Scripts\Singletonable.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\MoveMaterialNormalMap.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Weapon\PlaneWeaponControllerService.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Camera\CinematicCameraService.cs" />
+     <Compile Include="Assets\Main\Com\Core\ClippingService.cs" />
+     <Compile Include="Assets\Main\Com\Core\GameFlowService.cs" />
+     <Compile Include="Assets\Main\Com\Core\WorldService.cs" />
+     <Compile Include="Assets\Main\Com\Storage\IStorageService.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\MeshGenerator.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Effect\Trajet\RadianTraject.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Effect\Particle\BasicParticle.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\RotationLerp.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\RollLeft.cs" />
      <Compile Include="Assets\PlayerDemoScript.cs" />
+     <Compile Include="Assets\Main\Com\Input\InputConfig.cs" />
+     <Compile Include="Assets\Main\Com\Core\StartGameService.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\FlyForward.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneFactory.cs" />
+     <Compile Include="Assets\Main\Com\Util\Math\Convert2DTo3D.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\StraightFly.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\PlanePosture.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\LineRendererLaser.cs" />
+     <Compile Include="Assets\Main\Com\Util\Screen\HudBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneController.cs" />
+     <Compile Include="Assets\Main\Com\Storage\StorageInstaller.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\MoveMaterialTiling.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\ScaleBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\PickOne.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Main\Com\Input\InputService.cs" />
+     <Compile Include="Assets\Main\Com\Util\MiniJSON.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneType.cs" />
+     <Compile Include="Assets\Main\Com\Util\Camera\CameraShake.cs" />
+     <Compile Include="Assets\Main\Com\Util\Math\Formula.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\PitchDown.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneTakeOffBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Util\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\MoveSinBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\RotateBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Util\MiscUtil.cs" />
+     <Compile Include="Assets\Main\Com\Util\Screen\SplashScreenBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Core\PoolingService.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Movement\PlaneMovementControllerService.cs" />
+     <Compile Include="Assets\Main\Com\Util\Screen\UiController.cs" />
+     <Compile Include="Assets\Main\Com\Util\Ui\TiltImage.cs" />
+     <Compile Include="Assets\Main\Com\Util\Screen\ScreenVignetteBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Effect\Sprite\BasicSprite.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\BomberFireDecision.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\Moveset.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\Climb.cs" />
+     <Compile Include="Assets\Main\Com\Core\PoolingData.cs" />
+     <Compile Include="Assets\Main\ProjectBase\Input\Scripts\InputService.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\TurnLeft.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\RestorePosture.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneConfig.cs" />
+     <Compile Include="Assets\Main\ProjectBase\Input\Scripts\KeyItem.cs" />
+     <Compile Include="Assets\Main\Com\Sound\SoundService.cs" />
+     <Compile Include="Assets\Main\Com\Util\BetterEvent.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Camera\OthographicSizeMatchWidth.cs" />
+     <Compile Include="Assets\Main\Com\Storage\EncryptedSaveWorker.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\ShakeBehaviour.cs" />
+     <Compile Include="Assets\Main\ProjectBase\Mono\Scripts\MonoController.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\MovesetAction.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Movement\AerodynamicCalculation.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\DefaultMoveset.cs" />
+     <Compile Include="Assets\Main\ProjectBase\Mono\Scripts\MonoService.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PlaneCamp.cs" />
+     <Compile Include="Assets\Main\ProjectBase\Input\Scripts\SteamVRInputBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Weapon\BomberWeaponConfig.cs" />
+     <Compile Include="Assets\Main\Com\Sound\MusicService.cs" />
+     <Compile Include="Assets\Main\Com\Core\GameTime.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Weapon\BomberWeaponBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bullet\BombBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Storage\EncryptedFileStorage.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\PickByString.cs" />
+     <Compile Include="Assets\Main\Com\Util\Ui\ResizeRectTransform.cs" />
+     <Compile Include="Assets\Main\Com\Util\Ui\RotateImage.cs" />
+     <Compile Include="Assets\Main\Com\Util\Ui\TextFormat.cs" />
+     <Compile Include="Assets\Main\Com\Storage\StorageBase.cs" />
+     <Compile Include="Assets\Main\Com\Util\Math\ListUtil.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\PropellerBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Effect\Trajet\BasicTraject.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\FighterDecision.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Camera\CinematicEventPrototype.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Light\SpotLightBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\TurnBack.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Effect\BasicEffect.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\RollRight.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\PitchUp.cs" />
+     <Compile Include="Assets\Main\Com\Util\Math\MathGame.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\SimpleTriggerCollisionBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\BotDecision.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\TurnRight.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\Camera\CinematicService.cs" />
+     <Compile Include="Assets\Main\Com\Gameobject\CommonBehaviourPropertyChangeData.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Bot\BotBehaviour.cs" />
+     <Compile Include="Assets\Main\Com\Core\TimerService.cs" />
+     <None Include="Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Program Files/Unity/Editor/2020.3.1f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -278,6 +392,9 @@
  </Reference>
  <Reference Include="Valve.Newtonsoft.Json">
  <HintPath>D:/Program Files/Unity/Projects/MyFirstGame/SteamVRTest/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>D:/Program Files/Unity/Projects/MyFirstGame/SteamVRTest/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>D:/Program Files/Unity/Editor/2020.3.1f1c1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -698,6 +815,10 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{0090b1a5-ce28-0619-6224-ac51fd7dcce6}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
       <Project>{c62d792d-3ecb-fd5d-38f9-aa1023a511ef}</Project>
       <Name>SteamVR_Input_Editor</Name>

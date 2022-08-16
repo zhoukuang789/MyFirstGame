@@ -105,11 +105,83 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 DirectMovement
+        public virtual SteamVR_Action_Vector2 LeftRocker
         {
             get
             {
-                return SteamVR_Actions.default_DirectMovement;
+                return SteamVR_Actions.default_LeftRocker;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 RightRocker
+        {
+            get
+            {
+                return SteamVR_Actions.default_RightRocker;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean LeftTrigger
+        {
+            get
+            {
+                return SteamVR_Actions.default_LeftTrigger;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RightTrigger
+        {
+            get
+            {
+                return SteamVR_Actions.default_RightTrigger;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean LeftGrab
+        {
+            get
+            {
+                return SteamVR_Actions.default_LeftGrab;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean RightGrab
+        {
+            get
+            {
+                return SteamVR_Actions.default_RightGrab;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean A
+        {
+            get
+            {
+                return SteamVR_Actions.default_A;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean B
+        {
+            get
+            {
+                return SteamVR_Actions.default_B;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean X
+        {
+            get
+            {
+                return SteamVR_Actions.default_X;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Y
+        {
+            get
+            {
+                return SteamVR_Actions.default_Y;
             }
         }
         
