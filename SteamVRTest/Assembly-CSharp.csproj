@@ -167,6 +167,8 @@
      <Compile Include="Assets\Main\Com\Gameobject\CommonBehaviourPropertyChangeData.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\BotBehaviour.cs" />
      <Compile Include="Assets\Main\Com\Core\TimerService.cs" />
+     <Compile Include="Assets\Old Hangar\Demo\Script\ThirdPersonCamera.cs" />
+     <None Include="Assets\Super Spitfire\readme.txt" />
      <None Include="Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Program Files/Unity/Editor/2020.3.1f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
