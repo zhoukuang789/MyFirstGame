@@ -62,6 +62,7 @@
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\MovesetName.cs" />
      <Compile Include="Assets\Main\Com\Sound\PlaySoundBehaviour.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\Dive.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Missile\MissileUi.cs" />
      <Compile Include="Assets\Main\Com\Util\Screen\BlinkTipBehaviour.cs" />
      <Compile Include="Assets\Main\Com\Storage\PlayerPrefsStorage.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bullet\BulletBehaviour.cs" />
@@ -84,6 +85,7 @@
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\RollLeft.cs" />
      <Compile Include="Assets\PlayerDemoScript.cs" />
      <Compile Include="Assets\Main\Com\Input\InputConfig.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Missile\MissileMove.cs" />
      <Compile Include="Assets\Main\Com\Core\StartGameService.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\FlyForward.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\PlaneFactory.cs" />
@@ -110,6 +112,7 @@
      <Compile Include="Assets\Main\Com\Gameobject\RotateBehaviour.cs" />
      <Compile Include="Assets\Main\Com\Util\MiscUtil.cs" />
      <Compile Include="Assets\Main\Com\Util\Screen\SplashScreenBehaviour.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Missile\Ticker.cs" />
      <Compile Include="Assets\Main\Com\Core\PoolingService.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Movement\PlaneMovementControllerService.cs" />
      <Compile Include="Assets\Main\Com\Util\Screen\UiController.cs" />
@@ -133,6 +136,7 @@
      <Compile Include="Assets\Main\Com\Gameobject\ShakeBehaviour.cs" />
      <Compile Include="Assets\Main\ProjectBase\Mono\Scripts\MonoController.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\MovesetAction.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Missile\MissileSystem.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Movement\AerodynamicCalculation.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\DefaultMoveset.cs" />
      <Compile Include="Assets\Main\ProjectBase\Mono\Scripts\MonoService.cs" />
@@ -150,6 +154,7 @@
      <Compile Include="Assets\Main\Com\Util\Ui\TextFormat.cs" />
      <Compile Include="Assets\Main\Com\Storage\StorageBase.cs" />
      <Compile Include="Assets\Main\Com\Util\Math\ListUtil.cs" />
+     <Compile Include="Assets\Main\Airplane\Scripts\Missile\RotateAlignMove.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\PropellerBehaviour.cs" />
      <Compile Include="Assets\Main\Com\Gameobject\Effect\Trajet\BasicTraject.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\FighterDecision.cs" />
@@ -157,6 +162,7 @@
      <Compile Include="Assets\Main\Com\Gameobject\Light\SpotLightBehaviour.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\Moveset\TurnBack.cs" />
      <Compile Include="Assets\Main\Com\Gameobject\Effect\BasicEffect.cs" />
+     <Compile Include="Assets\Old Hangar\Demo\Script\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\RollRight.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\MovesetAction\PitchUp.cs" />
      <Compile Include="Assets\Main\Com\Util\Math\MathGame.cs" />
@@ -167,9 +173,9 @@
      <Compile Include="Assets\Main\Com\Gameobject\CommonBehaviourPropertyChangeData.cs" />
      <Compile Include="Assets\Main\Airplane\Scripts\Bot\BotBehaviour.cs" />
      <Compile Include="Assets\Main\Com\Core\TimerService.cs" />
-     <Compile Include="Assets\Old Hangar\Demo\Script\ThirdPersonCamera.cs" />
      <None Include="Assets\Super Spitfire\readme.txt" />
      <None Include="Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
+     <None Include="Assets\Free Stylized Skybox\ReadMe.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Program Files/Unity/Editor/2020.3.1f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
